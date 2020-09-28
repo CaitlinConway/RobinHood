@@ -1,5 +1,57 @@
 /* TODO Add site wide styles */
 
+.nav-list{
+  position: absolute;
+  top: 0px;
+  display: grid;
+  grid-template-columns: 10% 60% 10% 10% 10%;
+  grid-template-rows: 100%;
+  width: 100%;
+  padding-left: 20px;
+  font-family: "Capsule Sans Text", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: bold;
+  font-size: 13px;
+  list-style-type:none;
+  align-items: center;
+}
+*{
+  background-color: black;
+  color: white;
+}
+.home-logo{
+  width: 38px;
+  height: 38px;
+}
+.green-home-logo{
+  position: absolute;
+  width: 38px;
+  height: 38px;
+}
+.home-logo-li{
+  width: 38px;
+  height: 38px;
+  display: block;
+}
+.home-logo-li:hover .green-home-logo{
+  display: block;
+}
+.home-logo-li:hover .home-logo{
+  display: none;
+}
+.search{
+  height: 80%;
+}
+.search:hover{
+  box-shadow: 0px 4px 20px 0px rgba(255, 255, 255, 0.05);
+}
+.search-input{
+  width: 90%;
+  background-color: white;
+  height: 100%;
+  box-shadow: 2px 2px;
+  border: 2px solid white;
+  border-radius: 10px;
+
 .login-page-div {
     display: inline-block;
     margin-top: 14.3%;
