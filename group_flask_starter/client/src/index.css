@@ -22,8 +22,21 @@
   width: 38px;
   height: 38px;
 }
-.home-logo:hover{
-  color: green;
+.green-home-logo{
+  position: absolute;
+  width: 38px;
+  height: 38px;
+}
+.home-logo-li{
+  width: 38px;
+  height: 38px;
+  display: block;
+}
+.home-logo-li:hover .green-home-logo{
+  display: block;
+}
+.home-logo-li:hover .home-logo{
+  display: none;
 }
 .search{
   height: 80%;
