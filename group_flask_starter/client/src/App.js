@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route, NavLink } from 'react-router-dom';
-
+import StockPage from "./components/StockPage"
 import UserList from './components/UsersList';
 
 
@@ -18,6 +18,7 @@ function App() {
             <Route path="/users">
                 <UserList />
             </Route>
+            <Route path="/stocks/:stockId" component={StockPage}/>
 
             <Route path="/">
                 <h1>My Home Page</h1>
