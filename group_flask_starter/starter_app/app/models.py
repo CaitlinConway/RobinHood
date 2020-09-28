@@ -33,8 +33,8 @@ class User(db.Model):
   email = db.Column(db.String(255), nullable = False, unique = True)
   firstName = db.Column(db.String(255), nullable = False)
   lastName = db.Column(db.String(255), nullable = False)
-  password = db.Column(db.String(40), nullable=False)
-  balance = db.Column(db.Numeric)
+  password = db.Column(db.String(100), nullable=False)
+  balance = db.Column(db.Numeric, nullable=False)
   watchlistId = db.Column(db.Integer, db.ForeignKey("watchlists.id"))
   watchlist = db.relationship("Watchlist")
 
