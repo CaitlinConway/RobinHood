@@ -36,8 +36,9 @@ handleSubmit = (e) => {
     const { email, password } = this.state;
     return (
       <div className="login-page">
+        <div className="login-background"></div>
         <div className="login-page-div">
-          <div className="login-form-header">Welcome to Robinhood</div>
+          <div className="login-form-header">Welcome to Batmanhood</div>
           <div className="error-container">
             <ul id="errors" className="errors"></ul>
           </div>

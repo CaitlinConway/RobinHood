@@ -1,5 +1,72 @@
 /* TODO Add site wide styles */
 
+.nav-list{
+  position: absolute;
+  top: 0px;
+  display: grid;
+  grid-template-columns: 10% 60% 10% 10% 10%;
+  grid-template-rows: 100%;
+  width: 100%;
+  padding-left: 20px;
+  font-family: "Capsule Sans Text", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: bold;
+  font-size: 13px;
+  list-style-type:none;
+  align-items: center;
+}
+*{
+  background-color: black;
+  color: white;
+}
+.home-logo{
+  width: 38px;
+  height: 38px;
+}
+.green-home-logo{
+  position: absolute;
+  width: 38px;
+  height: 38px;
+}
+.home-logo-li{
+  width: 38px;
+  height: 38px;
+  display: block;
+}
+.home-logo-li:hover .green-home-logo{
+  display: block;
+}
+.home-logo-li:hover .home-logo{
+  display: none;
+}
+.search{
+  height: 80%;
+}
+.search:hover{
+  box-shadow: 0px 4px 20px 0px rgba(255, 255, 255, 0.05);
+}
+.search-input{
+  width: 90%;
+  background-color: white;
+  height: 100%;
+  box-shadow: 2px 2px;
+  border: 2px solid white;
+  border-radius: 10px;
+}
+
+/* Login Page CSS */
+.login-background {
+    background-image: url(https://www.pcinvasion.com/wp-content/uploads/2015/06/Batman-Arkham-Knight-1.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100%;
+    min-width: 500px;
+    width: 50%;
+    height: auto;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
 .login-page-div {
     display: inline-block;
     margin-top: 14.3%;
@@ -30,7 +97,7 @@
 }
 
 .login-button, .demo-user-login-button {
-    background-color: rgba(0, 180, 5, 1);
+    background-color: rgba(0, 200, 5, 1);
     height: 40px;
     width: 120px;
     border-radius: 3px;
@@ -41,7 +108,7 @@
 .forgot-account {
     padding-top: 20px;
     font-size: 15px;
-    color: rgba(0, 180, 100, 1)
+    color: rgba(0, 200, 5, 1)
 }
 
 .demo-user-form {
@@ -54,6 +121,7 @@
     display: flex;
     flex-direction: column;
     margin-left: 5%;
+    margin-top: 10%;
 }
 
 .signup-form {
