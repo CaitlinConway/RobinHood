@@ -1,7 +1,7 @@
 """user migration
 
 Revision ID: aeb96cc08176
-Revises: 
+Revises:
 Create Date: 2020-09-28 12:10:37.025426
 
 """
@@ -32,7 +32,7 @@ def upgrade():
     sa.Column('email', sa.String(length=255), nullable=False),
     sa.Column('firstName', sa.String(length=255), nullable=False),
     sa.Column('lastName', sa.String(length=255), nullable=False),
-    sa.Column('password', sa.String(length=40), nullable=False),
+    sa.Column('password', sa.String(length=100), nullable=False),
     sa.Column('balance', sa.Numeric(), nullable=True),
     sa.Column('watchlistId', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['watchlistId'], ['watchlists.id'], ),

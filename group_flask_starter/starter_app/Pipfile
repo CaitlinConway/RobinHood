@@ -22,7 +22,9 @@ werkzeug = "==1.0.1"
 wtforms = "==2.3.3"
 psycopg2-binary = "==2.8.6"
 flask-jwt-extended = "==3.24.1"
-flask-migrate = "*"
+flask-migrate = "==2.5.3"
+requests = "==2.24"
+passlib = "==1.7.2"
 
 [requires]
 python_version = "3.8"
