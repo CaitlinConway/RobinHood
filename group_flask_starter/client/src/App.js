@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route, NavLink } from 'react-router-dom';
+import StockPage from "./components/StockPage"
 import UserList from './components/UsersList';
 import Logo from "./robinhood-logomark-white.png"
 import SearchBar from './components/SearchBar'
@@ -40,6 +41,7 @@ function App() {
             <Route path="/users">
                 <UserList />
             </Route>
+            <Route path="/stocks/:stockId" component={StockPage}/>
             <Route path="/login" component={Login} />
             <Route path="/signup" component={SignUp} />
             <Route path="/">
