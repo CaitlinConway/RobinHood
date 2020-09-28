@@ -3,6 +3,7 @@ load_dotenv()
 
 from app import app, db
 from app.models import User, Watchlist, Stocklist, Trade, Stock, WatchlistContent
+from passlib.hash import sha256_crypt
 
 with app.app_context():
   db.drop_all()
@@ -11,7 +12,7 @@ with app.app_context():
   watchlist = Watchlist(name = "watchlist")
   apple = Stock(ticker = "AAPL")
   watchlistContent = WatchlistContent(watchlistId = 1, stockId = 1)
-  guest = User(email = 'guest@guest.com', firstName = 'firstName', lastName = 'lastName', password='password', balance = 0, watchlistId = 1)
+  guest = User(email = 'guest@guest.com', firstName = 'firstName', lastName = 'lastName', password=sha256_crypt.encrypt('password'), balance = 0, watchlistId = 1)
   stocklist = Stocklist(shares = 3, stockId = 1, userId = 1)
 
 
