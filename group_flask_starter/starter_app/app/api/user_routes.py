@@ -1,5 +1,5 @@
 
-from flask import Blueprint, jsonify, request, session, redirect
+from flask import Blueprint, jsonify, request, session, redirect, url_for
 from app.models import User
 from passlib.hash import sha256_crypt
 
@@ -16,18 +16,19 @@ def index():
 @user_routes.route("/login", methods=["POST"])
 def login():
     data = request.json
-    user = User.query.filter(User.email == data.email and
-                             sha256_crypt.verify(data.password, User.password))
+    user = User.query.filter(User.email == data["email"] and
+                             sha256_crypt.verify(data.password, User.password)).one()
     if user:
-        session[userId] = user.id
-        return redirect(url_for("react_root"))
+        session["userId"] = user.id
+        print(f"success, {user.id, user.email}")
+        return {"id": user.id, "email": user.email}
 
     return "error, user not found"
 
 
-@user_routes.route("/login", methods=["DELETE"])
+@user_routes.route("/logout", methods=["DELETE"])
 def logout():
-    if userId in session:
+    if "userId" in session:
         session.pop('userId', None)
         return redirect(url_for("react_root"))
     return "error, already logged out"

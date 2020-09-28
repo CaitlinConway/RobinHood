@@ -1,4 +1,3 @@
-import Cookies from "js-cookie";
 
 const LOGIN = "auth/login";
 const LOGOUT = "auth/logout";
@@ -30,10 +29,26 @@ const logoutUser = () => ({
 
 export const login = function(email, password) {
     return async(dispatch) => {
-        let user = await fetch("/api/users/login", {
+        let res = await fetch("/api/users/login", {
             method: "POST",
             headers: {'Content-Type': "application/json"},
             body: JSON.stringify({email, password})
         })
+        if(res.ok) {
+            let currentUser = await res.json();
+            dispatch(setUser(currentUser.id, currentUser.email));
+        }
+    }
+}
+
+export const logOut = () => {
+    return async function(dispatch) {
+        let res = await fetch("/api/users/logout", {
+            method: "DELETE",
+        });
+        if(res.ok) {
+            dispatch(logoutUser());
+            return "success";
+        }
     }
 }
