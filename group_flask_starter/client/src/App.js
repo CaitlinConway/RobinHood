@@ -1,12 +1,18 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route, NavLink } from 'react-router-dom';
-import StockPage from "./components/StockPage"
+import { Provider } from 'react-redux';
+import configureStore from "./store/configureStore";
+import StockPage from "./components/StockPage";
 import UserList from './components/UsersList';
-import Logo from "./robinhood-logomark-white.png"
-import SearchBar from './components/SearchBar'
-import greenLogo from "./robinhood-logomark-green.png"
+import Logo from "./robinhood-logomark-white.png";
+import SearchBar from './components/SearchBar';
+import greenLogo from "./robinhood-logomark-green.png";
 import Login from './components/Login';
 import SignUp from './components/SignUp';
+const store = configureStore();
+if (ProcessingInstruction.env.NODE_ENV !== 'production') {
+  window.store = store;
+}
 
 
 
@@ -14,6 +20,7 @@ function App() {
 
   return (
     <BrowserRouter>
+      <Provider>
         <div className="nav-bar">
         <nav>
             <ul className="nav-list">
@@ -44,9 +51,9 @@ function App() {
             <Route path="/stocks/:stockId" component={StockPage}/>
             <Route path="/login" component={Login} />
             <Route path="/signup" component={SignUp} />
-            <Route path="/">
-            </Route>
+            <Route path="/" />
         </Switch>
+      </Provider>
     </BrowserRouter>
   );
 }
