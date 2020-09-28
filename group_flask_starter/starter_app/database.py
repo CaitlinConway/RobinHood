@@ -2,24 +2,24 @@ from dotenv import load_dotenv
 load_dotenv()
 
 from app import app, db
-from app.models import User
+from app.models import User, Watchlist, Stocklist, Trade, Stock, WatchlistContent
 
 with app.app_context():
   db.drop_all()
   db.create_all()
 
-  ian = User(username = 'Ian', email = 'ian@aa.io')
-  javier = User(username = 'Javier', email = 'javier@aa.io')
-  dean = User(username = 'Dean', email = 'dean@aa.io')
-  angela = User(username = 'Angela', email = 'angela@aa.io')
-  soonmi = User(username = 'Soon-Mi', email = 'soonmi@aa.io')
-  alissa = User(username = 'Alissa', email = 'alissa@aa.io')
+  watchlist = Watchlist(name = "watchlist")
+  apple = Stock(ticker = "AAPL")
+  watchlistContent = WatchlistContent(watchlistId = 1, stockId = 1)
+  guest = User(email = 'guest@guest.com', firstName = 'firstName', lastName = 'lastName', password='password', balance = 0, watchlistId = 1)
+  stocklist = Stocklist(shares = 3, stockId = 1, userId = 1)
 
-  db.session.add(ian)
-  db.session.add(javier)
-  db.session.add(dean)
-  db.session.add(angela)
-  db.session.add(soonmi)
-  db.session.add(alissa)
+
+  db.session.add(watchlist)
+  db.session.add(apple)
+  db.session.add(watchlistContent)
+  db.session.add(guest)
+  db.session.add(stocklist)
+
 
   db.session.commit()
