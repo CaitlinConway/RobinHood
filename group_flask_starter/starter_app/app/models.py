@@ -21,7 +21,7 @@ class WatchlistContent(db.Model):
   watchlistId = db.Column(db.Integer, db.ForeignKey("watchlists.id"))
   watchlist = db.relationship("Watchlist")
   stockId = db.Column(db.Integer, db.ForeignKey("stocks.id"))
-  stock = db.relationship("stock")
+  stock = db.relationship("Stock")
 
 
 
@@ -67,5 +67,5 @@ class Stocklist(db.Model):
   stockId = db.Column(db.Integer, db.ForeignKey("stocks.id"))
   userId = db.Column(db.Integer, db.ForeignKey("users.id"))
   shares = db.Column(db.Integer)
-  user = db.relationship("user")
-  stock = db.relationship("stock")
+  user = db.relationship("User")
+  stock = db.relationship("Stock")

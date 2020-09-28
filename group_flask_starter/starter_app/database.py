@@ -9,7 +9,7 @@ with app.app_context():
   db.create_all()
 
   watchlist = Watchlist(name = "watchlist")
-  apple = Stock(ticker = "AAPL", watchlistId = 1)
+  apple = Stock(ticker = "AAPL")
   watchlistContent = WatchlistContent(watchlistId = 1, stockId = 1)
   guest = User(email = 'guest@guest.com', firstName = 'firstName', lastName = 'lastName', password='password', balance = 0, watchlistId = 1)
   stocklist = Stocklist(shares = 3, stockId = 1, userId = 1)
