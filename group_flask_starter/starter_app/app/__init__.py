@@ -2,12 +2,9 @@ import os
 from flask import Flask, render_template, request, session
 from flask_cors import CORS
 from flask_wtf.csrf import CSRFProtect, generate_csrf
-
-migrate = Migrate(app, db)
-
-
 from .models import db, User
 from .api.user_routes import user_routes
+from .api.stock_routes import stock_routes
 from flask_migrate import Migrate
 from .config import Config
 

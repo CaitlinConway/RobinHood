@@ -5,8 +5,8 @@ export default function StockPage(props) {
     useEffect(()=> {
         async function getStock() {
             const res = await fetch(`/api/stocks/${ticker}`);
-            console.log(res);
             const data = await res.json();
+            console.log(data);
             return data;
         }
         getStock()
