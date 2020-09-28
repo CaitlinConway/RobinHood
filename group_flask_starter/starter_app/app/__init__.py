@@ -15,6 +15,7 @@ app = Flask(__name__)
 
 app.config.from_object(Config)
 app.register_blueprint(user_routes, url_prefix='/api/users')
+app.register_blueprint(stock_routes, url_prefix='/api/stocks')
 db.init_app(app)
 migrate = Migrate(app, db)
 

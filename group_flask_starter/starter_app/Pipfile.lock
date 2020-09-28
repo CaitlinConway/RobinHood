@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "57fe200d3b06bd27081fcf7be60a736a582126d08d0b7d0935d02391562d9482"
+            "sha256": "d381bea2edfbffd2636742313196d71d922d1c29fabda2c67a18ac431fe3e239"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -55,7 +55,6 @@
             "index": "pypi",
             "version": "==3.24.1"
         },
-<<<<<<< HEAD
         "flask-migrate": {
             "hashes": [
                 "sha256:4dc4a5cce8cbbb06b8dc963fd86cf8136bd7d875aabe2d840302ea739b243732",
@@ -64,8 +63,6 @@
             "index": "pypi",
             "version": "==2.5.3"
         },
-=======
->>>>>>> api_data
         "flask-sqlalchemy": {
             "hashes": [
                 "sha256:05b31d2034dd3f2a685cbbae4cfc4ed906b2a733cff7964ada450fd5e462b84e",
@@ -106,7 +103,6 @@
             "index": "pypi",
             "version": "==2.11.2"
         },
-<<<<<<< HEAD
         "mako": {
             "hashes": [
                 "sha256:8195c8c1400ceb53496064314c6736719c6f25e7479cd24c77be3d9361cddc27",
@@ -115,8 +111,6 @@
             "markers": "python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3'",
             "version": "==1.1.3"
         },
-=======
->>>>>>> api_data
         "markupsafe": {
             "hashes": [
                 "sha256:00bc623926325b26bb9605ae9eae8a215691f33cae5df11ca5424f06f2d1f473",
@@ -201,17 +195,14 @@
             ],
             "version": "==1.7.1"
         },
-<<<<<<< HEAD
         "python-dateutil": {
             "hashes": [
                 "sha256:73ebfe9dbf22e832286dafa60473e4cd239f8592f699aa5adaf10050e6e1823c",
                 "sha256:75bb3f31ea686f1197762692a9ee6a7550b59fc6ca3a1f4b5d7e32fb98e2da2a"
             ],
-            "markers": "python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3'",
+            "markers": "python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2'",
             "version": "==2.8.1"
         },
-=======
->>>>>>> api_data
         "python-dotenv": {
             "hashes": [
                 "sha256:8c10c99a1b25d9a68058a1ad6f90381a62ba68230ca93966882a4dbc3bc9c33d",
@@ -220,7 +211,6 @@
             "index": "pypi",
             "version": "==0.14.0"
         },
-<<<<<<< HEAD
         "python-editor": {
             "hashes": [
                 "sha256:1bf6e860a8ad52a14c3ee1252d5dc25b2030618ed80c022598f00176adc8367d",
@@ -231,8 +221,6 @@
             ],
             "version": "==1.0.4"
         },
-=======
->>>>>>> api_data
         "six": {
             "hashes": [
                 "sha256:30639c035cdb23534cd4aa2dd52c3bf48f06e5f4a941509c8bafd8ce11080259",
