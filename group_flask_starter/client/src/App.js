@@ -40,12 +40,8 @@ function App() {
             <Route path="/users">
                 <UserList />
             </Route>
-<<<<<<< HEAD
             <Route path="/stocks/:stockId" component={StockPage}/>
-
-=======
             <Route path="/login" component={Login} />
->>>>>>> c07cd2dfc4d6c412bde1120708fce148d67acd22
             <Route path="/">
             </Route>
         </Switch>
