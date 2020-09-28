@@ -26,62 +26,66 @@ handleSubmit = (e) => {
 
   demoUserLogin = (e) => {
     e.preventDefault();
-    const email = "demouser@demouser.com";
+    const email = "DemoUser@demouser.com";
     const password = "password";
     this.props.login(email, password);
   }
 
   render() {
-    if (this.props.loggedIn) return <Redirect to="/"></Redirect>;
+    if (this.props.isLoggedIn) return <Redirect to="/"></Redirect>;
     const { email, password } = this.state;
     return (
-      <div className="login-page-div">
-        <div className="login-page">
-          <div className="page-header-login">Welcome to Robinhood</div>
+      <div className="login-page">
+        <div className="login-page-div">
+          <div className="login-form-header">Welcome to Robinhood</div>
           <div className="error-container">
             <ul id="errors" className="errors"></ul>
           </div>
+          <div className="login-form-email-header">Email</div>
           <div className="login-form-div">
             <form onSubmit={this.handleSubmit} className="login-form">
               <input
-                type="text"
+                className="login-input-email"
+                type="email"
                 value={email}
                 onChange={this.updateEmail}
-                placeholder="Email or username"
               ></input>
+              <div className="login-form-password-header">Password</div>
               <div>
               <input
+                className="login-input-password"
                 type="password"
                 value={password}
                 onChange={this.updatePassword}
-                placeholder="Password"
               ></input>
               </div>
-              <div className="sign-in-button-div">
-                <button type="submit" className="button">
+              <div className="forgot-account">
+                Forgot your email or password?
+              </div>
+              <div className="login-sign-in-button">
+                <button type="submit" className="login-button">
                   Sign In
                 </button>
               </div>
             </form>
           </div>
-          <div className="no-account">
-            Forgot your username or password?
             <form onSubmit={this.demoLogin} className="demo-user-form">
-              <button type="submit">Log in as Demo User</button>
-            </form>
-            <form action="/signup">
-              <button>Sign In</button>
+              <button type="submit"
+              className="demo-user-login-button">
+              Demo User
+              </button>
             </form>
           </div>
-        </div>
       </div>
     );
   }
 };
 
+// Un-comment these mapping properties when state is implemented.
+
 // const mapStateToProps = (state) => {
 //     return {
-//       loggedIn: !!state.auth.id,
+//       isLoggedIn: !!state.auth.id,
 //     };
 //   };
 
@@ -91,4 +95,7 @@ handleSubmit = (e) => {
 //     };
 //   };
 
-  export default Login;
+// export default connect(mapStateToProps, mapDispatchToProps)(Login);
+
+// Delete this export when state is implemented.
+export default Login;

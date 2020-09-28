@@ -1,1 +1,49 @@
 /* TODO Add site wide styles */
+
+.login-page-div {
+    display: inline-block;
+    margin-top: 14.3%;
+    margin-left: 52.55%;
+}
+
+.login-form-header {
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
+}
+
+.login-form-email-header, .login-form-password-header {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.login-input-email, .login-input-password {
+    background-color: rgba(195, 195, 195, 0.3);
+    height: 40px;
+    width: 400px;
+    border-radius: 4px;
+    border-style: none;
+}
+
+.login-sign-in-button {
+    padding-top: 40px;
+}
+
+.login-button, .demo-user-login-button {
+    background-color: rgba(0, 180, 5, 1);
+    height: 40px;
+    width: 120px;
+    border-radius: 3px;
+    border-style: none;
+    color: white;
+}
+
+.forgot-account {
+    padding-top: 20px;
+    font-size: 15px;
+    color: rgba(0, 180, 100, 1)
+}
+
+.demo-user-form {
+    padding-top: 20px;
+}
