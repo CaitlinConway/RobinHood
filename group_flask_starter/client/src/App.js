@@ -4,6 +4,8 @@ import UserList from './components/UsersList';
 import Logo from "./robinhood-logomark-white.png"
 import SearchBar from './components/SearchBar'
 import greenLogo from "./robinhood-logomark-green.png"
+import Login from './components/Login';
+
 
 
 function App() {
@@ -37,7 +39,7 @@ function App() {
             <Route path="/users">
                 <UserList />
             </Route>
-
+            <Route path="/login" component={Login} />
             <Route path="/">
             </Route>
         </Switch>
