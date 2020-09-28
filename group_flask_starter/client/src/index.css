@@ -100,3 +100,9 @@
 .demo-user-form {
     padding-top: 20px;
 }
+
+.stock-chart {
+  background-color: blue;
+  width: 40%;
+  color: green;
+}
