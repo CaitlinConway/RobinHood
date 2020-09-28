@@ -82,7 +82,7 @@
     padding-top: 40px;
 }
 
-.login-button, .demo-user-login-button {
+.login-button, .demo-user-login-button, .landing-page-sign-up-button {
     background-color: rgba(0, 180, 5, 1);
     height: 40px;
     width: 120px;
