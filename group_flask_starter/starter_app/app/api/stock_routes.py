@@ -33,3 +33,14 @@ def watchList(userId):
     print (watchListStocks)
     return watchListStocks
   return "error no list"
+
+
+@stock_routes.route("watchlist", methods=["POST"])
+def watchList(ticker):
+  data = request.json
+  if data:
+   watchListItem = WatchlistContent(ticker=data[ticker])
+   db.session.add(watchListItem)
+   db.session.commit()
+   return {ticker: ticker}
+  return "error no list"
