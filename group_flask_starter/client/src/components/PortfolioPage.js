@@ -5,8 +5,9 @@ import SearchBar from './SearchBar'
 import greenLogo from "../robinhood-logomark-green.png"
 import Watchlist from "./WatchList"
 
-function PortfolioPage() {
+class PortfolioPage extends React.Component{
 
+  render(){
   return (
     <div className="portfolio-page" style= {{backgroundColor: '#040F15'}}>
     <BrowserRouter>
@@ -40,5 +41,16 @@ function PortfolioPage() {
     </div>
   );
 }
+}
+const mapStateToProps = (state) => ({
+  watchlist: state.watchlist,
+  userId: state.auth.id,
+});
 
-export default PortfolioPage;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getWatchlist: () => dispatch(getWatchlist()),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(PortfolioPage);
