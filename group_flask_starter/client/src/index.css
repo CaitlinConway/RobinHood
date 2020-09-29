@@ -315,3 +315,9 @@
 .portfolio-button:hover, .user-account-button:hover {
   color: rgba(0, 200, 5, 1);
 }
+#watchlist{
+  position: absolute;
+  margin-right: 50px;
+  margin-top: 200px;
+  color: white;
+}

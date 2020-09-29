@@ -3,7 +3,7 @@ from flask import Blueprint, jsonify, session
 import requests
 import time
 import datetime
-from app.models import Watchlist, WatchlistContent
+from app.models import Watchlist, WatchlistContent, Stock
 
 stock_routes = Blueprint("stocks", __name__)
 
@@ -25,10 +25,11 @@ def stock(stockId):
 def watchList(userId):
   watchListStocks = dict()
   watchlist = WatchlistContent.query.filter(WatchlistContent.watchlistId == userId).all()
-  print(watchlist[0].stockId)
   if watchlist:
     for stock in watchlist:
-      watchListStocks[stock.stockId]= stock.stockId
+      stockTicker = Stock.query.filter(Stock.id == stock.stockId).first()
+      print(stockTicker)
+      watchListStocks[stock.stockId]= stockTicker.ticker
     print (watchListStocks)
     return watchListStocks
   return "error no list"
