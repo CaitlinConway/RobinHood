@@ -34,7 +34,7 @@ handleSubmit = (e) => {
   }
 
   render() {
-    if (this.props.isLoggedIn) return <Redirect to="/dashboard"></Redirect>;
+    if (this.props.isLoggedIn) return <Redirect to="/"></Redirect>;
     const { email, password } = this.state;
     return (
       <div className="login-page">

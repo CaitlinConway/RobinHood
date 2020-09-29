@@ -134,11 +134,23 @@
     margin-top: 10%;
 }
 
-.signup-form {
+/* .existing-account {
+  display: flex;
+  flex-direction: row wrap;
+} */
+
+.signup-form-div {
     display: flex;
     flex-flow: row wrap;
-    max-width: 600px;
+    max-width: 630px;
+    width: 640px;
 }
+
+/* .signup-error-container {
+  color: red;
+  font-size: 18px;
+  margin-left: -40px;
+} */
 
 .signup-form-header {
     font-size: 20px;
@@ -154,8 +166,9 @@
 }
 
 .signup-input-first-name, .signup-input-last-name {
+    justify-content: space-between;
     height: 30px;
-    width: 282px;
+    width: 290px;
     border-radius: 3px;
     border-color: rgba(195, 195, 195, 0.3);
     background-color: rgba(195, 195, 195, 0.3);
@@ -171,7 +184,7 @@
 
 .signup-input-email, .signup-input-password {
     height: 30px;
-    width: 100%;
+    width: 600px;
     border-radius: 3px;
     border-color: rgba(195, 195, 195, 0.2);
     background-color: rgba(195, 195, 195, 0.2);
@@ -189,6 +202,24 @@
   position: fixed;
   top: 0;
   right: 0;
+  font-family: "Capsule Sans Text", "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+.signup-page-testimonial-content {
+  margin-top: 18%;
+  margin-left: 10%;
+}
+
+.signup-page-testimonial-header {
+  font-size: 15px;
+  font-weight: 700;
+  padding-bottom: 10px;
+  padding-top: 47px;
+}
+
+.signup-page-testimonial {
+  max-width: 35%;
+  font-size: 15px;
 }
 
 .break {

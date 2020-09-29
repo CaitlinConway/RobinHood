@@ -1,5 +1,5 @@
 
-from flask import Blueprint, jsonify, request, session, redirect, url_for
+from flask import Blueprint, jsonify, request, session, redirect, url_for, abort
 from app.models import User, db, Watchlist
 from passlib.hash import sha256_crypt
 
@@ -35,17 +35,14 @@ def logout():
 
 @user_routes.route("/signup", methods=["POST"])
 def signup():
-    print('test')
-    data = request.json
-    print(data)
+    data = request.get_json()
     user = User.query.filter(User.email == data["email"]).first()
-    print(user)
     if user:
-        print("error, there is already a user with that account")
+        return {"error": "This user account already exists."}
     # if (data["password"] != data["confirmPassword"]):
     #     return "error, password fields do not match"
     # if (data["password"] == data["confirmPassword"]):
-    if data:
+    elif data:
         newWatchlist = Watchlist(name=data["email"])
         db.session.add(newWatchlist)
         db.session.commit()
