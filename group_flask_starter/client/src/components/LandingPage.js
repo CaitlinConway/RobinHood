@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import BlackLogo from "../robinhood-logomark-black.png"
 import greenLogo from "../robinhood-logomark-green.png"
-
+import batman from "../green batman.png"
 function LandingPage(props) {
   return (
     <>
@@ -38,9 +38,13 @@ function LandingPage(props) {
           <span id={'invest-paragraph'}>Batmanhood, a pioneer of comission-free investing, gives you more ways to make your money work harder</span>
           <button className = 'landing-page-sign-up-button'>Sign Up</button>
           </div>
+          <div className="batman">
+            <img id={'batman'} src={batman}/>
+          </div>
         </div>
         <div className='comission-fees'>
           <h1 id={'comission-fee-title'}>Break Free from Comission Fees</h1>
+          <div></div>
           <p id={'comission-fee-p'}>Make unlimited comission-free trades in stocks with Batmanhood Financial.</p>
         </div>
         </div>

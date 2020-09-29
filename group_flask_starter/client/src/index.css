@@ -253,23 +253,33 @@
   font-size: 25px;
   display: flex;
   flex-wrap: wrap;
-  width: 30%;
+  width: 40%;
+  max-height: 200px
 }
 #invest{
-  margin-left:20px;
+  margin-left:100px;
   margin-top: 30px;
+  max-height: 620px;
 }
 .comission-fees{
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  max-width: 90%;
+  max-width: 500px;
   justify-content: center;
   font-family: "Capsule Sans Text", -apple-system, BlinkMacSystemFont, sans-serif;
+  justify-self: center;
+  margin-left: 30%;
 }
 #comission-fee-title{
   font-size: 30px;
+  justify-self: center;
 }
 #comission-fee-p{
   font-size:20px;
+}
+#batman {
+  height: 620px;
+  width: 600px;
+  margin-right: 100px;
 }
