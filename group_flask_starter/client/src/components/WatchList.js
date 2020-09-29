@@ -5,14 +5,15 @@ const WatchList = ( watchlist, userId) => {
   debugger;
   return (
     <>
-      <p id="watchlist"> Stocks</p>
-      <ul>
+      <div id="watchlist-div"> Stocks
+      <ul id="watchlist">
         {Object.values(watchlist.watchlist).map((stock) => (
-          <div key={stock}>
-            <WatchListStock stockId={stock} userID={userId}></WatchListStock>
-          </div>
+          <li key={stock}>
+            <WatchListStock stock={stock} userID={userId}></WatchListStock>
+          </li>
         ))}
       </ul>
+      </div>
     </>
   );
 };
