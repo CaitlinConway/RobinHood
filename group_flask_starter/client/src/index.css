@@ -14,6 +14,10 @@
   list-style-type:none;
   align-items: center;
 }
+
+body {
+  margin: 0px;
+}
 /* *{
   background-color: #040F15;
   color: white;
@@ -290,8 +294,31 @@
 .landing-signup-box{
   padding: 10px;
   background-color: rgba(0, 180, 5, 1);
-
   width: 80px;
   border-radius: 3px;
 
+}
+
+.stock-page {
+  background-color: #040F15;
+  width: 100vw;
+  height: 100vh;
+  padding: 0;
+}
+
+.stock-price-container {
+  position: absolute;
+  margin-left: 100px;
+  font-size: 30px;
+  color: white;
+}
+
+.stock-name, .stock-price {
+  font-size: 30px;
+  color: white;
+  background-color: #040F15;
+}
+
+.stock-price-current {
+  z-index: -1;
 }
