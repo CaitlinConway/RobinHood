@@ -1,6 +1,6 @@
 
 from flask import Blueprint, jsonify, request, session, redirect, url_for
-from app.models import User, db
+from app.models import User, db, Watchlist
 from passlib.hash import sha256_crypt
 
 user_routes = Blueprint('users', __name__)
@@ -44,11 +44,17 @@ def signup():
     if (data["password"] != data["confirmPassword"]):
         return "error, password fields do not match"
     if (data["password"] == data["confirmPassword"]):
+        newWatchlist = Watchlist(name=data["email"])
+        db.session.add(newWatchlist)
+        db.session.commit()
+        createdWatchlist = Watchlist.query.filter(Watchlist.name == data["email"]).first()
         newUser = User(email=data["email"],
-                       password=data["password"],
+                       password=sha256_crypt.hash(data["password"]),
                        firstName=data["firstName"],
                        lastName=data["lastName"],
-                       balance=(data["balance"] if "balance" in data else 0))
+                       balance=(data["balance"] if "balance" in data else 0),
+                       watchlist=createdWatchlist)
         db.session.add(newUser)
         db.session.commit()
-        return {newUser}
+        created = User.query.filter(User.email == data["email"]).first()
+        return {"id": created.id, "email": created.email}
