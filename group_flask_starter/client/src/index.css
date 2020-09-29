@@ -213,14 +213,18 @@
   border-radius: 3px;
   border-style: none;
   color: black;
+  font-style: none;
+  font-size: 20px;
+  font-family: "Capsule Sans Text", -apple-system, BlinkMacSystemFont, sans-serif;
 }
 .landing-page-nav-sign-up-button {
-  background-color: rgba(0, 180, 5, 1);
   height: 40px;
   width: 80px;
   border-radius: 3px;
   border-style: none;
   color: white;
+  font-size: 20px;
+  font-family: "Capsule Sans Text", -apple-system, BlinkMacSystemFont, sans-serif;
 }
 .landing-page-sign-up-button {
   margin-top: 20px;
@@ -253,23 +257,41 @@
   font-size: 25px;
   display: flex;
   flex-wrap: wrap;
-  width: 30%;
+  width: 40%;
+  max-height: 200px
 }
 #invest{
-  margin-left:20px;
+  margin-left:100px;
   margin-top: 30px;
+  max-height: 620px;
 }
 .comission-fees{
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  max-width: 90%;
+  max-width: 500px;
   justify-content: center;
   font-family: "Capsule Sans Text", -apple-system, BlinkMacSystemFont, sans-serif;
+  justify-self: center;
+  margin-left: 30%;
 }
 #comission-fee-title{
   font-size: 30px;
+  justify-self: center;
 }
 #comission-fee-p{
   font-size:20px;
+}
+#batman {
+  height: 620px;
+  width: 600px;
+  margin-right: 100px;
+}
+.landing-signup-box{
+  padding: 10px;
+  background-color: rgba(0, 180, 5, 1);
+
+  width: 80px;
+  border-radius: 3px;
+
 }
