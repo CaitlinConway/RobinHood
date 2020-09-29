@@ -1,8 +1,9 @@
 import os
-from flask import Blueprint, jsonify
+from flask import Blueprint, jsonify, session
 import requests
 import time
 import datetime
+from app.models import Watchlist, WatchlistContent, Stock
 
 stock_routes = Blueprint("stocks", __name__)
 
@@ -19,3 +20,16 @@ def stock(stockId):
     return {"values": [{"closing": round(a, 2),
                         "time": datetime.datetime.fromtimestamp(int(b)).strftime("%b-%d-%Y")}
                        for (a, b) in (zip(json["c"], json["t"]))]}
+
+@stock_routes.route("watchlist/<userId>")
+def watchList(userId):
+  watchListStocks = dict()
+  watchlist = WatchlistContent.query.filter(WatchlistContent.watchlistId == userId).all()
+  if watchlist:
+    for stock in watchlist:
+      stockTicker = Stock.query.filter(Stock.id == stock.stockId).first()
+      print(stockTicker)
+      watchListStocks[stock.stockId]= stockTicker.ticker
+    print (watchListStocks)
+    return watchListStocks
+  return "error no list"

@@ -11,16 +11,19 @@ with app.app_context():
 
   watchlist = Watchlist(name = "watchlist")
   apple = Stock(ticker = "AAPL")
+  stock2 = Stock(ticker= "TEST")
   watchlistContent = WatchlistContent(watchlistId = 1, stockId = 1)
   guest = User(email = 'guest@guest.com', firstName = 'firstName', lastName = 'lastName', password=sha256_crypt.hash('password'), balance = 0, watchlistId = 1)
   stocklist = Stocklist(shares = 3, stockId = 1, userId = 1)
-
+  watchlistContent2 = WatchlistContent(watchlistId = 1, stockId = 2)
 
   db.session.add(watchlist)
   db.session.add(apple)
+  db.session.add(stock2)
   db.session.add(watchlistContent)
   db.session.add(guest)
   db.session.add(stocklist)
+  db.session.add(watchlistContent2)
 
 
   db.session.commit()
