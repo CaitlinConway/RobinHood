@@ -28,13 +28,13 @@ handleSubmit = (e) => {
 
   demoUserLogin = (e) => {
     e.preventDefault();
-    const email = "DemoUser@demouser.com";
+    const email = "guest@guest.com";
     const password = "password";
     this.props.login(email, password);
   }
 
   render() {
-    if (this.props.isLoggedIn) return <Redirect to="/"></Redirect>;
+    if (this.props.isLoggedIn) return <Redirect to="/dashboard"></Redirect>;
     const { email, password } = this.state;
     return (
       <div className="login-page">
@@ -72,7 +72,7 @@ handleSubmit = (e) => {
               </div>
             </form>
           </div>
-            <form onSubmit={this.demoLogin} className="demo-user-form">
+            <form onSubmit={this.demoUserLogin} className="demo-user-form">
               <button type="submit"
               className="demo-user-login-button">
               Demo User
@@ -83,8 +83,6 @@ handleSubmit = (e) => {
     );
   }
 };
-
-// Un-comment these mapping properties when state is implemented.
 
 const mapStateToProps = (state) => {
     return {
@@ -99,6 +97,3 @@ const mapStateToProps = (state) => {
   };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);
-
-// Delete this export when state is implemented.
-// export default Login;
