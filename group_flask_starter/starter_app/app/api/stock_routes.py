@@ -12,7 +12,6 @@ stock_routes = Blueprint("stocks", __name__)
 def stock(stockId):
     api_key = os.environ.get("FINHUB_API_KEY")
     timestamp = int(time.time())
-    print(f'https://finnhub.io/api/v1/stock/candle?symbol={stockId.upper()}&resolution=D&from=1577836800&to={timestamp}&token={api_key}')
     r = requests.get(f'https://finnhub.io/api/v1/stock/candle?symbol={stockId.upper()}&resolution=D&from=1577836800&to={timestamp}&token={api_key}')
     json = r.json()
     print({"values": [{"closing": round(a, 2),
