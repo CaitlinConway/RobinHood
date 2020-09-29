@@ -1,23 +1,25 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { signup, login } from "../store/authReducer";
 import { Redirect } from "react-router-dom";
 
 class SignUp extends React.Component {
     constructor(props) {
         super(props);
         this.state= {
-            first_name: "",
-            last_name: "",
+            firstName: "",
+            lastName: "",
             email: "",
             password: ""
         };
     }
 
     updateFirstName = (e) => {
-        this.setState({ first_name: e.target.value });
+        this.setState({ firstName: e.target.value });
     };
 
     updateLastName = (e) => {
-        this.setState({ last_name: e.target.value });
+        this.setState({ lastName: e.target.value });
     };
 
     updateEmail = (e) => {
@@ -30,8 +32,8 @@ class SignUp extends React.Component {
 
       handleSubmit = async (e) => {
         e.preventDefault();
-        const { first_name, last_name, email, password} = this.state;
-        this.props.signup(first_name, last_name, email, password);
+        const { firstName, lastName, email, password} = this.state;
+        this.props.signup(firstName, lastName, email, password);
         const errorsContainer = document.getElementById("errors");
         if (errorsContainer.style.display === "none") {
           window.location.href = "/";
@@ -39,7 +41,7 @@ class SignUp extends React.Component {
     };
 
     render() {
-        const { first_name, last_name, email, password } = this.state;
+        const { firstName, lastName, email, password } = this.state;
         return (
           <div className="signup-page">
             <img src=""></img>
@@ -54,14 +56,14 @@ class SignUp extends React.Component {
                 <input
                   className="signup-input-first-name"
                   type="text"
-                  value={first_name}
+                  value={firstName}
                   onChange={this.updateFirstName}
                   placeholder="First name"
                 ></input>
                 <input
                   className="signup-input-last-name"
                   type="text"
-                  value={last_name}
+                  value={lastName}
                   onChange={this.updateLastName}
                   placeholder="Last name"
                 ></input>
@@ -96,6 +98,20 @@ class SignUp extends React.Component {
               </form>
             </div>
             </div>
+            <div className="signup-page-testimonial-container">
+                <div className="signup-page-testimonial-header">Commission-free stock trading</div>
+                <div className="signup-page-testimonial-header">Account Protection</div>
+                <div className="signup-page-testimonial-header">Keep tabs on your money</div>
+                <div className="signup-page-testimonial">
+                    We’ve cut the fat that makes other brokerages costly, like manual account management
+                    and hundreds of storefront locations, so we can offer zero commission trading.</div>
+                <div className="signup-page-testimonial">
+                    Robinhood Financial is a member of SIPC.
+                    Securities in your account are protected up to $500,000. For details, please see www.sipc.org.</div>
+                <div className="signup-page-testimonial">
+                    Set up customized news and notifications to stay on top of your assets as casually or as
+                    relentlessly as you like. Controlling the flow of info is up to you.</div>
+            </div>
           </div>
         );
       }
@@ -111,13 +127,13 @@ class SignUp extends React.Component {
 
 //   const mapDispatchToProps = (dispatch) => {
 //     return {
-//       signup: (first_name, last_name, email, password) =>
-//         dispatch(signup(first_name, last_name, email, password)),
-//       login: (email, password) => dispatch(login(username, password)),
+//       signup: (firstName, lastName, email, password) =>
+//         dispatch(signup(firstName, lastName, email, password)),
+//       login: (email, password) => dispatch(login(email, password)),
 //     };
 //   };
 
-//   export default connect(mapStateToProps, mapDispatchToProps)(Signup);
+//   export default connect(mapStateToProps, mapDispatchToProps)(SignUp);
 
 // Delete this export when state is implemented.
 export default SignUp;
