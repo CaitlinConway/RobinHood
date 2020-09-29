@@ -1,11 +1,14 @@
 
 const GET_WATCHLIST = "watchlist";
-
+const ADD_TO_WATCHLIST = "watchlist/add"
 
 export default function stockReducer(state = {}, action) {
   let newState = Object.assign({}, state);
     switch(action.type) {
         case GET_WATCHLIST:
+          newState["watchlist"] = action.watchlist;
+          return newState;
+        case ADD_TO_WATCHLIST:
           newState["watchlist"] = action.watchlist;
           return newState;
         default:
