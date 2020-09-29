@@ -4,8 +4,11 @@ import StockPrice from "./StockPrice";
 
 export default function StockPage({stock}) {
     return (
-      <div>
-         {stock}
+    <>
+    <div className = 'individual-watchlist-div'>
+      <p>{stock}</p>
+      <p>$100</p>
       </div>
+    </>
     )
   }

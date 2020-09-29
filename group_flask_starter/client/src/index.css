@@ -317,7 +317,21 @@
 }
 #watchlist-div{
   position: absolute;
-  margin-left: 70%;
+  margin-left: 60%;
   margin-top: 200px;
   color: white;
+}
+.watchlist-title{
+  font-size: 15px;
+  font-family: "Capsule Sans Text", -apple-system, BlinkMacSystemFont, sans-serif;
+  text-align: center
+}
+#watchlist{
+  list-style-type: none;
+  width: 200px;
+  margin-left: none;
+}
+.individual-watchlist-div{
+  display: flex;
+  justify-content: space-around;
 }
