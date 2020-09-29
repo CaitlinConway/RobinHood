@@ -216,6 +216,7 @@
   font-style: none;
   font-size: 20px;
   font-family: "Capsule Sans Text", -apple-system, BlinkMacSystemFont, sans-serif;
+  text-decoration: none;
 }
 .landing-page-nav-sign-up-button {
   height: 40px;
@@ -225,6 +226,7 @@
   color: white;
   font-size: 20px;
   font-family: "Capsule Sans Text", -apple-system, BlinkMacSystemFont, sans-serif;
+  text-decoration: none;
 }
 .landing-page-sign-up-button {
   margin-top: 20px;
@@ -290,8 +292,26 @@
 .landing-signup-box{
   padding: 10px;
   background-color: rgba(0, 180, 5, 1);
-
   width: 80px;
   border-radius: 3px;
-
+}
+.portfolio-page{
+  margin: auto;
+  width: 100%;
+  height: 2000px;
+  background-color: #040F15;
+}
+.portfolio-button, .user-account-button {
+  height: 80px;
+  width: 120px;
+  padding: 10px;
+  border-radius: 3px;
+  border-style: none;
+  color: white;
+  font-family: "Capsule Sans Text", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 15px;
+  text-decoration: none;
+}
+.portfolio-button:hover, .user-account-button:hover {
+  color: rgba(0, 200, 5, 1);
 }

@@ -7,6 +7,7 @@ import greenLogo from "../robinhood-logomark-green.png"
 function PortfolioPage() {
 
   return (
+    <div className="portfolio-page" style= {{backgroundColor: '#040F15'}}>
     <BrowserRouter>
         <div className="nav-bar">
         <nav>
@@ -26,12 +27,13 @@ function PortfolioPage() {
                   />
                   </NavLink></li>
                 <li className="search"><SearchBar></SearchBar></li>
-                <li><NavLink to="/users" activeclass="active">Account</NavLink></li>
-                <li><NavLink to="/" activeclass="active">Portfolio</NavLink></li>
+                <li><NavLink to="/users" activeclass="active" className='user-account-button'>Account</NavLink></li>
+                <li><NavLink to="/" activeclass="active" className = 'portfolio-button'>Portfolio</NavLink></li>
             </ul>
         </nav>
         </div>
     </BrowserRouter>
+    </div>
   );
 }
 

@@ -28,7 +28,7 @@ handleSubmit = (e) => {
 
   demoUserLogin = (e) => {
     e.preventDefault();
-    const email = "DemoUser@demouser.com";
+    const email = "guest@guest.com";
     const password = "password";
     this.props.login(email, password);
   }
@@ -72,7 +72,7 @@ handleSubmit = (e) => {
               </div>
             </form>
           </div>
-            <form onSubmit={this.demoLogin} className="demo-user-form">
+            <form onSubmit={this.demoUserLogin} className="demo-user-form">
               <button type="submit"
               className="demo-user-login-button">
               Demo User
