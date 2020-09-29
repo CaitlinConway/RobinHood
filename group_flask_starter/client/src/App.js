@@ -41,7 +41,7 @@ function App() {
             </Route>
             <Route exact path="/stocks/:stockId" component={StockPage}/>
             <Route exact path="/login" component={Login} />
-            {/* <Route exact path="/signup" component={SignUp} /> */}
+            <Route exact path="/signup" component={SignUp} />
             <Route path="/landing" component={LandingPage}>
               </Route>
         </Switch>
