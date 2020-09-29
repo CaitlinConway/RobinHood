@@ -114,7 +114,6 @@
 .demo-user-form {
     padding-top: 20px;
 }
-<<<<<<< HEAD
 
 /* Sign-up Page CSS */
 
@@ -172,96 +171,4 @@
 .break {
     flex-basis: 100%;
     height: 0;
-=======
-.landing-page-nav-list {
-  position: absolute;
-  top: 0px;
-  display: grid;
-  grid-template-columns: 14% 66% 10% 10% 10%;
-  grid-template-rows: 100%;
-  width: 90%;
-  padding-left: 20px;
-  font-family: "Capsule Sans Text", -apple-system, BlinkMacSystemFont, sans-serif;
-  font-weight: bold;
-  font-size: 13px;
-  list-style-type:none;
-  align-items: center;
-}
-.landing-page{
-  margin-top: 70px;
-  width: 100%;
-  font-family: "Capsule Sans Text", -apple-system, BlinkMacSystemFont, sans-serif;
-}
-.landing-page-title{
-  font-size: 20px;
-  font-family: "Capsule Sans Text", -apple-system, BlinkMacSystemFont, sans-serif;
-
-}
-.landing-page-nav-login-button {
-  background-color: white;
-  height: 40px;
-  width: 80px;
-  border-radius: 3px;
-  border-style: none;
-  color: black;
-}
-.landing-page-nav-sign-up-button {
-  background-color: rgba(0, 180, 5, 1);
-  height: 40px;
-  width: 80px;
-  border-radius: 3px;
-  border-style: none;
-  color: white;
-}
-.landing-page-sign-up-button {
-  margin-top: 20px;
-  background-color: black;
-  height: 60px;
-  width: 120px;
-  border-radius: 10px;
-  border-style: none;
-  color: white;
-  font-size: 20px;
-  font-family: "Capsule Sans Text", -apple-system, BlinkMacSystemFont, sans-serif;
-  margin-left: 20px;
-}
-.landing-page-login-link{
-  font-size: 20px;
-}
-#landing-image{
-  height: 650px;
-  width: 100%;
-  display: flex;
-  background-color: rgb(168, 235, 60);
-  justify-content: center;
-}
-#invest-header{
-  font-size: 60px;
-  flex-wrap: wrap;
-  width: 30%;
-}
-#invest-paragraph{
-  font-size: 25px;
-  display: flex;
-  flex-wrap: wrap;
-  width: 30%;
-}
-#invest{
-  margin-left:20px;
-  margin-top: 30px;
-}
-.comission-fees{
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  max-width: 90%;
-  justify-content: center;
-  font-family: "Capsule Sans Text", -apple-system, BlinkMacSystemFont, sans-serif;
-}
-#comission-fee-title{
-  font-size: 30px;
-}
-#comission-fee-p{
-  font-size:20px;
->>>>>>> master
 }
