@@ -10,10 +10,9 @@ import {getWatchList} from '../store/stockReducer'
 class PortfolioPage extends React.Component{
   componentDidMount(){
     this.props.getWatchList(this.props.auth);
-
   }
   render(){
-    debugger;
+    if (this.props.watchlist){
   return (
     <div className="portfolio-page" style= {{backgroundColor: '#040F15'}}>
     <BrowserRouter>
@@ -39,13 +38,42 @@ class PortfolioPage extends React.Component{
                 <li><NavLink to="/" activeclass="active" className = 'portfolio-button'>Portfolio</NavLink></li>
             </ul>
         </nav>
-        {/* <div className = 'watch-list-div'>
+        <div className = 'watch-list-div'>
           <WatchList watchlist={this.props.watchlist} userId={this.props.auth}></WatchList>
-        </div> */}
+        </div>
         </div>
     </BrowserRouter>
     </div>
-  );
+  );}
+  else {
+    return (    <div className="portfolio-page" style= {{backgroundColor: '#040F15'}}>
+    <BrowserRouter>
+        <div className="nav-bar">
+        <nav>
+            <ul className="nav-list">
+                <li className="home-logo-li">
+                  <NavLink to="/" activeclass="active">
+                  <img
+                  className="home-logo"
+                  src={Logo}
+                  alt=""
+                  />
+                  <img
+                  className="green-home-logo"
+                  src={greenLogo}
+                  alt=""
+                  hidden
+                  />
+                  </NavLink></li>
+                <li className="search"><SearchBar></SearchBar></li>
+                <li><NavLink to="/users" activeclass="active" className='user-account-button'>Account</NavLink></li>
+                <li><NavLink to="/" activeclass="active" className = 'portfolio-button'>Portfolio</NavLink></li>
+            </ul>
+        </nav>
+        </div>
+    </BrowserRouter>
+    </div>)
+  }
 }
 }
 const mapStateToProps = (state) => ({

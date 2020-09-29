@@ -7,9 +7,9 @@ const WatchList = ( watchlist, userId) => {
     <>
       <p id="watchlist"> Stocks</p>
       <ul>
-        {Object.values(watchlist).map((stock) => (
-          <div key={stock.id}>
-            <WatchListStock stock={stock} userID={userId}></WatchListStock>
+        {Object.values(watchlist.watchlist).map((stock) => (
+          <div key={stock}>
+            <WatchListStock stockId={stock} userID={userId}></WatchListStock>
           </div>
         ))}
       </ul>
