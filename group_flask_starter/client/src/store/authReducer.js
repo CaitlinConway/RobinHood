@@ -4,9 +4,12 @@ const LOGOUT = "auth/logout";
 
 
 export default function authReducer(state = {}, action) {
+  let newState = Object.assign({}, state);
     switch(action.type) {
         case LOGIN:
-            return {id: action.id, email: action.email};
+          newState["id"] = action.id;
+          newState["email"] = action.email;
+            return newState;
         case LOGOUT:
             return {};
         default:
