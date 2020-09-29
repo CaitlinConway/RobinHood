@@ -4,9 +4,12 @@ const LOGOUT = "auth/logout";
 
 
 export default function authReducer(state = {}, action) {
+  let newState = Object.assign({}, state);
     switch(action.type) {
         case LOGIN:
-            return {id: action.id, email: action.email};
+          newState["id"] = action.id;
+          newState["email"] = action.email;
+            return newState;
         case LOGOUT:
             return {};
         default:
@@ -53,14 +56,14 @@ export const logOut = () => {
     }
 }
 
-export function signUp({email, password, confirmPassword, firstName, lastName, balance}) {
-    return async dispatch => {
+export const signUp = function(firstName, lastName, email, password) {
+    return async function(dispatch) {
         const res = await fetch("/api/users/signup", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify({email, password, confirmPassword, firstName, lastName, balance})
+            body: JSON.stringify({email, password, firstName, lastName})
         })
         if(res.ok) {
             let currentUser = await res.json();

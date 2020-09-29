@@ -35,15 +35,17 @@ def logout():
 
 @user_routes.route("/signup", methods=["POST"])
 def signup():
+    print('test')
     data = request.json
     print(data)
     user = User.query.filter(User.email == data["email"]).first()
     print(user)
     if user:
-        return "error, there is already a user with that account"
-    if (data["password"] != data["confirmPassword"]):
-        return "error, password fields do not match"
-    if (data["password"] == data["confirmPassword"]):
+        print("error, there is already a user with that account")
+    # if (data["password"] != data["confirmPassword"]):
+    #     return "error, password fields do not match"
+    # if (data["password"] == data["confirmPassword"]):
+    if data:
         newWatchlist = Watchlist(name=data["email"])
         db.session.add(newWatchlist)
         db.session.commit()

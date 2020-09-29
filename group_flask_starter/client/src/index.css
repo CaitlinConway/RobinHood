@@ -182,10 +182,26 @@ body {
     margin: 5px 0px;
 }
 
+.signup-page-testimonial-container {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  width: 40%;
+  margin-left: 60%;
+  background-color: rgba(228,233,237, 0.4);
+  height: 97%;
+  position: fixed;
+  top: 0;
+  right: 0;
+}
+
 .break {
     flex-basis: 100%;
     height: 0;
 }
+
+/* Landing page CSS */
+
 .landing-page-nav-list {
   position: absolute;
   top: 0px;
@@ -220,6 +236,7 @@ body {
   font-style: none;
   font-size: 20px;
   font-family: "Capsule Sans Text", -apple-system, BlinkMacSystemFont, sans-serif;
+  text-decoration: none;
 }
 .landing-page-nav-sign-up-button {
   height: 40px;
@@ -229,6 +246,7 @@ body {
   color: white;
   font-size: 20px;
   font-family: "Capsule Sans Text", -apple-system, BlinkMacSystemFont, sans-serif;
+  text-decoration: none;
 }
 .landing-page-sign-up-button {
   margin-top: 20px;
@@ -296,7 +314,46 @@ body {
   background-color: rgba(0, 180, 5, 1);
   width: 80px;
   border-radius: 3px;
-
+}
+.portfolio-page{
+  margin: auto;
+  width: 100%;
+  height: 2000px;
+  background-color: #040F15;
+}
+.portfolio-button, .user-account-button {
+  height: 80px;
+  width: 120px;
+  padding: 10px;
+  border-radius: 3px;
+  border-style: none;
+  color: white;
+  font-family: "Capsule Sans Text", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 15px;
+  text-decoration: none;
+}
+.portfolio-button:hover, .user-account-button:hover {
+  color: rgba(0, 200, 5, 1);
+}
+#watchlist-div{
+  position: absolute;
+  margin-left: 60%;
+  margin-top: 200px;
+  color: white;
+}
+.watchlist-title{
+  font-size: 15px;
+  font-family: "Capsule Sans Text", -apple-system, BlinkMacSystemFont, sans-serif;
+  text-align: center
+}
+#watchlist{
+  list-style-type: none;
+  width: 200px;
+  margin-left: none;
+}
+.individual-watchlist-div{
+  display: flex;
+  justify-content: space-around;
 }
 
 .stock-page {

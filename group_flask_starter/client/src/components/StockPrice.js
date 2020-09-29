@@ -23,4 +23,4 @@ class StockPrice extends React.Component {
     }
 }
 
-export default StockPrice
+export default StockPrice;
