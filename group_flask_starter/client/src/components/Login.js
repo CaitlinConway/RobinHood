@@ -34,7 +34,7 @@ handleSubmit = (e) => {
   }
 
   render() {
-    if (this.props.isLoggedIn) return <Redirect to="/"></Redirect>;
+    if (this.props.isLoggedIn) return <Redirect to="/dashboard"></Redirect>;
     const { email, password } = this.state;
     return (
       <div className="login-page">
@@ -84,8 +84,6 @@ handleSubmit = (e) => {
   }
 };
 
-// Un-comment these mapping properties when state is implemented.
-
 const mapStateToProps = (state) => {
     return {
       isLoggedIn: !!state.auth.id,
@@ -99,6 +97,3 @@ const mapStateToProps = (state) => {
   };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);
-
-// Delete this export when state is implemented.
-// export default Login;
