@@ -1,8 +1,7 @@
 
 from flask import Blueprint, jsonify, request, session, redirect, url_for
-from app.models import User
+from app.models import User, db
 from passlib.hash import sha256_crypt
-
 
 user_routes = Blueprint('users', __name__)
 
@@ -32,3 +31,24 @@ def logout():
         session.pop('userId', None)
         return redirect(url_for("react_root"))
     return "error, already logged out"
+
+
+@user_routes.route("/signup", methods=["POST"])
+def signup():
+    data = request.json
+    print(data)
+    user = User.query.filter(User.email == data["email"]).first()
+    print(user)
+    if user:
+        return "error, there is already a user with that account"
+    if (data["password"] != data["confirmPassword"]):
+        return "error, password fields do not match"
+    if (data["password"] == data["confirmPassword"]):
+        newUser = User(email=data["email"],
+                       password=data["password"],
+                       firstName=data["firstName"],
+                       lastName=data["lastName"],
+                       balance=(data["balance"] if "balance" in data else 0))
+        db.session.add(newUser)
+        db.session.commit()
+        return {newUser}

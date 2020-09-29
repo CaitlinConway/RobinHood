@@ -52,3 +52,19 @@ export const logOut = () => {
         }
     }
 }
+
+export function signUp({email, password, confirmPassword, firstName, lastName, balance}) {
+    return async dispatch => {
+        const res = await fetch("/api/users/signup", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({email, password, confirmPassword, firstName, lastName, balance})
+        })
+        if(res.ok) {
+            let currentUser = await res.json();
+            dispatch(setUser(currentUser.id, currentUser.email))
+        }
+    }
+}
