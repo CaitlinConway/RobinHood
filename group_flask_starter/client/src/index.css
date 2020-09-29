@@ -213,14 +213,18 @@
   border-radius: 3px;
   border-style: none;
   color: black;
+  font-style: none;
+  font-size: 20px;
+  font-family: "Capsule Sans Text", -apple-system, BlinkMacSystemFont, sans-serif;
 }
 .landing-page-nav-sign-up-button {
-  background-color: rgba(0, 180, 5, 1);
   height: 40px;
   width: 80px;
   border-radius: 3px;
   border-style: none;
   color: white;
+  font-size: 20px;
+  font-family: "Capsule Sans Text", -apple-system, BlinkMacSystemFont, sans-serif;
 }
 .landing-page-sign-up-button {
   margin-top: 20px;
@@ -282,4 +286,12 @@
   height: 620px;
   width: 600px;
   margin-right: 100px;
+}
+.landing-signup-box{
+  padding: 10px;
+  background-color: rgba(0, 180, 5, 1);
+
+  width: 80px;
+  border-radius: 3px;
+
 }

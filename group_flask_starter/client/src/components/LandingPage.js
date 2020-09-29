@@ -25,8 +25,8 @@ function LandingPage(props) {
                   />
                   </NavLink></li>
 
-                <li className='landing-page-nav-login-button'><NavLink to="/login" activeclass="active">Login</NavLink></li>
-                <li className = 'landing-page-nav-sign-up-button'><NavLink to="/signup" activeclass="active">Sign Up
+                <li ><NavLink className='landing-page-nav-login-button' to="/login" activeclass="active">Login</NavLink></li>
+                <li className="landing-signup-box"><NavLink className = 'landing-page-nav-sign-up-button' to="/signup" activeclass="active">Sign Up
                 </NavLink></li>
             </ul>
         </nav>
