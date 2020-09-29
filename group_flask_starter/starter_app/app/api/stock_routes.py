@@ -37,13 +37,24 @@ def getProfile(stockId):
 
 @stock_routes.route("watchlist/<userId>")
 def watchList(userId):
-    watchListStocks = dict()
-    watchlist = WatchlistContent.query.filter(WatchlistContent.watchlistId == userId).all()
-    if watchlist:
-        for stock in watchlist:
-            stockTicker = Stock.query.filter(Stock.id == stock.stockId).first()
-            print(stockTicker)
-            watchListStocks[stock.stockId]= stockTicker.ticker
-            print(watchListStocks)
-        return watchListStocks
-    return "error no list"
+  watchListStocks = dict()
+  watchlist = WatchlistContent.query.filter(WatchlistContent.watchlistId == userId).all()
+  if watchlist:
+    for stock in watchlist:
+      stockTicker = Stock.query.filter(Stock.id == stock.stockId).first()
+      print(stockTicker)
+      watchListStocks[stock.stockId]= stockTicker.ticker
+    print (watchListStocks)
+    return watchListStocks
+  return "error no list"
+
+
+# @stock_routes.route("watchlist/post", methods=["POST"])
+# def watchList(ticker):
+#   data = request.json
+#   if data:
+#    watchListItem = WatchlistContent(ticker=data[ticker])
+#    db.session.add(watchListItem)
+#    db.session.commit()
+#    return {ticker: ticker}
+#   return "error no list"
