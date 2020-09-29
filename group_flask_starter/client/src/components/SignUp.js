@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { signup, login } from "../store/authReducer";
+import { signUp, login } from "../store/authReducer";
 import { Redirect } from "react-router-dom";
 
 class SignUp extends React.Component {
@@ -30,10 +30,10 @@ class SignUp extends React.Component {
         this.setState({ password: e.target.value });
     };
 
-      handleSubmit = async (e) => {
+    handleSubmit = async (e) => {
         e.preventDefault();
         const { firstName, lastName, email, password} = this.state;
-        this.props.signup(firstName, lastName, email, password);
+        this.props.signUp(firstName, lastName, email, password);
         const errorsContainer = document.getElementById("errors");
         if (errorsContainer.style.display === "none") {
           window.location.href = "/";
@@ -119,21 +119,21 @@ class SignUp extends React.Component {
 
 // Un-comment when store is setup.
 
-// const mapStateToProps = (state) => {
-//     return {
-//       loggedIn: !!state.auth.id,
-//     };
-//   };
+const mapStateToProps = (state) => {
+    return {
+      loggedIn: !!state.auth.id,
+    };
+  };
 
-//   const mapDispatchToProps = (dispatch) => {
-//     return {
-//       signup: (firstName, lastName, email, password) =>
-//         dispatch(signup(firstName, lastName, email, password)),
-//       login: (email, password) => dispatch(login(email, password)),
-//     };
-//   };
+  const mapDispatchToProps = (dispatch) => {
+    return {
+      signUp: (firstName, lastName, email, password) =>
+        dispatch(signUp(firstName, lastName, email, password)),
+      login: (email, password) => dispatch(login(email, password)),
+    };
+  };
 
-//   export default connect(mapStateToProps, mapDispatchToProps)(SignUp);
+  export default connect(mapStateToProps, mapDispatchToProps)(SignUp);
 
 // Delete this export when state is implemented.
-export default SignUp;
+// export default SignUp;
