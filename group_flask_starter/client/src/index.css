@@ -115,6 +115,16 @@
     padding-top: 20px;
 }
 
+.stock-chart {
+  width: 50%;
+  margin-top: calc((100vh - 500px)/2)
+}
+
+.stock-chart-container {
+  display: flex;
+  justify-content: center;
+}
+
 /* Sign-up Page CSS */
 
 .signup-form-content {
