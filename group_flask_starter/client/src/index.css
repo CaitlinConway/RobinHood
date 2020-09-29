@@ -53,6 +53,20 @@
   border-radius: 10px;
 }
 
+/* Login Page CSS */
+.login-background {
+    background-image: url(https://www.pcinvasion.com/wp-content/uploads/2015/06/Batman-Arkham-Knight-1.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100%;
+    min-width: 500px;
+    width: 50%;
+    height: auto;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
 .login-page-div {
     display: inline-block;
     margin-top: 14.3%;
@@ -83,7 +97,7 @@
 }
 
 .login-button, .demo-user-login-button {
-    background-color: rgba(0, 180, 5, 1);
+    background-color: rgba(0, 200, 5, 1);
     height: 40px;
     width: 120px;
     border-radius: 3px;
@@ -94,12 +108,71 @@
 .forgot-account {
     padding-top: 20px;
     font-size: 15px;
-    color: rgba(0, 180, 100, 1)
+    color: rgba(0, 200, 5, 1)
 }
 
 .demo-user-form {
     padding-top: 20px;
 }
+<<<<<<< HEAD
+
+/* Sign-up Page CSS */
+
+.signup-form-content {
+    display: flex;
+    flex-direction: column;
+    margin-left: 5%;
+    margin-top: 10%;
+}
+
+.signup-form {
+    display: flex;
+    flex-flow: row wrap;
+    max-width: 600px;
+}
+
+.signup-form-header {
+    font-size: 20px;
+    font-weight: 600;
+    font-style: normal;
+    font-family: "Segoe UI", Helvetica, "Capsule Sans Text", -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.signup-form-tag {
+    padding: 10px 0px;
+    font-size: 14px;
+    font-family: "Segoe UI", Helvetica, "Capsule Sans Text", -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.signup-input-first-name, .signup-input-last-name {
+    height: 30px;
+    width: 282px;
+    border-radius: 3px;
+    border-color: rgba(195, 195, 195, 0.3);
+    background-color: rgba(195, 195, 195, 0.3);
+}
+
+.signup-input-first-name {
+    margin: 0px 10px 0px 0px;
+}
+
+.signup-input-last-name {
+    margin: 0px 0px 0px 10px;
+}
+
+.signup-input-email, .signup-input-password {
+    height: 30px;
+    width: 100%;
+    border-radius: 3px;
+    border-color: rgba(195, 195, 195, 0.2);
+    background-color: rgba(195, 195, 195, 0.2);
+    margin: 5px 0px;
+}
+
+.break {
+    flex-basis: 100%;
+    height: 0;
+=======
 .landing-page-nav-list {
   position: absolute;
   top: 0px;
@@ -190,4 +263,5 @@
 }
 #comission-fee-p{
   font-size:20px;
+>>>>>>> master
 }

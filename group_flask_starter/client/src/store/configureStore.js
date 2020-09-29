@@ -1,3 +1,13 @@
+<<<<<<< HEAD
+import {createStore} from "redux";
+import authReducer from "./authReducer";
+
+let store = createStore({
+    authentication: authReducer
+})
+
+export default store;
+=======
 import { createStore, compose, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 import rootReducer from "./rootReducer";
@@ -15,3 +25,4 @@ if (process.env.NODE_ENV !== "production") {
 export default function configureStore(initialState = {}) {
   return createStore(rootReducer, initialState, storeEnhancer);
 }
+>>>>>>> master
