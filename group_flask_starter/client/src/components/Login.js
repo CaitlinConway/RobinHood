@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
+import { login } from '../store/authReducer'
+import { connect } from 'react-redux';
 
 class Login extends React.Component {
     constructor(props) {
@@ -36,8 +38,9 @@ handleSubmit = (e) => {
     const { email, password } = this.state;
     return (
       <div className="login-page">
+        <div className="login-background"></div>
         <div className="login-page-div">
-          <div className="login-form-header">Welcome to Robinhood</div>
+          <div className="login-form-header">Welcome to Batmanhood</div>
           <div className="error-container">
             <ul id="errors" className="errors"></ul>
           </div>
@@ -83,19 +86,19 @@ handleSubmit = (e) => {
 
 // Un-comment these mapping properties when state is implemented.
 
-// const mapStateToProps = (state) => {
-//     return {
-//       isLoggedIn: !!state.auth.id,
-//     };
-//   };
+const mapStateToProps = (state) => {
+    return {
+      isLoggedIn: !!state.auth.id,
+    };
+  };
 
-//   const mapDispatchToProps = (dispatch) => {
-//     return {
-//       login: (email, password) => dispatch(login(email, password)),
-//     };
-//   };
+  const mapDispatchToProps = (dispatch) => {
+    return {
+      login: (email, password) => dispatch(login(email, password)),
+    };
+  };
 
-// export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
 
 // Delete this export when state is implemented.
-export default Login;
+// export default Login;

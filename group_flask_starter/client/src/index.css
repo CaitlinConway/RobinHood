@@ -14,11 +14,10 @@
   list-style-type:none;
   align-items: center;
 }
-
-*{
-  background-color: black;
+/* *{
+  background-color: #040F15;
   color: white;
-}
+} */
 .home-logo{
   width: 38px;
   height: 38px;
@@ -54,6 +53,20 @@
   border-radius: 10px;
 }
 
+/* Login Page CSS */
+.login-background {
+    background-image: url(https://www.pcinvasion.com/wp-content/uploads/2015/06/Batman-Arkham-Knight-1.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100%;
+    min-width: 500px;
+    width: 50%;
+    height: auto;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
 .login-page-div {
     display: inline-block;
     margin-top: 14.3%;
@@ -84,7 +97,7 @@
 }
 
 .login-button, .demo-user-login-button {
-    background-color: rgba(0, 180, 5, 1);
+    background-color: rgba(0, 200, 5, 1);
     height: 40px;
     width: 120px;
     border-radius: 3px;
@@ -95,7 +108,7 @@
 .forgot-account {
     padding-top: 20px;
     font-size: 15px;
-    color: rgba(0, 180, 100, 1)
+    color: rgba(0, 200, 5, 1)
 }
 
 .demo-user-form {
@@ -112,6 +125,151 @@
   justify-content: center;
 }
 
-.price-tracker {
-  font-size: 50px;
+/* Sign-up Page CSS */
+
+.signup-form-content {
+    display: flex;
+    flex-direction: column;
+    margin-left: 5%;
+    margin-top: 10%;
+}
+
+.signup-form {
+    display: flex;
+    flex-flow: row wrap;
+    max-width: 600px;
+}
+
+.signup-form-header {
+    font-size: 20px;
+    font-weight: 600;
+    font-style: normal;
+    font-family: "Segoe UI", Helvetica, "Capsule Sans Text", -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.signup-form-tag {
+    padding: 10px 0px;
+    font-size: 14px;
+    font-family: "Segoe UI", Helvetica, "Capsule Sans Text", -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.signup-input-first-name, .signup-input-last-name {
+    height: 30px;
+    width: 282px;
+    border-radius: 3px;
+    border-color: rgba(195, 195, 195, 0.3);
+    background-color: rgba(195, 195, 195, 0.3);
+}
+
+.signup-input-first-name {
+    margin: 0px 10px 0px 0px;
+}
+
+.signup-input-last-name {
+    margin: 0px 0px 0px 10px;
+}
+
+.signup-input-email, .signup-input-password {
+    height: 30px;
+    width: 100%;
+    border-radius: 3px;
+    border-color: rgba(195, 195, 195, 0.2);
+    background-color: rgba(195, 195, 195, 0.2);
+    margin: 5px 0px;
+}
+
+.break {
+    flex-basis: 100%;
+    height: 0;
+}
+.landing-page-nav-list {
+  position: absolute;
+  top: 0px;
+  display: grid;
+  grid-template-columns: 14% 66% 10% 10% 10%;
+  grid-template-rows: 100%;
+  width: 90%;
+  padding-left: 20px;
+  font-family: "Capsule Sans Text", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: bold;
+  font-size: 13px;
+  list-style-type:none;
+  align-items: center;
+}
+.landing-page{
+  margin-top: 70px;
+  width: 100%;
+  font-family: "Capsule Sans Text", -apple-system, BlinkMacSystemFont, sans-serif;
+}
+.landing-page-title{
+  font-size: 20px;
+  font-family: "Capsule Sans Text", -apple-system, BlinkMacSystemFont, sans-serif;
+
+}
+.landing-page-nav-login-button {
+  background-color: white;
+  height: 40px;
+  width: 80px;
+  border-radius: 3px;
+  border-style: none;
+  color: black;
+}
+.landing-page-nav-sign-up-button {
+  background-color: rgba(0, 180, 5, 1);
+  height: 40px;
+  width: 80px;
+  border-radius: 3px;
+  border-style: none;
+  color: white;
+}
+.landing-page-sign-up-button {
+  margin-top: 20px;
+  background-color: black;
+  height: 60px;
+  width: 120px;
+  border-radius: 10px;
+  border-style: none;
+  color: white;
+  font-size: 20px;
+  font-family: "Capsule Sans Text", -apple-system, BlinkMacSystemFont, sans-serif;
+  margin-left: 20px;
+}
+.landing-page-login-link{
+  font-size: 20px;
+}
+#landing-image{
+  height: 650px;
+  width: 100%;
+  display: flex;
+  background-color: rgb(168, 235, 60);
+  justify-content: center;
+}
+#invest-header{
+  font-size: 60px;
+  flex-wrap: wrap;
+  width: 30%;
+}
+#invest-paragraph{
+  font-size: 25px;
+  display: flex;
+  flex-wrap: wrap;
+  width: 30%;
+}
+#invest{
+  margin-left:20px;
+  margin-top: 30px;
+}
+.comission-fees{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  max-width: 90%;
+  justify-content: center;
+  font-family: "Capsule Sans Text", -apple-system, BlinkMacSystemFont, sans-serif;
+}
+#comission-fee-title{
+  font-size: 30px;
+}
+#comission-fee-p{
+  font-size:20px;
 }
