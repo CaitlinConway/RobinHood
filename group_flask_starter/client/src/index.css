@@ -308,7 +308,7 @@ body {
 
 .stock-price-container {
   position: absolute;
-  margin-left: 100px;
+  margin-left: 25px;
   font-size: 30px;
   color: white;
 }
@@ -316,9 +316,12 @@ body {
 .stock-name, .stock-price {
   font-size: 30px;
   color: white;
-  background-color: #040F15;
 }
 
-.stock-price-current {
+/* .stock-price-current {
   z-index: -1;
+} */
+
+.hidden {
+  display: none
 }

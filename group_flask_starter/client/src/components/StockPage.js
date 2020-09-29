@@ -5,7 +5,7 @@ import StockPrice from "./StockPrice";
 export default function StockPage(props) {
     let ticker = props.match.params.stockId;
     const [stockData, setStockData] = useState("");
-    const [stockPrice, setStockPrice] = useState(0);
+    const [stockPrice, setStockPrice] = useState("0");
     useEffect(()=> {
         async function getStock() {
             const res = await fetch(`/api/stocks/${ticker}`);
@@ -25,27 +25,37 @@ export default function StockPage(props) {
         getCurrentPrice()
     }, [ticker])
 
+    const hidePrice = e => {
+        let price = document.getElementById("current-price");
+        price.classList.add("hidden")
+    }
+
+    const showPrice = e => {
+        let price = document.getElementById("current-price");
+        price.classList.remove("hidden")
+    }
+
     const showTooltipData = (data) => {
         if ( data?.payload && typeof data?.payload[0] != 'undefined') {
-        //   setStockPrice(data.payload[0].payload.closing);
         return (<StockPrice price={data.payload[0].payload.closing} name={ticker}/>)
         }
     }
+
     return (
         !stockData ? null :
         <div className="stock-page">
-            <div className="stock-chart-container">
+            <div className="stock-chart-container" >
                 <div className="stock-chart">
                     <div className="stock-price-container">
-                        <div className="stock-name">{"amzn"}</div>
-                        <div className="stock-price stock-price-current">{"$" + "0"}</div>
+                        <div className="stock-name">{ticker}</div>
+                        <div className="stock-price" id="current-price">{"$" + stockPrice}</div>
                         {/* <div className="stock-return">{`+$${stockData[0].closing - stockData[stockData.length - 1].closing} (+106.48%) Past Year`}</div> */}
                     </div>
-                    <ResponsiveContainer width="100%" height={500}>
-                        <LineChart data={stockData}>
+                    <ResponsiveContainer width="100%" height={500} >
+                        <LineChart data={stockData} onMouseOver={hidePrice} onMouseOut={showPrice}>
                             <XAxis dataKey="time"/>
-                            <YAxis dataKey="closing" domain={["datamin", "auto"]}/>
-                            <Tooltip content={showTooltipData} position={{"x": 100, "y": 0}}/>
+                            <YAxis dataKey="closing" domain={["datamin", "auto"]} hide={true}/>
+                            <Tooltip content={showTooltipData} position={{"x": 25, "y": 0}} animationDuration={2500}/>
                             <Line type="monotone" dataKey="closing" stroke="#03C805" strokeWidth={1.8} yAxisId={0} dot={false}/>
                         </LineChart>
                     </ResponsiveContainer>
