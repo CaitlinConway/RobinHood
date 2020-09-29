@@ -2,6 +2,7 @@ import os
 from flask import Blueprint, jsonify
 import requests
 import time
+import datetime
 
 stock_routes = Blueprint("stocks", __name__)
 
@@ -13,5 +14,9 @@ def stock(stockId):
     print(f'https://finnhub.io/api/v1/stock/candle?symbol={stockId.upper()}&resolution=D&from=1577836800&to={timestamp}&token={api_key}')
     r = requests.get(f'https://finnhub.io/api/v1/stock/candle?symbol={stockId.upper()}&resolution=D&from=1577836800&to={timestamp}&token={api_key}')
     json = r.json()
-    print(json["c"], json["t"])
-    return {"values": [{"closing": a, "time": b} for (a, b) in (zip(json["c"], json["t"]))]}
+    print({"values": [{"closing": round(a, 2),
+                        "time": datetime.datetime.fromtimestamp(int(b)).strftime("%b-%d-%Y")}
+                       for (a, b) in (zip(json["c"], json["t"]))]})
+    return {"values": [{"closing": round(a, 2),
+                        "time": datetime.datetime.fromtimestamp(int(b)).strftime("%b-%d-%Y")}
+                       for (a, b) in (zip(json["c"], json["t"]))]}

@@ -1,5 +1,6 @@
-import React, {useEffect, useState} from "react"
-import {LineChart, XAxis, YAxis, Tooltip, ResponsiveContainer, Line} from "recharts"
+import React, {useEffect, useState} from "react";
+import {LineChart, XAxis, YAxis, Tooltip, ResponsiveContainer, Line} from "recharts";
+import StockPrice from "./StockPrice";
 
 export default function StockPage(props) {
     let ticker = props.match.params.stockId;
@@ -18,16 +19,18 @@ export default function StockPage(props) {
 
 
     return (
-        <div className="stock-chart">
-            <ResponsiveContainer width="50%" height={500} >
-                <LineChart data={stockData}>
-                    <XAxis dataKey="time" />
-                    <YAxis dataKey="closing" />
-                    <Tooltip />
-                    {/* <CartesianGrid stroke="#f5f5f5" /> */}
-                    <Line type="monotone" dataKey="closing" stroke="#88DEFB" yAxisId={0} dot={false}/>
-                </LineChart>
-            </ResponsiveContainer>
+        <div className="stock-chart-container">
+            <div className="stock-chart">
+                {/* <StockPrice/> */}
+                <ResponsiveContainer width="100%" height={500}>
+                    <LineChart data={stockData}>
+                        <XAxis dataKey="time"/>
+                        <YAxis dataKey="closing" domain={["datamin", "auto"]}/>
+                        <Tooltip position={{ x: 100, y: 0 }}/>
+                        <Line type="monotone" dataKey="closing" stroke="#88DEFB" strokeWidth={1.8} yAxisId={0} dot={false}/>
+                    </LineChart>
+                </ResponsiveContainer>
+            </div>
         </div>
     )
 }

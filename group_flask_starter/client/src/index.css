@@ -14,6 +14,7 @@
   list-style-type:none;
   align-items: center;
 }
+
 *{
   background-color: black;
   color: white;
@@ -102,7 +103,15 @@
 }
 
 .stock-chart {
-  background-color: blue;
-  width: 40%;
-  color: green;
+  width: 50%;
+  margin-top: calc((100vh - 500px)/2)
+}
+
+.stock-chart-container {
+  display: flex;
+  justify-content: center;
+}
+
+.price-tracker {
+  font-size: 50px;
 }
