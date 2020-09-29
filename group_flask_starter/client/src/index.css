@@ -14,6 +14,10 @@
   list-style-type:none;
   align-items: center;
 }
+
+body {
+  margin: 0px;
+}
 /* *{
   background-color: #040F15;
   color: white;
@@ -350,4 +354,31 @@
 .individual-watchlist-div{
   display: flex;
   justify-content: space-around;
+}
+
+.stock-page {
+  background-color: #040F15;
+  width: 100vw;
+  height: 100vh;
+  padding: 0;
+}
+
+.stock-price-container {
+  position: absolute;
+  margin-left: 25px;
+  font-size: 30px;
+  color: white;
+}
+
+.stock-name, .stock-price {
+  font-size: 30px;
+  color: white;
+}
+
+/* .stock-price-current {
+  z-index: -1;
+} */
+
+.hidden {
+  display: none
 }
