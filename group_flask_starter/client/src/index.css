@@ -114,7 +114,6 @@
 .demo-user-form {
     padding-top: 20px;
 }
-<<<<<<< HEAD
 
 /* Sign-up Page CSS */
 
@@ -172,7 +171,7 @@
 .break {
     flex-basis: 100%;
     height: 0;
-=======
+}
 .landing-page-nav-list {
   position: absolute;
   top: 0px;
@@ -263,5 +262,4 @@
 }
 #comission-fee-p{
   font-size:20px;
->>>>>>> master
 }
