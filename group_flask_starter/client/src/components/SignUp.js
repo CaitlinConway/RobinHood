@@ -85,7 +85,7 @@ class SignUp extends React.Component {
                         ></input>
                         <div className="break"></div>
                         <div className="sign-up-button-div">
-                        <button type="submit" className="button">
+                        <button type="submit" className="signup-button">
                             Continue
                         </button>
                         </div>
