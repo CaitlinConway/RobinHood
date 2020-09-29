@@ -3,6 +3,7 @@ import { BrowserRouter, Switch, Route, NavLink } from 'react-router-dom';
 import Logo from "../robinhood-logomark-white.png"
 import SearchBar from './SearchBar'
 import greenLogo from "../robinhood-logomark-green.png"
+import Watchlist from "./WatchList"
 
 function PortfolioPage() {
 
@@ -31,6 +32,9 @@ function PortfolioPage() {
                 <li><NavLink to="/" activeclass="active" className = 'portfolio-button'>Portfolio</NavLink></li>
             </ul>
         </nav>
+        <div className = 'watch-list-div'>
+          <WatchList watchlist={watchlist}></WatchList>
+        </div>
         </div>
     </BrowserRouter>
     </div>
