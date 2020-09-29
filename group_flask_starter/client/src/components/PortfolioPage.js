@@ -3,11 +3,17 @@ import { BrowserRouter, Switch, Route, NavLink } from 'react-router-dom';
 import Logo from "../robinhood-logomark-white.png"
 import SearchBar from './SearchBar'
 import greenLogo from "../robinhood-logomark-green.png"
-import Watchlist from "./WatchList"
+import WatchList from "./WatchList"
+import {connect} from 'react-redux'
+import {getWatchList} from '../store/stockReducer'
 
 class PortfolioPage extends React.Component{
+  componentDidMount(){
+    this.props.getWatchList(this.props.auth);
 
+  }
   render(){
+    debugger;
   return (
     <div className="portfolio-page" style= {{backgroundColor: '#040F15'}}>
     <BrowserRouter>
@@ -33,9 +39,9 @@ class PortfolioPage extends React.Component{
                 <li><NavLink to="/" activeclass="active" className = 'portfolio-button'>Portfolio</NavLink></li>
             </ul>
         </nav>
-        <div className = 'watch-list-div'>
-          <WatchList watchlist={watchlist}></WatchList>
-        </div>
+        {/* <div className = 'watch-list-div'>
+          <WatchList watchlist={this.props.watchlist} userId={this.props.auth}></WatchList>
+        </div> */}
         </div>
     </BrowserRouter>
     </div>
@@ -43,13 +49,13 @@ class PortfolioPage extends React.Component{
 }
 }
 const mapStateToProps = (state) => ({
-  watchlist: state.watchlist,
-  userId: state.auth.id,
+  watchlist: state.stock.watchlist,
+  auth: state.auth.id,
 });
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getWatchlist: () => dispatch(getWatchlist()),
+    getWatchList: (userId) => dispatch(getWatchList(userId)),
   };
 };
 

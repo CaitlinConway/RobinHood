@@ -1,17 +1,19 @@
 
-const GET_WATCHLIST = "auth/watchlist";
+const GET_WATCHLIST = "watchlist";
 
 
 export default function stockReducer(state = {}, action) {
+  let newState = Object.assign({}, state);
     switch(action.type) {
         case GET_WATCHLIST:
-            return {watchlist: action.watchlist};
+          newState["watchlist"] = action.watchlist;
+          return newState;
         default:
             return state;
     }
 }
 
-const watchlist = (watchlist) => {
+const watchList = (watchlist) => {
     return {
         type: GET_WATCHLIST,
         watchlist
@@ -25,7 +27,7 @@ export const getWatchList = function(userId) {
         let res = await fetch(`/api/stocks/watchlist/${userId}`)
         if(res.ok) {
             let watchlist = await res.json();
-            dispatch(getWatchList(watchlist));
+            dispatch(watchList(watchlist));
         }
     }
 }

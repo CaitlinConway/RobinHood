@@ -23,11 +23,12 @@ def stock(stockId):
 
 @stock_routes.route("watchlist/<userId>")
 def watchList(userId):
-
+  watchListStocks = dict()
   watchlist = WatchlistContent.query.filter(WatchlistContent.watchlistId == userId).all()
   print(watchlist[0].stockId)
   if watchlist:
     for stock in watchlist:
-      watchlistStocks = {'stockId': stock.stockId}
-    return watchlistStocks
+      watchListStocks[stock.stockId]= stock.stockId
+    print (watchListStocks)
+    return watchListStocks
   return "error no list"
