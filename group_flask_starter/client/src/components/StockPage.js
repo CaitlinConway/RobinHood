@@ -37,7 +37,7 @@ export default function StockPage(props) {
 
     const showTooltipData = (data) => {
         if ( data?.payload && typeof data?.payload[0] != 'undefined') {
-        return (<StockPrice price={data.payload[0].payload.closing} name={ticker}/>)
+        return (<StockPrice first={stockData[0]?.closing} price={data.payload[0].payload.closing} name={ticker}/>)
         }
     }
 
