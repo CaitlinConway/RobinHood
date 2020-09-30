@@ -420,7 +420,7 @@ body {
   color: rgba(0, 200, 5, 1);
 }
 #watchlist-div{
-  position: absolute;
+  position: fixed;
   margin-left: 75%;
   margin-top: 200px;
   color: white;
