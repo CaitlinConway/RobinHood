@@ -519,8 +519,10 @@ body {
   font-size: 13px;
   font-family: "Capsule Sans Text", -apple-system, BlinkMacSystemFont, sans-serif;
   color: white;
+  text-decoration: none;
 }
 #watchlist-stock-name{
+  padding-top: 15px;
   font-style: bold;
 }
 /* #stock-chart-homepage-div{

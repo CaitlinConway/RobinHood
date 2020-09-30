@@ -6,6 +6,7 @@ import StockPrice from "./StockPrice";
 export default function WatchListStock({stock}) {
   const [stockData, setStockData] = useState("");
   const [stockPrice, setStockPrice] = useState("0");
+  const stockLink = `/stocks/${stock}`
     useEffect(()=> {
         async function getStock() {
             const res = await fetch(`/api/stocks/${stock}`);
@@ -19,7 +20,6 @@ export default function WatchListStock({stock}) {
                 const data = await res.json()
                 setStockPrice(data.values.c)
             }
-
         }
         getStock()
         getCurrentPrice()
@@ -27,7 +27,7 @@ export default function WatchListStock({stock}) {
     return (
     <>
     <div className = 'individual-watchlist-div'>
-      <p id={'watchlist-stock-name'} >{stock}</p>
+      <a id={'watchlist-stock-name'} href={stockLink} >{stock}</a>
       <div id={'wishlist-chart'}>
       <ResponsiveContainer width="100%" height={70} >
                         <LineChart data={stockData}>
