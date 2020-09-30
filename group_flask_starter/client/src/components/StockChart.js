@@ -6,7 +6,6 @@ export default function StockChart(props) {
     let ticker = props.ticker;
     const [stockData, setStockData] = useState("");
     const [stockPrice, setStockPrice] = useState("0");
-    const [companyData, setCompanyData] = useState({})
     useEffect(()=> {
         async function getStock() {
             const res = await fetch(`/api/stocks/${ticker}`);
@@ -23,17 +22,8 @@ export default function StockChart(props) {
             }
         }
 
-        async function getProfile() {
-            const res = await fetch(`/api/stocks/profile/${ticker}`);
-            if(res.ok) {
-                const data = await res.json()
-                setCompanyData(data.values)
-            }
-        }
-
         getStock()
         getCurrentPrice()
-        getProfile()
 
     }, [ticker])
 
@@ -49,12 +39,12 @@ export default function StockChart(props) {
 
     const showTooltipData = (data) => {
         if ( data?.payload && typeof data?.payload[0] != 'undefined') {
-        return (<StockPrice first={stockData[0]?.closing} price={data.payload[0].payload.closing} name={companyData.name}/>)
+        return (<StockPrice first={stockData[0]?.closing} price={data.payload[0].payload.closing} name={props.name}/>)
         }
     }
 
     return (
-        !stockData ? null :
+        !stockData ? (<div className="spaceholder"/>) :
             <div className="stock-chart">
                 <div className="stock-price-container">
                     <div className="stock-name">{props.name}</div>

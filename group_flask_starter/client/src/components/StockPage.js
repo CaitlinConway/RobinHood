@@ -19,25 +19,30 @@ export default function StockPage(props) {
 
     return (
         <div className="stock-page">
-            <div className="stock-chart-container" >
-                <StockChart ticker={ticker} name={companyData.name}/>
-            </div>
-            <div className="company-details-container">
-                <div className="company-about"> About</div>
-                <div className="company-details">
-                    <div>
-                        <div className="company-ipo"> IPO Date </div>
-                        <div> {companyData.ipo}</div>
-                    </div>
-                    <div>
-                        <div className="company-market-cap"> Market Cap </div>
-                        <div> {companyData.marketCapitalization}</div>
-                    </div>
-                    <div>
-                        <div className="company-website"> Website </div>
-                        <a href={companyData.weburl} id="weblink" > {companyData.weburl}</a>
+            <div className="stock-details">
+                <div className="stock-chart-container" >
+                    <StockChart ticker={ticker} name={companyData.name}/>
+                </div>
+                <div className="company-details-container">
+                    <div className="company-about"> About</div>
+                    <div className="company-details">
+                        <div>
+                            <div className="company-ipo"> IPO Date </div>
+                            <div> {companyData.ipo}</div>
+                        </div>
+                        <div>
+                            <div className="company-market-cap"> Market Cap (Millions) </div>
+                            <div> {companyData.marketCapitalization}</div>
+                        </div>
+                        <div>
+                            <div className="company-website"> Website </div>
+                            <a href={companyData.weburl} id="weblink" > {companyData.weburl}</a>
+                        </div>
                     </div>
                 </div>
+            </div>
+            <div className="stock-buy">
+                <StockBuy ticker={ticker.toUpperCase()}/>
             </div>
         </div>
     )
