@@ -39,9 +39,8 @@ def signup():
     user = User.query.filter(User.email == data["email"]).first()
     if user:
         return {"error": "This user account already exists."}
-    # if (data["password"] != data["confirmPassword"]):
-    #     return "error, password fields do not match"
-    # if (data["password"] == data["confirmPassword"]):
+    if (len(data["password"]) < 8):
+        return {"error": "Password must be at least 8 characters."}
     elif data:
         newWatchlist = Watchlist(name=data["email"])
         db.session.add(newWatchlist)

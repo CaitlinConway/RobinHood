@@ -67,15 +67,9 @@ export const signUp = function(firstName, lastName, email, password) {
         })
         res.data = await res.json();
         const { error } = res.data
-        const errorsContainer = document.getElementById("errors");
-        errorsContainer.innerHTML = "";
-        errorsContainer.style.display = "none";
+
         if (res.data.error) {
             alert(error)
-            // errorsContainer.style.display = "flex";
-            // const errorLi = document.createElement("p");
-            // errorLi.innerHTML = error;
-            // errorsContainer.appendChild(errorLi);
         }
         else if(res.ok && !res.data.error) {
             dispatch(setUser(res.data.id, res.data.email))

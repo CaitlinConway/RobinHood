@@ -10,7 +10,8 @@ class SignUp extends React.Component {
             firstName: "",
             lastName: "",
             email: "",
-            password: ""
+            password: "",
+            errors: ""
         };
     }
 
@@ -28,6 +29,11 @@ class SignUp extends React.Component {
 
     updatePassword = (e) => {
         this.setState({ password: e.target.value });
+        if (e.target.value.length < 8 && e.target.value.length > 0) {
+            this.setState({ errors: "Your password must be at least 8 characters."});
+        } else {
+            this.setState({ errors: ""});
+        }
     };
 
     handleSubmit = async (e) => {
@@ -41,16 +47,13 @@ class SignUp extends React.Component {
     };
 
     render() {
-        const { firstName, lastName, email, password } = this.state;
+        const { firstName, lastName, email, password, errors } = this.state;
         return (
           <div className="signup-page">
             <img src=""></img>
             <div className="signup-form-content">
                 <div className="signup-form-header">Make Your Money Move</div>
-                <div className="signup-form-tag">Batmanhood lets you invest in vigalante justice, criminal-free.</div>
-                <div className="signup-error-container">
-                    <ul id="errors" className="errors"></ul>
-                </div>
+                <div className="signup-form-tag">Batmanhood lets you invest in vigilante justice, criminal-free.</div>
                 <div className="signup-form-div">
                     <form onSubmit={this.handleSubmit} className="signup-form">
                         <input
@@ -84,15 +87,19 @@ class SignUp extends React.Component {
                         placeholder="Password (min. 10 characters)"
                         ></input>
                         <div className="break"></div>
-                        {/* <div className="sign-up-button-div"> */}
+                        {/* <div className="signup-error-container">
+                        <ul id="errors" className="errors">{errors}</ul>
+                        </div> */}
                         <button type="submit" className="signup-button">
                             Continue
                         </button>
-                        {/* </div> */}
-                        <text className="signup-text">Already have an account?
-                        <a href="/login" className="login-link">Login to your account here.</a></text>
+                        <span className="signup-text">Already a registered crime-fighter?
+                        <a href="/login" className="login-link">Login to your account here.</a></span>
                     </form>
                 </div>
+            </div>
+            <div className="signup-error-container">
+                <ul id="errors" className="errors">{errors}</ul>
             </div>
             <div className="signup-page-testimonial-container">
                 <div className="signup-page-testimonial-content">
@@ -102,8 +109,8 @@ class SignUp extends React.Component {
                         and hundreds of storefront locations, so we can offer zero commission trading.</div>
                     <div className="signup-page-testimonial-header">Account Protection</div>
                     <div className="signup-page-testimonial">
-                        Robinhood Financial is a member of SIPC.
-                        Securities in your account are protected up to $500,000. For details, please see <a href="https://www.sipc.org/">www.sipc.org</a>.</div>
+                        Batmanhood Financial is a member of SIPC.
+                        Securities in your account are protected up to $500,000. For details, please see <a className="signup-link" href="https://www.sipc.org/">www.sipc.org</a>.</div>
                     <div className="signup-page-testimonial-header">Keep tabs on your money</div>
                     <div className="signup-page-testimonial">
                         Set up customized news and notifications to stay on top of your assets as casually or as
@@ -119,12 +126,12 @@ class SignUp extends React.Component {
                 before investing.
                 </p>
                 <p>
-                All securities and investments are offered to self-directed customers by Robinhood Financial, LLC, member <a href="https://www.finra.org/">FINRA</a> & <a href="https://www.sipc.org/">SIPC</a>.
-                Additional information about your broker can be found by clicking <a href="https://brokercheck.finra.org/">here</a>. Robinhood Financial, LLC is a wholly owned subsidiary
-                of Robinhood Markets, Inc.
+                All securities and investments are offered to self-directed customers by Batmanhood Financial, LLC, member <a className="signup-link" href="https://www.finra.org/">FINRA</a> & <a className="signup-link" href="https://www.sipc.org/">SIPC</a>.
+                Additional information about your broker can be found by clicking <a className="signup-link" href="https://brokercheck.finra.org/">here</a>. Batmanhood Financial, LLC is a wholly owned subsidiary
+                of Batmanhood Markets, Inc.
                 </p>
                 <p>
-                Check the background of Robinhood Financial LLC and Robinhood Securities, LLC on <a href="https://brokercheck.finra.org/">FINRA's BrokerCheck</a>.
+                Check the background of Batmanhood Financial LLC and Batmanhood Securities, LLC on <a className="signup-link" href="https://brokercheck.finra.org/">FINRA's BrokerCheck</a>.
                 </p>
                 <p>
                 © 2020 Batmanhood. All rights reserved unless you want this stuff then by all means go for it.
