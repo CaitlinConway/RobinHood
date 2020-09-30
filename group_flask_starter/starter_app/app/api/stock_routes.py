@@ -69,3 +69,14 @@ def watchListPost():
         watchListStocks[oneStock.stockId]= stockTicker.ticker
     return watchListStocks
   return "error no list"
+
+
+@stock_routes.route("/watchlist/<stockId>", methods=["DELETE"])
+def watchListDelete():
+  data = request.json
+  if data:
+    watchlistStock = WatchlistContent.query.filter(WatchlistContent.stockId == data["stockId"]).filter(WatchlistContent.watchlistId == data["watchlist"]).first()
+    db.session.delete(watchlistStock)
+    db.session.commit()
+    return data["stockId"]
+  return "error no stock"
