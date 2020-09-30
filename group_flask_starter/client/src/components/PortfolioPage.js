@@ -42,6 +42,7 @@ class PortfolioPage extends React.Component{
                 <li><NavLink to="/" activeclass="active" className = 'portfolio-button'>Portfolio</NavLink></li>
             </ul>
         </nav>
+        </div>
         <div id={'stock-chart-homepage-div'}>
           <StockChartHomePage className='stock-chart-homepage' ticker={this.props.watchlist[random]}></StockChartHomePage>
         </div>
@@ -50,7 +51,6 @@ class PortfolioPage extends React.Component{
         </div>
         <div className = 'watch-list-div'>
           <WatchList watchlist={this.props.watchlist} userId={this.props.auth}></WatchList>
-        </div>
         </div>
     </BrowserRouter>
     </div>
