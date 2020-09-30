@@ -518,6 +518,7 @@ body {
 #watchlist-stock-name, #watchlist-stock-price{
   font-size: 13px;
   font-family: "Capsule Sans Text", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-style: bold;
   color: white;
   text-decoration: none;
 }
@@ -537,11 +538,13 @@ body {
 #stock-chart-homepage{
   display: flex;
   position: absolute;
-  width: 680px;
+  width: 65%;
   height: 200px;
   margin-left: 50px;
   justify-content: center;
   margin-top: 130px;
+  font-family: "Capsule Sans Text", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-style: bold;
 }
 .stock-name-homepage {
   font-size: 30px;
@@ -549,6 +552,8 @@ body {
   position: absolute;
   margin-left: 75px;
   margin-top: 100px;
+  font-family: "Capsule Sans Text", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-style: bold;
 }
 #news-feed-div {
   position: absolute;
@@ -562,7 +567,7 @@ body {
   grid-template-columns: 50% 50%;
   grid-template-rows: 15% 40% 45%;
   border-top: 1px solid rgb(190, 176, 176);
-  max-width: 600px;
+  width: 65%;
   max-height: 270px;
   padding-top: 10px;
 }
