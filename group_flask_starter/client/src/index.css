@@ -402,7 +402,7 @@ body {
   background-color: #040F15;
   width: 100vw;
   height: 100vh;
-  min-height: max-content;
+  min-height: 5800px;
   padding: 0;
 }
 .portfolio-button, .user-account-button {
@@ -561,7 +561,7 @@ body {
   grid-template-rows: 15% 40% 45%;
   border-top: 1px solid rgb(190, 176, 176);
   max-width: 600px;
-  max-height: 200px;
+  max-height: 250px;
   padding-top: 10px;
 }
 #news-feed{
@@ -585,5 +585,6 @@ body {
 #news-image{
   height: 150px;
   width: 280px;
-  grid-area: 1/2/2/3
+  grid-area: 2/2/2/3;
+  margin: auto;
 }
