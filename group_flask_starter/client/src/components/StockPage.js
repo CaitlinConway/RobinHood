@@ -5,6 +5,7 @@ import StockBuy from "./StockBuy"
 export default function StockPage(props) {
     let ticker = props.match.params.stockId;
     const [companyData, setCompanyData] = useState({})
+    const [stockPrice, setStockPrice] = useState("0");
 
     useEffect(()=> {
         async function getProfile() {
@@ -14,16 +15,25 @@ export default function StockPage(props) {
                 setCompanyData(data.values)
             }
         }
-        getProfile()
-    }, [ticker])
 
-    let currentPrice = document.getElementById()
+        async function getCurrentPrice() {
+            const res = await fetch(`/api/stocks/current/${ticker}`);
+            if(res.ok) {
+                const data = await res.json()
+                setStockPrice(data.values.c)
+            }
+        }
+
+        getProfile()
+        getCurrentPrice()
+
+    }, [ticker])
 
     return (
         <div className="stock-page">
             <div className="stock-details">
                 <div className="stock-chart-container" >
-                    <StockChart ticker={ticker} name={companyData.name}/>
+                    <StockChart ticker={ticker} name={companyData.name} stockPrice={stockPrice}/>
                 </div>
                 <div className="company-details-container">
                     <div className="company-about"> About</div>
@@ -44,7 +54,7 @@ export default function StockPage(props) {
                 </div>
             </div>
             <div className="stock-buy">
-                <StockBuy ticker={ticker.toUpperCase()}/>
+                <StockBuy ticker={ticker.toUpperCase()} price={stockPrice} />
             </div>
         </div>
     )

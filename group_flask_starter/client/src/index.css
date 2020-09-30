@@ -206,6 +206,66 @@ body {
   display: none
 }
 
+.buy-container {
+  display: flex;
+  flex-direction: column;
+  height: 60%;
+  width: 60%;
+  justify-content: space-between;
+  margin: auto;
+}
+
+.stock-input {
+  height: 25px;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 25px;
+}
+
+.stock-buy-sell {
+  width: 100%;
+  font-size: 18px;
+  font-weight: bold;
+  border: none;
+  border-bottom: 1px solid lightgray;
+}
+
+.market {
+  border-bottom: 1px solid lightgray;
+}
+
+#stock-type-dropdown  {
+  box-sizing: border-box;
+  width: 60%;
+  height: 30px;
+  border-radius: 3px;
+}
+
+#stock-amount {
+  width: 50%;
+  padding: 0px;
+  height: 30px;
+  background-color: #F5F8FA;
+  text-align: right;
+  padding-right: 5px;
+  border: 1px solid #F5F8FA;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+#stock-amount:hover {
+  background-color: white;
+}
+
+#stock-type-dropdown:hover {
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+}
+
 /*  */
 
 
