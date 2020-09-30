@@ -184,7 +184,7 @@ body {
 .company-about {
   color: white;
   font-size: 25px;
-  margin-top: 25px;
+  margin-top: 30px;
   border-bottom: 1px solid white;
   padding-bottom: 10px;
 }
@@ -209,10 +209,15 @@ body {
 .buy-container {
   display: flex;
   flex-direction: column;
-  height: 60%;
+  background-color: #30363A;
+  padding: 20px;
   width: 60%;
   justify-content: space-between;
-  margin: auto;
+  margin: 0 auto;
+  margin-top: calc((100vh - 500px)/2);
+  border: 1px solid lightgray;
+  border-radius: 4px;
+  color: white;
 }
 
 .stock-input {
@@ -224,10 +229,16 @@ body {
 
 .stock-buy-sell {
   width: 100%;
+  background-color: transparent;
+  color: white;
   font-size: 18px;
   font-weight: bold;
   border: none;
-  border-bottom: 1px solid lightgray;
+  border-bottom: 1px solid white;
+}
+
+.stock-buy-sell:hover {
+  cursor: pointer;
 }
 
 .market {
@@ -239,13 +250,17 @@ body {
   width: 60%;
   height: 30px;
   border-radius: 3px;
+  color: white;
+  background-color: transparent;
 }
 
 #stock-amount {
-  width: 50%;
+  width: 40%;
   padding: 0px;
   height: 30px;
-  background-color: #F5F8FA;
+  border-radius: 3px;
+  color: white;
+  background-color: #dfdfdf81;
   text-align: right;
   padding-right: 5px;
   border: 1px solid #F5F8FA;
@@ -257,9 +272,17 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
-#stock-amount:hover {
-  background-color: white;
+#stock-amount:focus {
+  border: 1px solid green;
+  background-color: transparent;
 }
+
+#stock-amount:hover {
+  background-color: transparent;
+  border: 1px solid #F5F8FA;
+}
+
+
 
 #stock-type-dropdown:hover {
   box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.25);
@@ -613,10 +636,6 @@ input::-webkit-inner-spin-button {
 
 .test {
   color: white;
-}
-
-.stock-buy {
-  background-color: white;
 }
 /* #stock-chart-homepage-div{
   display: flex;
