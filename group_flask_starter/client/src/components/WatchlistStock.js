@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from "react";
+import { Redirect } from "react-router-dom";
 import {LineChart, XAxis, YAxis, Tooltip, ResponsiveContainer, Line} from "recharts";
 import StockPrice from "./StockPrice";
 
@@ -23,11 +24,10 @@ export default function WatchListStock({stock}) {
         getStock()
         getCurrentPrice()
     }, [stock])
-
     return (
     <>
     <div className = 'individual-watchlist-div'>
-      <p id={'watchlist-stock-name'}>{stock}</p>
+      <p id={'watchlist-stock-name'} >{stock}</p>
       <div id={'wishlist-chart'}>
       <ResponsiveContainer width="100%" height={70} >
                         <LineChart data={stockData}>

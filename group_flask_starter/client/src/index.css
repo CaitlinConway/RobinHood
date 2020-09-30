@@ -402,6 +402,7 @@ body {
   background-color: #040F15;
   width: 100vw;
   height: 100vh;
+  min-height: max-content;
   padding: 0;
 }
 .portfolio-button, .user-account-button {
@@ -546,4 +547,21 @@ body {
   position: absolute;
   margin-left: 75px;
   margin-top: 100px;
+}
+#news-feed-div {
+  position: absolute;
+  margin-top: 700px;
+  margin-left: 75px;
+  color: white;
+}
+#news-image{
+  height: 200px;
+  width: 400px;
+}
+#news-item{
+  display: flex;
+  flex-direction: column;
+}
+#news-feed{
+  list-style-type: none;
 }
