@@ -1,9 +1,9 @@
 import os
-from flask import Blueprint, jsonify, session
+from flask import Blueprint, jsonify, session, request
 import requests
 import time
 import datetime
-from app.models import Watchlist, WatchlistContent, Stock
+from app.models import Watchlist, WatchlistContent, Stock, db
 
 stock_routes = Blueprint("stocks", __name__)
 api_key = os.environ.get("FINHUB_API_KEY")
@@ -35,26 +35,48 @@ def getProfile(stockId):
     print(res)
     return ({"values": res})
 
-@stock_routes.route("watchlist/<userId>")
+@stock_routes.route("/watchlist/<userId>")
 def watchList(userId):
   watchListStocks = dict()
   watchlist = WatchlistContent.query.filter(WatchlistContent.watchlistId == userId).all()
   if watchlist:
     for stock in watchlist:
       stockTicker = Stock.query.filter(Stock.id == stock.stockId).first()
-      print(stockTicker)
       watchListStocks[stock.stockId]= stockTicker.ticker
-    print (watchListStocks)
     return watchListStocks
   return "error no list"
 
 
-# @stock_routes.route("watchlist/post", methods=["POST"])
-# def watchList(ticker):
-#   data = request.json
-#   if data:
-#    watchListItem = WatchlistContent(ticker=data[ticker])
-#    db.session.add(watchListItem)
-#    db.session.commit()
-#    return {ticker: ticker}
-#   return "error no list"
+@stock_routes.route("/watchlist", methods=["POST"])
+def watchListPost():
+  data = request.json
+  if data:
+    stock = Stock.query.filter(Stock.ticker == data["ticker"]).first()
+    print(stock)
+    if not stock:
+      newStock = Stock(ticker=data['ticker'])
+      db.session.add(newStock)
+      db.session.commit()
+      stock = Stock.query.filter(Stock.ticker == data["ticker"]).first()
+    watchListItem = WatchlistContent(stockId=stock.id, watchlistId= data["watchlist"])
+    db.session.add(watchListItem)
+    db.session.commit()
+    watchListStocks = dict()
+    watchlist = WatchlistContent.query.filter(WatchlistContent.watchlistId == data["watchlist"]).all()
+    if watchlist:
+      for oneStock in watchlist:
+        stockTicker = Stock.query.filter(Stock.id == oneStock.stockId).first()
+        watchListStocks[oneStock.stockId]= stockTicker.ticker
+    return watchListStocks
+  return "error no list"
+
+
+@stock_routes.route("/watchlist/<stockId>", methods=["DELETE"])
+def watchListDelete():
+  data = request.json
+  if data:
+    watchlistStock = WatchlistContent.query.filter(WatchlistContent.stockId == data["stockId"]).filter(WatchlistContent.watchlistId == data["watchlist"]).first()
+    db.session.delete(watchlistStock)
+    db.session.commit()
+    return data["stockId"]
+  return "error no stock"
