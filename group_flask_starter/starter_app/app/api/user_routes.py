@@ -1,5 +1,5 @@
 
-from flask import Blueprint, jsonify, request, session, redirect, url_for, abort
+from flask import Blueprint, jsonify, request, session, redirect, url_for
 from app.models import User, db, Watchlist
 from passlib.hash import sha256_crypt
 

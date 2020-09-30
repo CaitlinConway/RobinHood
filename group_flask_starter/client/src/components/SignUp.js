@@ -47,7 +47,7 @@ class SignUp extends React.Component {
             <img src=""></img>
             <div className="signup-form-content">
                 <div className="signup-form-header">Make Your Money Move</div>
-                <div className="signup-form-tag">Robinhood lets you invest in companies you love, commission-free.</div>
+                <div className="signup-form-tag">Batmanhood lets you invest in vigalante justice, criminal-free.</div>
                 <div className="signup-error-container">
                     <ul id="errors" className="errors"></ul>
                 </div>
@@ -84,18 +84,14 @@ class SignUp extends React.Component {
                         placeholder="Password (min. 10 characters)"
                         ></input>
                         <div className="break"></div>
-                        <div className="sign-up-button-div">
+                        {/* <div className="sign-up-button-div"> */}
                         <button type="submit" className="signup-button">
                             Continue
                         </button>
-                        </div>
+                        {/* </div> */}
+                        <text className="signup-text">Already have an account?
+                        <a href="/login" className="login-link">Login to your account here.</a></text>
                     </form>
-                    <div className="existing-account">
-                        Already have an account?
-                        <form action="/login">
-                            <button>Log In!</button>
-                        </form>
-                    </div>
                 </div>
             </div>
             <div className="signup-page-testimonial-container">
@@ -107,12 +103,32 @@ class SignUp extends React.Component {
                     <div className="signup-page-testimonial-header">Account Protection</div>
                     <div className="signup-page-testimonial">
                         Robinhood Financial is a member of SIPC.
-                        Securities in your account are protected up to $500,000. For details, please see www.sipc.org.</div>
+                        Securities in your account are protected up to $500,000. For details, please see <a href="https://www.sipc.org/">www.sipc.org</a>.</div>
                     <div className="signup-page-testimonial-header">Keep tabs on your money</div>
                     <div className="signup-page-testimonial">
                         Set up customized news and notifications to stay on top of your assets as casually or as
                         relentlessly as you like. Controlling the flow of info is up to you.</div>
                     </div>
+            </div>
+            <div className="signup-page-fine-print">
+                <p>
+                All investments involve risk and the past performance of a security, or financial product does not guarantee
+                future results or returns. Keep in mind that while diversification may help spread risk it does not assure a
+                profit, or protect against loss, in a down market. There is always the potential of losing money when you invest
+                in securities, or other financial products. Investors should consider their investment objectives and risks carefully
+                before investing.
+                </p>
+                <p>
+                All securities and investments are offered to self-directed customers by Robinhood Financial, LLC, member <a href="https://www.finra.org/">FINRA</a> & <a href="https://www.sipc.org/">SIPC</a>.
+                Additional information about your broker can be found by clicking <a href="https://brokercheck.finra.org/">here</a>. Robinhood Financial, LLC is a wholly owned subsidiary
+                of Robinhood Markets, Inc.
+                </p>
+                <p>
+                Check the background of Robinhood Financial LLC and Robinhood Securities, LLC on <a href="https://brokercheck.finra.org/">FINRA's BrokerCheck</a>.
+                </p>
+                <p>
+                © 2020 Batmanhood. All rights reserved unless you want this stuff then by all means go for it.
+                </p>
             </div>
           </div>
         );

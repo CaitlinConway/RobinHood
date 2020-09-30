@@ -134,30 +134,19 @@ body {
 .signup-form-content {
     display: flex;
     flex-direction: column;
-    margin-left: 5%;
-    margin-top: 10%;
+    margin-left: 9.5%;
+    margin-top: 8%;
 }
-
-/* .existing-account {
-  display: flex;
-  flex-direction: row wrap;
-} */
 
 .signup-form-div {
     display: flex;
-    flex-flow: row wrap;
-    max-width: 630px;
-    width: 640px;
+    /* flex-flow: row wrap; */
+    /* max-width: 630px; */
+    width: 840px;
 }
 
-/* .signup-error-container {
-  color: red;
-  font-size: 18px;
-  margin-left: -40px;
-} */
-
 .signup-form-header {
-    font-size: 20px;
+    font-size: 23px;
     font-weight: 600;
     font-style: normal;
     font-family: "Segoe UI", Helvetica, "Capsule Sans Text", -apple-system, BlinkMacSystemFont, sans-serif;
@@ -165,14 +154,13 @@ body {
 
 .signup-form-tag {
     padding: 10px 0px;
-    font-size: 14px;
+    font-size: 15px;
     font-family: "Segoe UI", Helvetica, "Capsule Sans Text", -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 .signup-input-first-name, .signup-input-last-name {
-    justify-content: space-between;
     height: 30px;
-    width: 290px;
+    width: 370px;
     border-radius: 3px;
     border-color: rgba(195, 195, 195, 0.3);
     background-color: rgba(195, 195, 195, 0.3);
@@ -188,20 +176,25 @@ body {
 
 .signup-input-email, .signup-input-password {
     height: 30px;
-    width: 600px;
+    width: 780px;
     border-radius: 3px;
     border-color: rgba(195, 195, 195, 0.2);
     background-color: rgba(195, 195, 195, 0.2);
-    margin: 5px 0px;
+    margin-top: 20px;
 }
 
 .signup-button {
   background-color: rgb(0, 200, 5);
   color: white;
-  height: 50px;
+  height: 47px;
   border-radius: 3px;
   width: 150px;
   border-style: none;
+  margin-top: 40px;
+}
+
+.signup-text, .login-link {
+  padding: 0px 10px;
 }
 
 .signup-page-testimonial-container {
@@ -221,6 +214,7 @@ body {
 .signup-page-testimonial-content {
   margin-top: 18%;
   margin-left: 10%;
+  line-height: 1.6;
 }
 
 .signup-page-testimonial-header {
@@ -233,6 +227,17 @@ body {
 .signup-page-testimonial {
   max-width: 35%;
   font-size: 15px;
+}
+
+.signup-page-fine-print {
+  max-width: 50%;
+  font-size: 13px;
+  font-family: "Capsule Sans Text", "Segoe UI", Helvetica, Arial, sans-serif;
+  margin-left: 10%;
+  margin-top: 6%;
+  color: rgb(180, 189, 194);
+  line-height: 20px;
+  width: 800px;
 }
 
 .break {
