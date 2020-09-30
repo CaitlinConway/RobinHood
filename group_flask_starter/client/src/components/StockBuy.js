@@ -21,6 +21,8 @@ export default function StockBuy(props) {
                 </select>
                 <label for="amount"> Amount</label>
                 <input type="number" name="amount"/>
+                <div> Market Price</div>
+                <div></div>
             </form>
         </div>
         )

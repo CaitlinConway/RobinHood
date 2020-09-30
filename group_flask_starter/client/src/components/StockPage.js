@@ -17,6 +17,8 @@ export default function StockPage(props) {
         getProfile()
     }, [ticker])
 
+    let currentPrice = document.getElementById()
+
     return (
         <div className="stock-page">
             <div className="stock-details">
