@@ -1,10 +1,12 @@
 import React, {useEffect, useState} from "react";
+import { Redirect } from "react-router-dom";
 import {LineChart, XAxis, YAxis, Tooltip, ResponsiveContainer, Line} from "recharts";
 import StockPrice from "./StockPrice";
 
 export default function WatchListStock({stock}) {
   const [stockData, setStockData] = useState("");
   const [stockPrice, setStockPrice] = useState("0");
+  const stockLink = `/stocks/${stock}`
     useEffect(()=> {
         async function getStock() {
             const res = await fetch(`/api/stocks/${stock}`);
@@ -18,22 +20,21 @@ export default function WatchListStock({stock}) {
                 const data = await res.json()
                 setStockPrice(data.values.c)
             }
-
         }
         getStock()
         getCurrentPrice()
     }, [stock])
-
     return (
     <>
     <div className = 'individual-watchlist-div'>
-      <p id={'watchlist-stock-name'}>{stock}</p>
+      <a id={'watchlist-stock-name'} href={stockLink} >{stock}</a>
       <div id={'wishlist-chart'}>
       <ResponsiveContainer width="100%" height={70} >
                         <LineChart data={stockData}>
                             <XAxis dataKey="time" tick={false}/>
                             <YAxis dataKey="closing" domain={["datamin", "auto"]} hide={true} tick={false}/>
-                            <Line type="monotone" dataKey="closing" stroke="#03C805" strokeWidth={1.8} yAxisId={0} dot={false}/>
+                            <Line stroke={stockData.length >1 && stockPrice < stockData[0].closing ? "#FF5103" : "#03C805"}
+                                  strokeWidth={1.8} yAxisId={0} dot={false} type="monotone" dataKey="closing" />
                         </LineChart>
                     </ResponsiveContainer>
         </div>

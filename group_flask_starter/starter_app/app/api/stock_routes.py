@@ -80,3 +80,11 @@ def watchListDelete():
     db.session.commit()
     return data["stockId"]
   return "error no stock"
+
+
+@stock_routes.route("/news")
+def getNews():
+    r = requests.get(f'https://finnhub.io/api/v1/news?category=general&token={api_key}')
+    res = r.json()
+    print(res)
+    return({"values": res})

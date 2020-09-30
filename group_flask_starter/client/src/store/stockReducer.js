@@ -2,6 +2,7 @@
 const GET_WATCHLIST = "watchlist";
 const ADD_TO_WATCHLIST = "watchlist/add"
 const DELETE_STOCK_WATCHLIST = "watchlist/delete"
+const GET_NEWS = 'news';
 
 export default function stockReducer(state = {}, action) {
   let newState = Object.assign({}, state);
@@ -11,6 +12,9 @@ export default function stockReducer(state = {}, action) {
           return newState;
         case DELETE_STOCK_WATCHLIST:
           delete newState[action.stock.id];
+          return newState;
+        case GET_NEWS:
+          newState["news"] = action.news
           return newState;
         default:
             return state;
@@ -30,6 +34,12 @@ const deleteWatchList = (stock) => {
   }
 }
 
+const getNewsThunk = (news) => {
+  return {
+    type: GET_NEWS,
+    news
+  }
+}
 
 export const getWatchList = function(userId) {
     return async(dispatch) => {
@@ -67,5 +77,17 @@ export const deleteStockWatchlist = function(watchlist, ticker) {
       let stock = await res.json();
       dispatch(deleteWatchList(stock));
     }
+  }
+}
+
+
+export const getNews = function() {
+  return async (dispatch) => {
+      let res = await fetch(`/api/stocks/news`)
+      if(res.ok) {
+          let news = await res.json();
+          let newsArray =news.values;
+          dispatch(getNewsThunk(newsArray));
+      }
   }
 }
