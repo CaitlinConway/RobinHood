@@ -18,10 +18,7 @@
 body {
   margin: 0px;
 }
-/* *{
-  background-color: #040F15;
-  color: white;
-} */
+
 .home-logo{
   width: 38px;
   height: 38px;
@@ -368,7 +365,7 @@ body {
 .stock-page {
   background-color: #040F15;
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   padding: 0;
 }
 
@@ -387,6 +384,40 @@ body {
 .stock-return {
   font-size: 15px;
   margin-top: 5px;
+}
+
+.company-details-container {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+}
+
+.company-details {
+  color: white;
+  display: flex;
+  justify-content: space-between;
+}
+
+.company-about {
+  color: white;
+  font-size: 25px;
+  margin-top: 25px;
+  border-bottom: 1px solid white;
+  padding-bottom: 10px;
+}
+
+.company-website + a {
+  color: #03C805;
+}
+
+.company-details div {
+  margin: 10px 0 10px 0;
+}
+
+.company-market-cap, .company-ipo, .company-website {
+  margin-top: 10px;
+  font-weight: bold;
 }
 
 .hidden {
