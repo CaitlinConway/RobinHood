@@ -49,8 +49,10 @@ class PortfolioPage extends React.Component{
         <div id={'news-feed-div-homepage'}>
           <NewsFeed news={this.props.news}></NewsFeed>
         </div>
+        <div>
         <div className = 'watch-list-div'>
           <WatchList watchlist={this.props.watchlist} userId={this.props.auth}></WatchList>
+        </div>
         </div>
     </BrowserRouter>
     </div>

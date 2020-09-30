@@ -422,13 +422,16 @@ body {
 #watchlist-div{
   position: fixed;
   margin-left: 75%;
-  margin-top: 200px;
+  margin-top: 10%;
   color: white;
   border: .5px solid rgba(189, 192, 189, .2);
   border-radius: 4px;
   box-shadow: 2px grey;
   background-color: #1E2124;
   padding: 15px;
+  height: 70%;
+  z-index: 1;
+  overflow-y: scroll;
 }
 .watchlist-title{
   font-size: 15px;
@@ -596,4 +599,7 @@ body {
   grid-area: 2/2/2/3;
   margin: auto;
   border-radius: 10px;
+}
+#watchlist-div::-webkit-scrollbar {
+  display: none;
 }
