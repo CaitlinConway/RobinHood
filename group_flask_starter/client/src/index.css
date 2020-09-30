@@ -587,4 +587,5 @@ body {
   width: 280px;
   grid-area: 2/2/2/3;
   margin: auto;
+  border-radius: 10px;
 }
