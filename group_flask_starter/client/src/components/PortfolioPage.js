@@ -15,7 +15,6 @@ class PortfolioPage extends React.Component{
   render(){
     if (this.props.watchlist){
       let random = Math.floor(Math.random() * Math.floor(Object.keys(this.props.watchlist).length)) +1
-      debugger;
   return (
     <div className="portfolio-page" style= {{backgroundColor: '#040F15'}}>
     <BrowserRouter>
