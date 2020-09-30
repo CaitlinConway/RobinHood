@@ -35,17 +35,13 @@ def logout():
 
 @user_routes.route("/signup", methods=["POST"])
 def signup():
-    print('test')
-    data = request.json
-    print(data)
+    data = request.get_json()
     user = User.query.filter(User.email == data["email"]).first()
-    print(user)
     if user:
-        print("error, there is already a user with that account")
-    # if (data["password"] != data["confirmPassword"]):
-    #     return "error, password fields do not match"
-    # if (data["password"] == data["confirmPassword"]):
-    if data:
+        return {"error": "This user account already exists."}
+    if (len(data["password"]) < 8):
+        return {"error": "Password must be at least 8 characters."}
+    elif data:
         newWatchlist = Watchlist(name=data["email"])
         db.session.add(newWatchlist)
         db.session.commit()
