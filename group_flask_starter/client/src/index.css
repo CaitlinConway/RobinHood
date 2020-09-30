@@ -420,7 +420,7 @@ body {
 }
 #watchlist-div{
   position: absolute;
-  margin-left: 70%;
+  margin-left: 75%;
   margin-top: 200px;
   color: white;
   border: .5px solid rgba(189, 192, 189, .2);
@@ -521,4 +521,29 @@ body {
 }
 #watchlist-stock-name{
   font-style: bold;
+}
+/* #stock-chart-homepage-div{
+  display: flex;
+  position: absolute;
+  width: 680px;
+  height: 350px;
+  margin-left: 50px;
+  justify-content: center;
+  margin-top: 200px;
+} */
+#stock-chart-homepage{
+  display: flex;
+  position: absolute;
+  width: 680px;
+  height: 200px;
+  margin-left: 50px;
+  justify-content: center;
+  margin-top: 130px;
+}
+.stock-name-homepage {
+  font-size: 30px;
+  color: white;
+  position: absolute;
+  margin-left: 75px;
+  margin-top: 100px;
 }
