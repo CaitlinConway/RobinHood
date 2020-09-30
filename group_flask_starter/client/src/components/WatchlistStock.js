@@ -33,7 +33,8 @@ export default function WatchListStock({stock}) {
                         <LineChart data={stockData}>
                             <XAxis dataKey="time" tick={false}/>
                             <YAxis dataKey="closing" domain={["datamin", "auto"]} hide={true} tick={false}/>
-                            <Line type="monotone" dataKey="closing" stroke="#03C805" strokeWidth={1.8} yAxisId={0} dot={false}/>
+                            <Line stroke={stockData.length >1 && stockPrice < stockData[0].closing ? "#FF5103" : "#03C805"}
+                                  strokeWidth={1.8} yAxisId={0} dot={false} type="monotone" dataKey="closing" />
                         </LineChart>
                     </ResponsiveContainer>
         </div>
