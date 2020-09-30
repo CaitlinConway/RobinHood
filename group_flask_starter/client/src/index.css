@@ -220,35 +220,51 @@ body {
 .signup-form-content {
     display: flex;
     flex-direction: column;
-    margin-left: 5%;
-    margin-top: 10%;
+    margin-left: 9.5%;
+    margin-top: 8%;
 }
 
-.signup-form {
+.signup-form-div {
     display: flex;
-    flex-flow: row wrap;
-    max-width: 600px;
+    /* flex-flow: row wrap; */
+    /* max-width: 630px; */
+    width: 840px;
 }
 
 .signup-form-header {
-    font-size: 20px;
-    font-weight: 600;
+    font-size: 24px;
+    font-weight: 400;
     font-style: normal;
-    font-family: "Segoe UI", Helvetica, "Capsule Sans Text", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: Helvetica, "Segoe UI", "Capsule Sans Text", -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 .signup-form-tag {
     padding: 10px 0px;
-    font-size: 14px;
-    font-family: "Segoe UI", Helvetica, "Capsule Sans Text", -apple-system, BlinkMacSystemFont, sans-serif;
+    margin-bottom: 15px;
+    font-size: 15px;
+    font-family: Helvetica, "Segoe UI", "Capsule Sans Text", -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 .signup-input-first-name, .signup-input-last-name {
-    height: 30px;
-    width: 282px;
+    height: 35px;
+    width: 370px;
     border-radius: 3px;
-    border-color: rgba(195, 195, 195, 0.3);
-    background-color: rgba(195, 195, 195, 0.3);
+    border: 1px solid white;
+    background-color: rgba(245, 248, 250, 1);
+    padding-left: 20px;
+}
+
+.signup-error-container {
+  color: rgba(255, 80, 0, 1);
+  font-size: 18px;
+  margin-left: 7.5%;
+  font-family: Helvetica, "Segoe UI", "Capsule Sans Text", -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+::placeholder {
+  color: rgba(4, 13, 20, 0.3);
+  font-size: 13px;
+  font-family: Helvetica, "Segoe UI", "Capsule Sans Text", -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 .signup-input-first-name {
@@ -260,12 +276,52 @@ body {
 }
 
 .signup-input-email, .signup-input-password {
-    height: 30px;
-    width: 100%;
+    height: 35px;
+    width: 780px;
+    padding-left: 20px;
     border-radius: 3px;
-    border-color: rgba(195, 195, 195, 0.2);
-    background-color: rgba(195, 195, 195, 0.2);
-    margin: 5px 0px;
+    border: 1px solid white;
+    background-color: rgba(245, 248, 250, 1);
+    margin-top: 20px;
+}
+
+.signup-input-email:hover, .signup-input-password:hover,
+.signup-input-first-name:hover, .signup-input-last-name:hover {
+  background-color: white;
+  box-shadow: 0 0 1pt rgba(128, 128, 128, 1);
+}
+
+.signup-input-email:focus, .signup-input-password:focus,
+.signup-input-first-name:focus, .signup-input-last-name:focus {
+  background-color: white;
+  outline: 0px;
+  border: 1px solid rgba(0, 200, 5, 1);
+}
+
+.signup-button {
+  background-color: rgb(0, 200, 5);
+  color: white;
+  height: 47px;
+  border-radius: 3px;
+  width: 150px;
+  border-style: none;
+  margin-top: 40px;
+}
+
+.signup-button:hover {
+  background-color: rgb(0, 180, 5);
+}
+
+.signup-text {
+  padding: 0pt 50pt;
+}
+
+.login-link {
+  padding: 0pt 20pt;
+}
+
+.signup-link, .login-link {
+  color: rgb(0, 200, 5);
 }
 
 .signup-page-testimonial-container {
@@ -279,6 +335,36 @@ body {
   position: fixed;
   top: 0;
   right: 0;
+  font-family: "Capsule Sans Text", "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+.signup-page-testimonial-content {
+  margin-top: 17%;
+  margin-left: 10%;
+  line-height: 1.6;
+}
+
+.signup-page-testimonial-header {
+  font-size: 15px;
+  font-weight: 700;
+  padding-bottom: 10px;
+  padding-top: 47px;
+}
+
+.signup-page-testimonial {
+  max-width: 35%;
+  font-size: 15px;
+}
+
+.signup-page-fine-print {
+  max-width: 50%;
+  font-size: 13px;
+  font-family: "Capsule Sans Text", "Segoe UI", Helvetica, Arial, sans-serif;
+  margin-left: 10%;
+  margin-top: 6%;
+  color: rgb(180, 189, 194);
+  line-height: 20px;
+  width: 800px;
 }
 
 .break {
@@ -423,7 +509,7 @@ body {
 }
 #watchlist-div{
   position: absolute;
-  margin-left: 70%;
+  margin-left: 75%;
   margin-top: 200px;
   color: white;
   border: .5px solid rgba(189, 192, 189, .2);
@@ -471,4 +557,30 @@ body {
 
 .stock-buy {
   background-color: white;
+}
+/* #stock-chart-homepage-div{
+  display: flex;
+  position: absolute;
+  width: 680px;
+  height: 350px;
+  margin-left: 50px;
+  justify-content: center;
+  margin-top: 200px;
+} */
+
+#stock-chart-homepage {
+  display: flex;
+  position: absolute;
+  width: 680px;
+  height: 200px;
+  margin-left: 50px;
+  justify-content: center;
+  margin-top: 130px;
+}
+.stock-name-homepage {
+  font-size: 30px;
+  color: white;
+  position: absolute;
+  margin-left: 75px;
+  margin-top: 100px;
 }

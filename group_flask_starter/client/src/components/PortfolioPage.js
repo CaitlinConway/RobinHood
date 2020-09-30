@@ -6,6 +6,7 @@ import greenLogo from "../robinhood-logomark-green.png"
 import WatchList from "./WatchList"
 import {connect} from 'react-redux'
 import {getWatchList} from '../store/stockReducer'
+import StockChartHomePage from './StockChartHomePage'
 
 class PortfolioPage extends React.Component{
   componentDidMount(){
@@ -13,6 +14,7 @@ class PortfolioPage extends React.Component{
   }
   render(){
     if (this.props.watchlist){
+      let random = Math.floor(Math.random() * Math.floor(Object.keys(this.props.watchlist).length)) +1
   return (
     <div className="portfolio-page" style= {{backgroundColor: '#040F15'}}>
     <BrowserRouter>
@@ -38,6 +40,9 @@ class PortfolioPage extends React.Component{
                 <li><NavLink to="/" activeclass="active" className = 'portfolio-button'>Portfolio</NavLink></li>
             </ul>
         </nav>
+        <div id={'stock-chart-homepage-div'}>
+          <StockChartHomePage className='stock-chart-homepage' ticker={this.props.watchlist[random]}></StockChartHomePage>
+        </div>
         <div className = 'watch-list-div'>
           <WatchList watchlist={this.props.watchlist} userId={this.props.auth}></WatchList>
         </div>

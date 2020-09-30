@@ -63,11 +63,17 @@ export const signUp = function(firstName, lastName, email, password) {
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify({email, password, firstName, lastName})
+            body: JSON.stringify({ firstName, lastName, email, password, })
         })
-        if(res.ok) {
-            let currentUser = await res.json();
-            dispatch(setUser(currentUser.id, currentUser.email))
+        res.data = await res.json();
+        const { error } = res.data
+
+        if (res.data.error) {
+            alert(error)
+        }
+        else if(res.ok && !res.data.error) {
+            dispatch(setUser(res.data.id, res.data.email))
+            alert("Signup successful! Returning to login page.")
         }
     }
 }
