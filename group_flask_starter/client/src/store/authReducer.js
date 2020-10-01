@@ -47,7 +47,8 @@ export const login = function(email, password) {
         })
         if(res.ok) {
             let currentUser = await res.json();
-            dispatch(setUser(currentUser.id, currentUser.email, currentUser.balance, currentUser.firstName, currentUser.lastName));
+            dispatch(setUser(currentUser.id, currentUser.email, currentUser.balance, currentUser.lastName,
+            currentUser.firstName));
         }
     }
 }
@@ -81,7 +82,7 @@ export const signUp = function(firstName, lastName, email, password) {
             alert(error)
         }
         else if(res.ok && !res.data.error) {
-            dispatch(setUser(res.data.id, res.data.email, res.data.balance))
+            dispatch(setUser(res.data.id, res.data.email, res.data.balance, res.firstName, res.lastName))
             alert("Signup successful! Returning to login page.")
         }
     }

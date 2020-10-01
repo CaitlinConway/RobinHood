@@ -20,7 +20,7 @@ def login():
     if user:
         session["userId"] = user.id
         print(f"success, {user.id, user.email}")
-        return {"id": user.id, "email": user.email, "balance": str(user.balance), "firstName": user.firstName, "lastName": user.lastName}
+        return {"id": user.id, "email": user.email, "balance": str(user.balance), "firstName": str(user.firstName), "lastName": str(user.lastName)}
 
     return "error, user not found"
 
