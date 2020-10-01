@@ -836,7 +836,6 @@ input::-webkit-inner-spin-button {
   box-shadow: 2px grey;
   color: white;
   font-family: "Capsule Sans Text", -apple-system, BlinkMacSystemFont, sans-serif;
-  display: flex;
   flex-direction: column;
   text-align: center;
 }

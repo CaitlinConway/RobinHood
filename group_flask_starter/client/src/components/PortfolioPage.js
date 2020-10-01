@@ -15,6 +15,11 @@ class PortfolioPage extends React.Component{
     this.props.getWatchList(this.props.auth);
     this.props.getNews();
   }
+  hideAccount = (e) =>{
+    e.preventDefault();
+    let accountLi = document.getElementById('account-drop-down-li');
+    accountLi.style.display = "none";
+  }
   showAccount = (e) =>{
     e.preventDefault();
     let accountLi = document.getElementById('account-drop-down-li');
@@ -23,6 +28,7 @@ class PortfolioPage extends React.Component{
   render(){
     if (this.props.watchlist && this.props.news){
       let random = Math.floor(Math.random() * Math.floor(Object.keys(this.props.watchlist).length)) +1
+      debugger;
   return (
     <div className="portfolio-page" style= {{backgroundColor: '#040F15'}}>
     <BrowserRouter>
@@ -45,7 +51,7 @@ class PortfolioPage extends React.Component{
                   </NavLink></li>
                 <li className="search"><SearchBar></SearchBar></li>
                 <li><button onClick={this.showAccount} activeclass="active" className='user-account-button'>Account</button></li>
-                <li id={'account-drop-down-li'} hidden><AccountDropDown user={this.props.auth}></AccountDropDown></li>
+                <li id={'account-drop-down-li'} hidden><AccountDropDown user={this.props.user}></AccountDropDown></li>
                 <li><NavLink to="/" activeclass="active" className = 'portfolio-button'>Portfolio</NavLink></li>
             </ul>
         </nav>
@@ -58,7 +64,7 @@ class PortfolioPage extends React.Component{
         </div>
         <div>
         <div className = 'watch-list-div'>
-          <WatchList watchlist={this.props.watchlist} userId={this.props.auth.id}></WatchList>
+          <WatchList watchlist={this.props.watchlist} userId={this.props.auth}></WatchList>
         </div>
         </div>
     </BrowserRouter>
@@ -98,8 +104,9 @@ class PortfolioPage extends React.Component{
 }
 const mapStateToProps = (state) => ({
   watchlist: state.stock.watchlist,
-  auth: state.auth,
-  news: state.stock.news
+  auth: state.auth.id,
+  news: state.stock.news,
+  user: state.auth
 });
 
 const mapDispatchToProps = (dispatch) => {
