@@ -31,9 +31,11 @@ const setUser = (id, email, balance, lastName, firstName) => {
     }
 }
 
-const logoutUser = () => ({
+const logoutUser = () => {
+  return {
     type: LOGOUT
-})
+  }
+}
 
 
 export const login = function(email, password) {
@@ -54,6 +56,7 @@ export const logOut = () => {
     return async function(dispatch) {
         let res = await fetch("/api/users/logout", {
             method: "DELETE",
+            headers: {'Content-Type': "application/json"}
         });
         if(res.ok) {
             dispatch(logoutUser());

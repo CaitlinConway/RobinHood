@@ -17,6 +17,8 @@ class PortfolioPage extends React.Component{
   }
   showAccount = (e) =>{
     e.preventDefault();
+    let accountLi = document.getElementById('account-drop-down-li');
+    accountLi.style.display = "flex";
   }
   render(){
     if (this.props.watchlist && this.props.news){
@@ -43,7 +45,7 @@ class PortfolioPage extends React.Component{
                   </NavLink></li>
                 <li className="search"><SearchBar></SearchBar></li>
                 <li><button onClick={this.showAccount} activeclass="active" className='user-account-button'>Account</button></li>
-                <li><AccountDropDown user={this.props.auth}></AccountDropDown></li>
+                <li id={'account-drop-down-li'} hidden><AccountDropDown user={this.props.auth}></AccountDropDown></li>
                 <li><NavLink to="/" activeclass="active" className = 'portfolio-button'>Portfolio</NavLink></li>
             </ul>
         </nav>
@@ -56,7 +58,7 @@ class PortfolioPage extends React.Component{
         </div>
         <div>
         <div className = 'watch-list-div'>
-          <WatchList watchlist={this.props.watchlist} userId={this.props.auth}></WatchList>
+          <WatchList watchlist={this.props.watchlist} userId={this.props.auth.id}></WatchList>
         </div>
         </div>
     </BrowserRouter>
@@ -83,7 +85,8 @@ class PortfolioPage extends React.Component{
                   />
                   </NavLink></li>
                 <li className="search"><SearchBar></SearchBar></li>
-                <li><NavLink to="/users" activeclass="active" className='user-account-button'>Account</NavLink></li>
+                <li><button onClick={this.showAccount} activeclass="active" className='user-account-button'>Account</button></li>
+                <li id={'account-drop-down-li'} hidden><AccountDropDown user={this.props.auth}></AccountDropDown></li>
                 <li><NavLink to="/" activeclass="active" className = 'portfolio-button'>Portfolio</NavLink></li>
             </ul>
         </nav>
@@ -95,7 +98,7 @@ class PortfolioPage extends React.Component{
 }
 const mapStateToProps = (state) => ({
   watchlist: state.stock.watchlist,
-  auth: state.auth.id,
+  auth: state.auth,
   news: state.stock.news
 });
 

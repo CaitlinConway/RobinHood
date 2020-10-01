@@ -823,3 +823,12 @@ input::-webkit-inner-spin-button {
 .search-input::placeholder {
   color: rgba(240, 244, 246, 0.5);
 }
+#account-drop-down-li{
+  background-color: white;
+  position: fixed;
+  margin-top: 50px;
+  width: 200px;
+  height: 300px;
+  margin-left: 70%;
+  z-index: 2;
+}
