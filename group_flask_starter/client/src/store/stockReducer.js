@@ -30,7 +30,8 @@ const getWatchListThunk = (watchlist) => {
         watchlist
     }
 }
-const deleteWatchList = (stock) => {
+
+const deleteFromWatchList = (stock) => {
   return {
     type: DELETE_STOCK_WATCHLIST,
     stock
@@ -63,12 +64,12 @@ export const getWatchList = function(userId) {
 }
 
 
-export const addToWatchList = function(userId, ticker) {
+export const addToWatchList = function(watchlistId, ticker) {
   return async (dispatch) => {
-    let res = await fetch(`api/stocks/watchlist`, {
+    let res = await fetch(`/api/stocks/watchlist`, {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({ticker, userId})
+      body: JSON.stringify({ticker,watchlistId})
     })
     if(res.ok){
       let watchlist = await res.json();
@@ -77,16 +78,16 @@ export const addToWatchList = function(userId, ticker) {
   }
 }
 
-export const deleteStockWatchlist = function(watchlist, ticker) {
+export const deleteFromStockWatchlist = function(watchlistId, ticker) {
   return async (dispatch) => {
-    let res = await fetch(`api/stocks/watchlist`, {
+    let res = await fetch(`/api/stocks/watchlist/${watchlistId}/${ticker.toUpperCase()}`, {
       method: 'DELETE',
       headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({ticker, watchlist})
     })
+
     if (res.ok){
       let stock = await res.json();
-      dispatch(deleteWatchList(stock));
+      dispatch(deleteFromWatchList(stock));
     }
   }
 }

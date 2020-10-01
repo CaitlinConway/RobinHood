@@ -72,15 +72,19 @@ def watchListAdd():
   return "error no list"
 
 
-@stock_routes.route("/watchlist/<watchListId>/<stockId>", methods=["DELETE"])
-def watchListDelete():
-  data = request.json
-  if data:
-    watchlistStock = WatchlistContent.query.filter(WatchlistContent.stockId == data["stockId"]).filter(WatchlistContent.watchlistId == data["watchlist"]).first()
-    db.session.delete(watchlistStock)
+@stock_routes.route("/watchlist/<watchlistId>/<ticker>", methods=["DELETE"])
+def watchListDelete(watchlistId, ticker):
+    print(ticker)
+    stockId = Stock.query.filter(Stock.ticker == ticker).first().id
+    print(stockId)
+    watchListStock = WatchlistContent.query.filter(WatchlistContent.watchlistId == watchlistId
+                      and WatchlistContent.stockId == stockId).first()
+    print(watchListStock)
+    if not watchListStock:
+        return "error no stock"
+    db.session.delete(watchListStock)
     db.session.commit()
-    return data["stockId"]
-  return "error no stock"
+    return {"ticker": ticker}
 
 
 @stock_routes.route("/news")

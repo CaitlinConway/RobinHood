@@ -5,19 +5,17 @@ import StockBuy from "./StockBuy";
 import SearchBar from "./SearchBar";
 import Logo from "../robinhood-logomark-white.png";
 import greenLogo from "../robinhood-logomark-green.png";
-import AddToWatchlist from "./AddToWatchlist";
-import {useSelector} from "react-redux"
-import { addToWatchList } from "../store/stockReducer";
+import {useSelector, useDispatch} from "react-redux"
+import { addToWatchList, deleteFromStockWatchlist } from "../store/stockReducer";
 
 
 export default function StockPage(props) {
     const ticker = props.match.params.stockId;
+    const dispatch = useDispatch()
     const watchlist = useSelector(state => state?.stock?.watchlist);
-    const userId = useSelector(state => state?.auth?.id);
+    const watchlistId = useSelector(state => state?.auth?.watchlistId);
     const [companyData, setCompanyData] = useState({})
     const [stockPrice, setStockPrice] = useState("0");
-    console.log(watchlist);
-    // const [inWatchlist, setInWatchlist] = useState("");
     const [inWatchlist, setInWatchlist] = useState(Object.values(watchlist).includes(ticker.toUpperCase()));
 
 
@@ -46,9 +44,11 @@ export default function StockPage(props) {
 
     const updateWatchlist = () => {
         if (!inWatchlist) {
-            return addToWatchList(userId, ticker)
+            dispatch(addToWatchList(watchlistId, ticker));
+
         } else {
-            return
+            dispatch(deleteFromStockWatchlist(watchlistId, ticker));
+            setInWatchlist(false);
         }
     }
 
