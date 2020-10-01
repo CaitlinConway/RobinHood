@@ -12,7 +12,9 @@ export default function stockReducer(state = {}, action) {
           newState["watchlist"] = action.watchlist;
           return newState;
         case DELETE_STOCK_WATCHLIST:
-          delete newState[action.stock.id];
+          console.log(action.stock)
+          console.log(newState.watchlist.tickers)
+          newState.watchlist.tickers = newState.watchlist.tickers.filter(el => el !== action.stock.ticker )
           return newState;
         case ADD_TO_WATCHLIST:
           return;
@@ -58,6 +60,7 @@ export const getWatchList = function(userId) {
 
         if(res.ok) {
             let watchlist = await res.json();
+            console.log(watchlist)
             dispatch(getWatchListThunk(watchlist));
         }
     }

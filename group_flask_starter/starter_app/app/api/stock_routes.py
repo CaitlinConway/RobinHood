@@ -36,13 +36,13 @@ def getProfile(stockId):
 
 @stock_routes.route("/watchlist/<userId>")
 def watchList(userId):
-  watchListStocks = dict()
+  watchListStocks = []
   watchlist = WatchlistContent.query.filter(WatchlistContent.watchlistId == userId).all()
   if watchlist:
     for stock in watchlist:
       stockTicker = Stock.query.filter(Stock.id == stock.stockId).first()
-      watchListStocks[stock.stockId]= stockTicker.ticker
-    return watchListStocks
+      watchListStocks.append(stockTicker.ticker)
+    return {"tickers": watchListStocks}
   return "error no list"
 
 
@@ -51,24 +51,25 @@ def watchListAdd():
   data = request.json
   print(data);
   if data:
+    watchList = WatchlistContent.query.filter(WatchlistContent.watchlistId == data["watchlistId"]).all()
+    if len(watchList) >= 10:
+      return {"error": "You can't have more than 10 stocks in your watchlist"}
     stock = Stock.query.filter(Stock.ticker == data["ticker"]).first()
     if not stock:
       newStock = Stock(ticker=data['ticker'])
       db.session.add(newStock)
       db.session.commit()
       stock = Stock.query.filter(Stock.ticker == data["ticker"]).first()
-    # watch_list_id = User.query.filter(User.id == data["userId"]).first().watchlistId
-    # print(watch_list_id)
-    watchListItem = WatchlistContent(stockId=stock.id, watchlistId=watch_list_id)
+    watchListItem = WatchlistContent(stockId=stock.id, watchlistId=data["watchlistId"])
     db.session.add(watchListItem)
     db.session.commit()
-    watchListStocks = dict()
-    watchlist = WatchlistContent.query.filter(WatchlistContent.watchlistId == data["watchlist"]).all()
+    watchListStocks = []
+    watchlist = WatchlistContent.query.filter(WatchlistContent.watchlistId == data["watchlistId"]).all()
     if watchlist:
       for oneStock in watchlist:
         stockTicker = Stock.query.filter(Stock.id == oneStock.stockId).first()
-        watchListStocks[oneStock.stockId]= stockTicker.ticker
-    return watchListStocks
+        watchListStocks.append(stockTicker.ticker)
+    return {"tickers": watchListStocks}
   return "error no list"
 
 
@@ -77,8 +78,7 @@ def watchListDelete(watchlistId, ticker):
     print(ticker)
     stockId = Stock.query.filter(Stock.ticker == ticker).first().id
     print(stockId)
-    watchListStock = WatchlistContent.query.filter(WatchlistContent.watchlistId == watchlistId
-                      and WatchlistContent.stockId == stockId).first()
+    watchListStock = WatchlistContent.query.filter(WatchlistContent.stockId == stockId).filter(WatchlistContent.watchlistId == watchlistId).first()
     print(watchListStock)
     if not watchListStock:
         return "error no stock"
