@@ -7,6 +7,7 @@ from app.models import Watchlist, WatchlistContent, Stock, db
 
 stock_routes = Blueprint("stocks", __name__)
 api_key = os.environ.get("FINHUB_API_KEY")
+api_key_2 = os.environ.get("FINHUB_API_KEY_2")
 
 
 @stock_routes.route("/<stockId>")
@@ -80,3 +81,11 @@ def watchListDelete():
     db.session.commit()
     return data["stockId"]
   return "error no stock"
+
+
+@stock_routes.route("/news")
+def getNews():
+    r = requests.get(f'https://finnhub.io/api/v1/news?category=general&token={api_key_2}')
+    res = r.json()
+    print(res)
+    return({"values": res})
