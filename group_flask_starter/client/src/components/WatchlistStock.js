@@ -1,9 +1,15 @@
 import React, {useEffect, useState} from "react";
-import { Redirect } from "react-router-dom";
+import { Link, NavLink, Redirect, useHistory } from "react-router-dom";
 import {LineChart, XAxis, YAxis, Tooltip, ResponsiveContainer, Line} from "recharts";
 import StockPrice from "./StockPrice";
 
 export default function WatchListStock({stock}) {
+  const history = useHistory();
+  const handleStockClick = (e) =>{
+    e.preventDefault();
+    history.push(`/stocks/${stock}`)
+    window.location.href= `/stocks/${stock}`
+  }
   const [stockData, setStockData] = useState("");
   const [stockPrice, setStockPrice] = useState("0");
   const stockLink = `/stocks/${stock}`
@@ -27,7 +33,7 @@ export default function WatchListStock({stock}) {
     return (
     <>
     <div className = 'individual-watchlist-div'>
-      <a id={'watchlist-stock-name'} href={stockLink} >{stock}</a>
+      <button id={'watchlist-stock-name'} onClick={handleStockClick} >{stock}</button>
       <div id={'wishlist-chart'}>
       <ResponsiveContainer width="100%" height={70} >
                         <LineChart data={stockData}>
