@@ -28,7 +28,7 @@ class PortfolioPage extends React.Component{
   render(){
     if (this.props.watchlist && this.props.news){
       let random = Math.floor(Math.random() * Math.floor(Object.keys(this.props.watchlist).length)) +1
-      debugger;
+
   return (
     <div className="portfolio-page" style= {{backgroundColor: '#040F15'}}>
     <BrowserRouter>
@@ -56,6 +56,7 @@ class PortfolioPage extends React.Component{
             </ul>
         </nav>
         </div>
+        <div onClick={this.hideAccount}>
         <div id={'stock-chart-homepage-div'}>
           <StockChartHomePage className='stock-chart-homepage' ticker={this.props.watchlist[random]}></StockChartHomePage>
         </div>
@@ -65,6 +66,7 @@ class PortfolioPage extends React.Component{
         <div>
         <div className = 'watch-list-div'>
           <WatchList watchlist={this.props.watchlist} userId={this.props.auth}></WatchList>
+        </div>
         </div>
         </div>
     </BrowserRouter>
