@@ -2,6 +2,7 @@
 const GET_WATCHLIST = "watchlist";
 const ADD_TO_WATCHLIST = "watchlist/add"
 const DELETE_STOCK_WATCHLIST = "watchlist/delete"
+const SEARCH = ""
 
 export default function stockReducer(state = {}, action) {
   let newState = Object.assign({}, state);
@@ -29,6 +30,13 @@ const deleteWatchList = (stock) => {
     stock
   }
 }
+
+// const searchThunk = (stock) => {
+//   return {
+//     type: SEARCH,
+//     stock
+//   }
+// }
 
 
 export const getWatchList = function(userId) {
@@ -67,5 +75,15 @@ export const deleteStockWatchlist = function(watchlist, ticker) {
       let stock = await res.json();
       dispatch(deleteWatchList(stock));
     }
+  }
+}
+
+export const getSearch = function(stockId) {
+  return async(dispatch) => {
+      let res = await fetch(`/api/stocks/${stockId}`)
+      if(res.ok) {
+          let stock = await res.json();
+          // dispatch(searchThunk(stock));
+      }
   }
 }
