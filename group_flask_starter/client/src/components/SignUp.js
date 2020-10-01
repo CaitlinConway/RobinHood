@@ -110,7 +110,7 @@ class SignUp extends React.Component {
                     <div className="signup-page-testimonial-header">Account Protection</div>
                     <div className="signup-page-testimonial">
                         Batmanhood Financial is a member of SIPC.
-                        Securities in your account are protected up to $500,000. For details, please see <a className="signup-link" href="https://www.sipc.org/">www.sipc.org</a>.</div>
+                        Securities in your account are protected up to $500,000. For details, please see <a className="signup-link" href="https://www.sipc.org/" target="_blank">www.sipc.org</a>.</div>
                     <div className="signup-page-testimonial-header">Keep tabs on your money</div>
                     <div className="signup-page-testimonial">
                         Set up customized news and notifications to stay on top of your assets as casually or as
@@ -126,12 +126,12 @@ class SignUp extends React.Component {
                 before investing.
                 </p>
                 <p>
-                All securities and investments are offered to self-directed customers by Batmanhood Financial, LLC, member <a className="signup-link" href="https://www.finra.org/">FINRA</a> & <a className="signup-link" href="https://www.sipc.org/">SIPC</a>.
-                Additional information about your broker can be found by clicking <a className="signup-link" href="https://brokercheck.finra.org/">here</a>. Batmanhood Financial, LLC is a wholly owned subsidiary
+                All securities and investments are offered to self-directed customers by Batmanhood Financial, LLC, member <a className="signup-link" href="https://www.finra.org/" target="_blank">FINRA</a> & <a className="signup-link" href="https://www.sipc.org/" target="_blank">SIPC</a>.
+                Additional information about your broker can be found by clicking <a className="signup-link" href="https://brokercheck.finra.org/" target="_blank">here</a>. Batmanhood Financial, LLC is a wholly owned subsidiary
                 of Batmanhood Markets, Inc.
                 </p>
                 <p>
-                Check the background of Batmanhood Financial LLC and Batmanhood Securities, LLC on <a className="signup-link" href="https://brokercheck.finra.org/">FINRA's BrokerCheck</a>.
+                Check the background of Batmanhood Financial LLC and Batmanhood Securities, LLC on <a className="signup-link" href="https://brokercheck.finra.org/" target="_blank">FINRA's BrokerCheck</a>.
                 </p>
                 <p>
                 © 2020 Batmanhood. All rights reserved unless you want this stuff then by all means go for it.

@@ -39,20 +39,13 @@ body {
 .home-logo-li:hover .home-logo{
   display: none;
 }
-.search{
+/* .search{
   height: 80%;
 }
 .search:hover{
   box-shadow: 0px 4px 20px 0px rgba(255, 255, 255, 0.05);
-}
-.search-input{
-  width: 90%;
-  background-color: white;
-  height: 100%;
-  box-shadow: 2px 2px;
-  border: 2px solid white;
-  border-radius: 10px;
-}
+} */
+
 
 /* Login Page CSS */
 .login-background {
@@ -338,14 +331,14 @@ input::-webkit-inner-spin-button {
 /* Sign-up Page CSS */
 
 .signup-form-content {
-    display: flex;
-    flex-direction: column;
+    display: block;
     margin-left: 9.5%;
     margin-top: 8%;
 }
 
 .signup-form-div {
     display: flex;
+    flex-direction: column;
     /* flex-flow: row wrap; */
     /* max-width: 630px; */
     width: 840px;
@@ -756,4 +749,75 @@ input::-webkit-inner-spin-button {
 }
 #watchlist-div::-webkit-scrollbar {
   display: none;
+}
+
+
+/* Search Bar CSS */
+
+.search-bar-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  max-width: 478px;
+  max-height: 494px;
+  position: relative;
+  outline: none;
+  margin-left: 20%;
+}
+
+.search-bar {
+  height: 30px;
+
+}
+
+.search-bar-list {
+  position: absolute;
+  color: white;
+  height: 460px;
+  background-color: rgba(30, 33, 36, 1);
+  width: 99.9%;
+  margin-top: 32px;
+  z-index: 1;
+  border: 0.8px solid;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  border-top-color: rgba(30, 33, 36, 1);
+  border-right-color: rgba(240, 244, 246, 0.3);
+  border-left-color: rgba(240, 244, 246, 0.3);
+  border-bottom-color: rgba(240, 244, 246, 0.3);
+}
+
+#section-1::first-letter, #section-2::first-letter {
+  color: rgb(0, 200, 5);
+}
+
+.search-input {
+  width: 99%;
+  background-color: rgb(4, 15, 21);
+  height: 100%;
+  color: white;
+  /* box-shadow: 2px 2px;
+  border: 2px solid white;
+  border-radius: 10px; */
+  border-radius: 3px;
+  border: 0.8px solid rgba(240, 244, 246, 0.3);
+  outline: none;
+}
+
+#section-1 {
+  padding-top: 20px;
+}
+
+.search-input:focus {
+  outline: none;
+  background-color: rgba(30, 33, 36, 1);
+  border-bottom-color: none;
+}
+
+.search-input:hover {
+  background-color: rgba(30, 33, 36, 1);
+}
+
+.search-input::placeholder {
+  color: rgba(240, 244, 246, 0.5);
 }
