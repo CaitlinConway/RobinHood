@@ -18,4 +18,5 @@ const WatchList = (watchlist, userId) => {
   );
 };
 
+
 export default WatchList;

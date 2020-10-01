@@ -5,12 +5,16 @@ import StockBuy from "./StockBuy";
 import SearchBar from "./SearchBar";
 import Logo from "../robinhood-logomark-white.png";
 import greenLogo from "../robinhood-logomark-green.png";
+import AddToWatchlist from "./AddToWatchlist";
+import {useSelector} from "react-redux"
 
 
 export default function StockPage(props) {
     let ticker = props.match.params.stockId;
     const [companyData, setCompanyData] = useState({})
     const [stockPrice, setStockPrice] = useState("0");
+    const state = useSelector(state => state)
+    console.log(state);
 
     useEffect(()=> {
         async function getProfile() {
@@ -76,6 +80,7 @@ export default function StockPage(props) {
             </div>
             <div className="stock-buy">
                 <StockBuy ticker={ticker.toUpperCase()} price={stockPrice} />
+                <AddToWatchlist ticker={ticker}/>
             </div>
         </div>
         </>

@@ -24,7 +24,6 @@ def stock(stockId):
 def getCurrent(stockId):
     r = requests.get(f'https://finnhub.io/api/v1/quote?symbol={stockId.upper()}&token={api_key}')
     res = r.json()
-    print(res)
     return({"values": res})
 
 
@@ -33,7 +32,6 @@ def getProfile(stockId):
     print(stockId)
     r = requests.get(f'https://finnhub.io/api/v1/stock/profile2?symbol={stockId}&token={api_key}')
     res = r.json()
-    print(res)
     return ({"values": res})
 
 @stock_routes.route("/watchlist/<userId>")
@@ -53,7 +51,6 @@ def watchListPost():
   data = request.json
   if data:
     stock = Stock.query.filter(Stock.ticker == data["ticker"]).first()
-    print(stock)
     if not stock:
       newStock = Stock(ticker=data['ticker'])
       db.session.add(newStock)
@@ -87,5 +84,4 @@ def watchListDelete():
 def getNews():
     r = requests.get(f'https://finnhub.io/api/v1/news?category=general&token={api_key_2}')
     res = r.json()
-    print(res)
     return({"values": res})

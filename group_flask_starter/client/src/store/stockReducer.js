@@ -14,6 +14,8 @@ export default function stockReducer(state = {}, action) {
         case DELETE_STOCK_WATCHLIST:
           delete newState[action.stock.id];
           return newState;
+        case ADD_TO_WATCHLIST:
+          return;
         case GET_NEWS:
           newState["news"] = action.news
           return newState;
