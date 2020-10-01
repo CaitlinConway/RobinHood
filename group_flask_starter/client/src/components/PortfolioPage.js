@@ -31,7 +31,6 @@ class PortfolioPage extends React.Component{
 
   return (
     <div className="portfolio-page" style= {{backgroundColor: '#040F15'}}>
-    <BrowserRouter>
         <div className="nav-bar">
         <nav>
             <ul className="nav-list">
@@ -69,7 +68,6 @@ class PortfolioPage extends React.Component{
         </div>
         </div>
         </div>
-    </BrowserRouter>
     </div>
   );}
   else {
