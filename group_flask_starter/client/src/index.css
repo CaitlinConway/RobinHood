@@ -604,7 +604,7 @@ input::-webkit-inner-spin-button {
   background-color: #040F15;
   width: 100vw;
   height: 100vh;
-  min-height: 5800px;
+  min-height: 3000px;
   padding: 0;
 }
 .portfolio-button, .user-account-button {
