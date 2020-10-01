@@ -5,6 +5,7 @@ import StockBuy from "./StockBuy";
 import SearchBar from "./SearchBar";
 import Logo from "../robinhood-logomark-white.png";
 import greenLogo from "../robinhood-logomark-green.png";
+import AccountDropDrown from './AccountDropDown'
 
 
 export default function StockPage(props) {
@@ -46,7 +47,7 @@ export default function StockPage(props) {
                         </NavLink>
                     </li>
                     <li className="search"><SearchBar></SearchBar></li>
-                    <li><NavLink to="/users" activeclass="active" className='user-account-button'>Account</NavLink></li>
+                    <li><NavLink to="/" activeclass="active" className='user-account-button'>Account</NavLink></li>
                     <li><NavLink to="/" activeclass="active" className = 'portfolio-button'>Portfolio</NavLink></li>
                 </ul>
             </nav>
