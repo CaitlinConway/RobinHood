@@ -20,7 +20,7 @@ def login():
     if user:
         session["userId"] = user.id
         print(f"success, {user.id, user.email}")
-        return {"id": user.id, "email": user.email}
+        return {"id": user.id, "email": user.email, "balance": str(user.balance)}
 
     return "error, user not found"
 
@@ -55,4 +55,4 @@ def signup():
         db.session.add(newUser)
         db.session.commit()
         created = User.query.filter(User.email == data["email"]).first()
-        return {"id": created.id, "email": created.email}
+        return {"id": created.id, "email": created.email, "balance": str(created.balance)}
