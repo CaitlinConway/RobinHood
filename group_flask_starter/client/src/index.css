@@ -617,6 +617,8 @@ input::-webkit-inner-spin-button {
   font-family: "Capsule Sans Text", -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 15px;
   text-decoration: none;
+  background-color: #040F15;
+  font-style: bold;
 }
 .portfolio-button:hover, .user-account-button:hover {
   color: rgba(0, 200, 5, 1);
