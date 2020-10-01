@@ -52,6 +52,7 @@ const getNewsThunk = (news) => {
 export const getWatchList = function(userId) {
     return async(dispatch) => {
         let res = await fetch(`/api/stocks/watchlist/${userId}`)
+
         if(res.ok) {
             let watchlist = await res.json();
             dispatch(getWatchListThunk(watchlist));

@@ -7,7 +7,7 @@ const NewsFeed = (news) => {
       <div id="news-feed-div">
       <h1 className = 'news-feed-title'>News</h1>
       <ul id="news-feed">
-        {(news.news).map((newsItem) => (
+        {(news.news).slice(0,9).map((newsItem) => (
           <li key={news.news.indexOf(newsItem)}>
             <NewsItem newsItem={newsItem}></NewsItem>
           </li>

@@ -1,9 +1,15 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Redirect, useHistory } from 'react-router-dom';
 import BlackLogo from "../robinhood-logomark-black.png"
 import greenLogo from "../robinhood-logomark-green.png"
 import batman from "../green batman.png"
+
 function LandingPage(props) {
+  const history = useHistory();
+  const signUp = (e) => {
+    e.preventDefault();
+    history.push('/signup')
+  }
   return (
     <>
     <div className="landing-page-nav-bar">
@@ -36,7 +42,7 @@ function LandingPage(props) {
           <div id={'invest'}>
           <h1 id={'invest-header'}>Investing for Everyone</h1>
           <span id={'invest-paragraph'}>Batmanhood, a pioneer of comission-free investing, gives you more ways to make your money work harder</span>
-          <button className = 'landing-page-sign-up-button'>Sign Up</button>
+          <button onClick={signUp} className = 'landing-page-sign-up-button'>Sign Up</button>
           </div>
           <div className="batman">
             <img id={'batman'} src={batman}/>
