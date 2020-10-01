@@ -604,7 +604,7 @@ input::-webkit-inner-spin-button {
   background-color: #040F15;
   width: 100vw;
   height: 100vh;
-  min-height: 5800px;
+  min-height: 3000px;
   padding: 0;
 }
 .portfolio-button, .user-account-button {
@@ -617,6 +617,8 @@ input::-webkit-inner-spin-button {
   font-family: "Capsule Sans Text", -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 15px;
   text-decoration: none;
+  background-color: #040F15;
+  font-style: bold;
 }
 .portfolio-button:hover, .user-account-button:hover {
   color: rgba(0, 200, 5, 1);
@@ -820,4 +822,41 @@ input::-webkit-inner-spin-button {
 
 .search-input::placeholder {
   color: rgba(240, 244, 246, 0.5);
+}
+#account-drop-down-li{
+  background-color: #1E2124;
+  position: fixed;
+  margin-top: 70px;
+  width: 200px;
+  height: 170px;
+  margin-left: 70%;
+  z-index: 2;
+  border: .5px solid rgba(189, 192, 189, .2);
+  border-radius: 4px;
+  box-shadow: 2px grey;
+  color: white;
+  font-family: "Capsule Sans Text", -apple-system, BlinkMacSystemFont, sans-serif;
+  flex-direction: column;
+  text-align: center;
+}
+#drop-down-username{
+  font-size: 15px;
+}
+#drop-down-balance{
+  font-size: 15px;
+}
+#logout-button{
+  background-color: white;
+  color: black;
+  border: .5px solid rgba(189, 192, 189, .2);
+  border-radius: 4px;
+  box-shadow: 2px grey;
+  font-family: "Capsule Sans Text", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-style: bold;
+}
+#logout-button:hover{
+  color: rgba(0, 200, 5, 1);
+}
+#drop-down-username, #drop-down-balance, #logout-button {
+  padding: 15px;
 }
