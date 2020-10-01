@@ -109,15 +109,224 @@ body {
     padding-top: 20px;
 }
 
+/* Stock Page CSS */
+
 .stock-chart {
-  width: 50%;
-  margin-top: calc((100vh - 500px)/2)
+  width: 80%;
+  margin-top: 100px;
 }
 
 .stock-chart-container {
   display: flex;
   justify-content: center;
 }
+
+.stock-page {
+  background-color: #040F15;
+  width: 100vw;
+  min-height: 100vh;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 70% 30%;
+  grid-template-rows: auto;
+  grid-template-areas: "details buy";
+}
+
+.stock-details {
+  grid-area: details;
+}
+
+.stock-buy {
+  grid-area: buy;
+}
+
+.spaceholder {
+  height: 590px;
+}
+
+.stock-price-container {
+  position: absolute;
+  margin-left: 25px;
+  font-size: 30px;
+  color: white;
+}
+
+.stock-name, .stock-price, .stock-return {
+  font-size: 30px;
+  color: white;
+}
+
+.stock-return {
+  font-size: 15px;
+  margin-top: 5px;
+}
+
+.company-details-container {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+}
+
+.company-details {
+  color: white;
+  display: flex;
+  justify-content: space-between;
+}
+
+.company-about {
+  color: white;
+  font-size: 25px;
+  margin-top: 30px;
+  border-bottom: 1px solid white;
+  padding-bottom: 10px;
+}
+
+.company-website + a {
+  color: #03C805;
+}
+
+.company-details div {
+  margin: 10px 0 10px 0;
+}
+
+.company-market-cap, .company-ipo, .company-website {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.hidden {
+  display: none
+}
+
+.buy-container {
+  display: flex;
+  flex-direction: column;
+  background-color: #30363A;
+  padding: 20px;
+  width: 60%;
+  justify-content: space-between;
+  margin: 0 auto;
+  margin-top: 100px;
+  border: 1px solid lightgray;
+  border-radius: 4px;
+  color: white;
+}
+
+.stock-input {
+  height: 25px;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 25px;
+}
+
+.stock-input > label {
+  margin: auto 0;
+}
+
+.stock-buy-sell {
+  width: 100%;
+  background-color: transparent;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  border: none;
+  border-bottom: 1px solid white;
+}
+
+.stock-buy-sell:hover {
+  cursor: pointer;
+}
+
+.stock-buy-sell:focus {
+  outline: none;
+}
+
+.market {
+  border-bottom: 1px solid lightgray;
+}
+
+#stock-type-dropdown  {
+  box-sizing: border-box;
+  width: 60%;
+  height: 30px;
+  border-radius: 3px;
+  color: white;
+  background-color: transparent;
+}
+
+#stock-amount {
+  width: 40%;
+  padding: 0px;
+  height: 30px;
+  border-radius: 3px;
+  color: white;
+  background-color: #dfdfdf81;
+  text-align: right;
+  padding-right: 5px;
+  border: 1px solid #F5F8FA;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+#stock-amount:focus {
+  outline: none;
+  border: 1.2px solid #03C805;
+  background-color: transparent;
+}
+
+#stock-type-dropdown:focus {
+  outline: none;
+}
+
+#stock-amount:hover {
+  background-color: transparent;
+
+}
+
+
+
+#stock-type-dropdown:hover {
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+}
+
+.stock-buy-button{
+  width: 100%;
+  background-color: #03C805;
+  border: none;
+  padding: 15px;
+  font-size: 14px;
+  font-weight: 550;
+  margin: 25px 0;
+  border-radius: 6px;
+}
+
+.balance {
+  margin: 10px 0;
+  padding-top: 20px;
+  border-top: 1px solid white;
+  text-align: center;
+  color: #03C805;
+}
+
+.stock-buy-button:hover {
+  cursor: pointer;
+  background-color: #19ca1c;
+}
+
+/*  */
+
+
+
+
+
+
+
 
 /* Sign-up Page CSS */
 
@@ -445,67 +654,6 @@ body {
   justify-content: space-around;
 }
 
-.stock-page {
-  background-color: #040F15;
-  width: 100vw;
-  min-height: 100vh;
-  padding: 0;
-}
-
-.stock-price-container {
-  position: absolute;
-  margin-left: 25px;
-  font-size: 30px;
-  color: white;
-}
-
-.stock-name, .stock-price, .stock-return {
-  font-size: 30px;
-  color: white;
-}
-
-.stock-return {
-  font-size: 15px;
-  margin-top: 5px;
-}
-
-.company-details-container {
-  width: 50%;
-  display: flex;
-  flex-direction: column;
-  margin: auto;
-}
-
-.company-details {
-  color: white;
-  display: flex;
-  justify-content: space-between;
-}
-
-.company-about {
-  color: white;
-  font-size: 25px;
-  margin-top: 25px;
-  border-bottom: 1px solid white;
-  padding-bottom: 10px;
-}
-
-.company-website + a {
-  color: #03C805;
-}
-
-.company-details div {
-  margin: 10px 0 10px 0;
-}
-
-.company-market-cap, .company-ipo, .company-website {
-  margin-top: 10px;
-  font-weight: bold;
-}
-
-.hidden {
-  display: none
-}
 #wishlist-chart{
   height: 100px;
   width: 100px;
@@ -522,6 +670,10 @@ body {
   padding-top: 15px;
   font-style: bold;
 }
+
+.test {
+  color: white;
+}
 /* #stock-chart-homepage-div{
   display: flex;
   position: absolute;
@@ -531,7 +683,8 @@ body {
   justify-content: center;
   margin-top: 200px;
 } */
-#stock-chart-homepage{
+
+#stock-chart-homepage {
   display: flex;
   position: absolute;
   width: 65%;
@@ -589,6 +742,7 @@ body {
 #news-image{
   height: 150px;
   width: 280px;
+  object-fit: cover;
   grid-area: 2/2/2/3;
   margin: auto;
   border-radius: 10px;
