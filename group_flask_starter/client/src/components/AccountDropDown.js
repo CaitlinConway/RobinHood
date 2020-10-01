@@ -12,9 +12,9 @@ class AccountDropDown extends React.Component{
     <>
     <div id={'account-drop-down-div'}>
       <div id={'drop-down-username'}>{this.props.user.firstName} {this.props.user.lastName}</div>
-      <div id={'drop-down-balance'}>{this.props.user.balance}</div>
-      <div id={'logout-button'}>
-        <button onClick={this.logoutButtonHandle}>Logout</button>
+      <div id={'drop-down-balance'}>Balance: ${this.props.user.balance}</div>
+      <div>
+        <button id={'logout-button'} onClick={this.logoutButtonHandle}>Logout</button>
       </div>
     </div>
     </>
