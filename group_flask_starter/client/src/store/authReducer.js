@@ -10,6 +10,8 @@ export default function authReducer(state = {}, action) {
           newState["id"] = action.id;
           newState["email"] = action.email;
           newState["balance"] = action.balance;
+          newState["firstName"] = action.firstName;
+          newState["lastName"] = action.lastName;
             return newState;
         case LOGOUT:
             return {};
@@ -18,18 +20,22 @@ export default function authReducer(state = {}, action) {
     }
 }
 
-const setUser = (id, email, balance) => {
+const setUser = (id, email, balance, lastName, firstName) => {
     return {
         type: LOGIN,
         id,
         email,
-        balance
+        balance,
+        lastName,
+        firstName
     }
 }
 
-const logoutUser = () => ({
+const logoutUser = () => {
+  return {
     type: LOGOUT
-})
+  }
+}
 
 
 export const login = function(email, password) {
@@ -41,7 +47,7 @@ export const login = function(email, password) {
         })
         if(res.ok) {
             let currentUser = await res.json();
-            dispatch(setUser(currentUser.id, currentUser.email, currentUser.balance));
+            dispatch(setUser(currentUser.id, currentUser.email, currentUser.balance, currentUser.firstName, currentUser.lastName));
         }
     }
 }
@@ -50,6 +56,7 @@ export const logOut = () => {
     return async function(dispatch) {
         let res = await fetch("/api/users/logout", {
             method: "DELETE",
+            headers: {'Content-Type': "application/json"}
         });
         if(res.ok) {
             dispatch(logoutUser());

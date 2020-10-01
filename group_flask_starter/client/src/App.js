@@ -28,6 +28,7 @@ function App() {
     <BrowserRouter>
         <Provider store={store}>
           <Switch>
+          <Route exact path="/stocks/:stockId" render={(props) => <StockPage {...props}></StockPage>}/>
             <ConnectedProtectedRoute
                   exact path="/"
                   component={PortfolioPage}
@@ -42,6 +43,7 @@ function App() {
             ></ConnectedProtectedRoute>
             <Route exact path="/stocks/:stockId" render={() => <StockPage></StockPage>}/>
             <Route exact path="/stocks/:stockId" render={() => <StockPage></StockPage>}/>
+
             <Route exact path="/login" component={Login} />
             <Route exact path="/signup" component={SignUp} />
             <Route path="/landing" component={LandingPage}/>
