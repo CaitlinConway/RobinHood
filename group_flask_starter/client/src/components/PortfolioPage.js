@@ -15,13 +15,11 @@ class PortfolioPage extends React.Component{
     this.props.getWatchList(this.props.auth);
     this.props.getNews();
   }
-<<<<<<< HEAD
 
   linkToPage = (link) => {
     return <Redirect to={link}/>
   }
 
-=======
   hideAccount = (e) =>{
     e.preventDefault();
     let accountLi = document.getElementById('account-drop-down-li');
@@ -32,7 +30,6 @@ class PortfolioPage extends React.Component{
     let accountLi = document.getElementById('account-drop-down-li');
     accountLi.style.display = "flex";
   }
->>>>>>> master
   render(){
     if (this.props.watchlist && this.props.news){
       let random = Math.floor(Math.random() * Math.floor(Object.keys(this.props.watchlist).length)) +1

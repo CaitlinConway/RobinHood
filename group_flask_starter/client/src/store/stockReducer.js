@@ -63,12 +63,12 @@ export const getWatchList = function(userId) {
 }
 
 
-export const addToWatchList = function(watchlist, ticker) {
+export const addToWatchList = function(userId, ticker) {
   return async (dispatch) => {
     let res = await fetch(`api/stocks/watchlist`, {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({ticker, watchlist})
+      body: JSON.stringify({ticker, userId})
     })
     if(res.ok){
       let watchlist = await res.json();

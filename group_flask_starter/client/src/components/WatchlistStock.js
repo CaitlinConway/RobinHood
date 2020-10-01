@@ -1,16 +1,10 @@
 import React, {useEffect, useState} from "react";
-import { BrowserRouter, Link, NavLink, Redirect, Route, useHistory } from "react-router-dom";
-import {LineChart, XAxis, YAxis, Tooltip, ResponsiveContainer, Line} from "recharts";
+import {  NavLink } from "react-router-dom";
+import {LineChart, XAxis, YAxis, ResponsiveContainer, Line} from "recharts";
 import StockPage from "./StockPage";
 import StockPrice from "./StockPrice";
 
 export default function WatchListStock({stock}) {
-  const history = useHistory();
-  // const handleStockClick = (e) =>{
-  //   e.preventDefault();
-  //   history.push(`/stocks/${stock}`)
-  //   return <Route to={`/stocks/${stock}`}></Route>
-  // }
   const [stockData, setStockData] = useState("");
   const [stockPrice, setStockPrice] = useState("0");
   const stockLink = `/stocks/${stock.toLowerCase()}`

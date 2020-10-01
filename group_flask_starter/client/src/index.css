@@ -324,13 +324,11 @@ input::-webkit-inner-spin-button {
   justify-self: center;
   margin: 25px auto;
   background-color: transparent;
-  color: #03C805;
   width: 60%;
   padding: 15px;
   font-size: 14px;
   font-weight: 550;
   border-radius: 6px;
-  border: 1px solid #03C805;
   justify-content: center;
   outline: none;
 }

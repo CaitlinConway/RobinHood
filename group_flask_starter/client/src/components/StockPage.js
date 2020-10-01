@@ -7,14 +7,19 @@ import Logo from "../robinhood-logomark-white.png";
 import greenLogo from "../robinhood-logomark-green.png";
 import AddToWatchlist from "./AddToWatchlist";
 import {useSelector} from "react-redux"
+import { addToWatchList } from "../store/stockReducer";
 
 
 export default function StockPage(props) {
-    let ticker = props.match.params.stockId;
+    const ticker = props.match.params.stockId;
+    const watchlist = useSelector(state => state?.stock?.watchlist);
+    const userId = useSelector(state => state?.auth?.id);
     const [companyData, setCompanyData] = useState({})
     const [stockPrice, setStockPrice] = useState("0");
-    const state = useSelector(state => state)
-    console.log(state);
+    console.log(watchlist);
+    // const [inWatchlist, setInWatchlist] = useState("");
+    const [inWatchlist, setInWatchlist] = useState(Object.values(watchlist).includes(ticker.toUpperCase()));
+
 
     useEffect(()=> {
         async function getProfile() {
@@ -37,6 +42,15 @@ export default function StockPage(props) {
         getCurrentPrice()
 
     }, [ticker])
+
+
+    const updateWatchlist = () => {
+        if (!inWatchlist) {
+            return addToWatchList(userId, ticker)
+        } else {
+            return
+        }
+    }
 
     return (
         <>
@@ -80,7 +94,10 @@ export default function StockPage(props) {
             </div>
             <div className="stock-buy">
                 <StockBuy ticker={ticker.toUpperCase()} price={stockPrice} />
-                <AddToWatchlist ticker={ticker}/>
+                <button className="add-to-watchlist" onClick={updateWatchlist}
+                    type="button"style={!inWatchlist ? {color: "#03C805", border: "1px solid #03C805"} : {color: "#FF5103", border: "1px solid #FF5103"}}>
+                        {!inWatchlist ? "✓ Add to" : "x  Remove from"} Watchlist
+                </button>
             </div>
         </div>
         </>

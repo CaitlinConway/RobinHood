@@ -3,7 +3,7 @@ from flask import Blueprint, jsonify, session, request
 import requests
 import time
 import datetime
-from app.models import Watchlist, WatchlistContent, Stock, db
+from app.models import Watchlist, WatchlistContent, Stock, User, db
 
 stock_routes = Blueprint("stocks", __name__)
 api_key = os.environ.get("FINHUB_API_KEY")
@@ -47,8 +47,9 @@ def watchList(userId):
 
 
 @stock_routes.route("/watchlist", methods=["POST"])
-def watchListPost():
+def watchListAdd():
   data = request.json
+  print(data);
   if data:
     stock = Stock.query.filter(Stock.ticker == data["ticker"]).first()
     if not stock:
@@ -56,7 +57,9 @@ def watchListPost():
       db.session.add(newStock)
       db.session.commit()
       stock = Stock.query.filter(Stock.ticker == data["ticker"]).first()
-    watchListItem = WatchlistContent(stockId=stock.id, watchlistId= data["watchlist"])
+    # watch_list_id = User.query.filter(User.id == data["userId"]).first().watchlistId
+    # print(watch_list_id)
+    watchListItem = WatchlistContent(stockId=stock.id, watchlistId=watch_list_id)
     db.session.add(watchListItem)
     db.session.commit()
     watchListStocks = dict()
@@ -69,7 +72,7 @@ def watchListPost():
   return "error no list"
 
 
-@stock_routes.route("/watchlist/<stockId>", methods=["DELETE"])
+@stock_routes.route("/watchlist/<watchListId>/<stockId>", methods=["DELETE"])
 def watchListDelete():
   data = request.json
   if data:
