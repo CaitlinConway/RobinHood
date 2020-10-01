@@ -1,7 +1,7 @@
-import React, { Component } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import { signUp, login } from "../store/authReducer";
-import { Redirect } from "react-router-dom";
+
 
 class SignUp extends React.Component {
     constructor(props) {
@@ -50,7 +50,7 @@ class SignUp extends React.Component {
         const { firstName, lastName, email, password, errors } = this.state;
         return (
           <div className="signup-page">
-            <img src=""></img>
+            <img src="" alt=""></img>
             <div className="signup-form-content">
                 <div className="signup-form-header">Make Your Money Move</div>
                 <div className="signup-form-tag">Batmanhood lets you invest in vigilante justice, criminal-free.</div>
@@ -110,7 +110,7 @@ class SignUp extends React.Component {
                     <div className="signup-page-testimonial-header">Account Protection</div>
                     <div className="signup-page-testimonial">
                         Batmanhood Financial is a member of SIPC.
-                        Securities in your account are protected up to $500,000. For details, please see <a className="signup-link" href="https://www.sipc.org/" target="_blank">www.sipc.org</a>.</div>
+                        Securities in your account are protected up to $500,000. For details, please see <a className="signup-link" href="https://www.sipc.org/" target="_blank" rel="noopener noreferrer">www.sipc.org</a>.</div>
                     <div className="signup-page-testimonial-header">Keep tabs on your money</div>
                     <div className="signup-page-testimonial">
                         Set up customized news and notifications to stay on top of your assets as casually or as
@@ -126,12 +126,12 @@ class SignUp extends React.Component {
                 before investing.
                 </p>
                 <p>
-                All securities and investments are offered to self-directed customers by Batmanhood Financial, LLC, member <a className="signup-link" href="https://www.finra.org/" target="_blank">FINRA</a> & <a className="signup-link" href="https://www.sipc.org/" target="_blank">SIPC</a>.
-                Additional information about your broker can be found by clicking <a className="signup-link" href="https://brokercheck.finra.org/" target="_blank">here</a>. Batmanhood Financial, LLC is a wholly owned subsidiary
+                All securities and investments are offered to self-directed customers by Batmanhood Financial, LLC, member <a className="signup-link" href="https://www.finra.org/" target="_blank" rel="noopener noreferrer">FINRA</a> & <a className="signup-link" href="https://www.sipc.org/" target="_blank" rel="noopener noreferrer">SIPC</a>.
+                Additional information about your broker can be found by clicking <a className="signup-link" href="https://brokercheck.finra.org/" target="_blank" rel="noopener noreferrer">here</a>. Batmanhood Financial, LLC is a wholly owned subsidiary
                 of Batmanhood Markets, Inc.
                 </p>
                 <p>
-                Check the background of Batmanhood Financial LLC and Batmanhood Securities, LLC on <a className="signup-link" href="https://brokercheck.finra.org/" target="_blank">FINRA's BrokerCheck</a>.
+                Check the background of Batmanhood Financial LLC and Batmanhood Securities, LLC on <a className="signup-link" href="https://brokercheck.finra.org/" target="_blank" rel="noopener noreferrer">FINRA's BrokerCheck</a>.
                 </p>
                 <p>
                 © 2020 Batmanhood. All rights reserved unless you want this stuff then by all means go for it.
