@@ -29,14 +29,19 @@ function App() {
         <Provider store={store}>
           <Switch>
             <ConnectedProtectedRoute
-                  exact
-                  path="/"
+                  exact path="/"
                   component={PortfolioPage}
                 ></ConnectedProtectedRoute>
             <Route exact path="/users">
                   <UserList />
             </Route>
-            <Route exact path="/stocks/:stockId" component={StockPage}/>
+            <ConnectedProtectedRoute
+                  exact path="/stocks/:stockId"
+                  render={() => <StockPage></StockPage>}
+                  // component={StockPage}
+            ></ConnectedProtectedRoute>
+            <Route exact path="/stocks/:stockId" render={() => <StockPage></StockPage>}/>
+            <Route exact path="/stocks/:stockId" render={() => <StockPage></StockPage>}/>
             <Route exact path="/login" component={Login} />
             <Route exact path="/signup" component={SignUp} />
             <Route path="/landing" component={LandingPage}/>

@@ -1,7 +1,7 @@
 import React from "react";
 import WatchListStock from "./WatchlistStock";
 
-const WatchList = (watchlist, userId) => {
+const WatchList = (watchlist, userId, linkfunc) => {
   return (
     <>
       <div id="watchlist-div">
@@ -9,7 +9,7 @@ const WatchList = (watchlist, userId) => {
       <ul id="watchlist">
         {Object.values(watchlist.watchlist).slice(0,9).map((stock) => (
           <li key={stock}>
-            <WatchListStock stock={stock} userID={userId}></WatchListStock>
+            <WatchListStock stock={stock} userID={userId} linkfunc={linkfunc}></WatchListStock>
           </li>
         ))}
       </ul>

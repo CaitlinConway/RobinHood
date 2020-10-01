@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Switch, Route, NavLink } from 'react-router-dom';
+import { BrowserRouter, Switch, Route, NavLink, Redirect, Link } from 'react-router-dom';
 import Logo from "../robinhood-logomark-white.png"
 import SearchBar from './SearchBar'
 import greenLogo from "../robinhood-logomark-green.png"
@@ -14,6 +14,11 @@ class PortfolioPage extends React.Component{
     this.props.getWatchList(this.props.auth);
     this.props.getNews();
   }
+
+  linkToPage = (link) => {
+    return <Redirect to={link}/>
+  }
+
   render(){
     if (this.props.watchlist && this.props.news){
       let random = Math.floor(Math.random() * Math.floor(Object.keys(this.props.watchlist).length)) +1
@@ -51,7 +56,7 @@ class PortfolioPage extends React.Component{
         </div>
         <div>
         <div className = 'watch-list-div'>
-          <WatchList watchlist={this.props.watchlist} userId={this.props.auth}></WatchList>
+          <WatchList watchlist={this.props.watchlist} userId={this.props.auth} linkFunc={this.linkToPage}></WatchList>
         </div>
         </div>
     </BrowserRouter>
