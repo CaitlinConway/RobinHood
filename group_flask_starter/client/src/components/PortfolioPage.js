@@ -8,11 +8,15 @@ import {connect} from 'react-redux'
 import {getWatchList, getNews} from '../store/stockReducer'
 import StockChartHomePage from './StockChartHomePage'
 import NewsFeed from './NewsFeed'
+import AccountDropDown from './AccountDropDown'
 
 class PortfolioPage extends React.Component{
   componentDidMount(){
     this.props.getWatchList(this.props.auth);
     this.props.getNews();
+  }
+  showAccount = (e) =>{
+    e.preventDefault();
   }
   render(){
     if (this.props.watchlist && this.props.news){
@@ -38,7 +42,8 @@ class PortfolioPage extends React.Component{
                   />
                   </NavLink></li>
                 <li className="search"><SearchBar></SearchBar></li>
-                <li><NavLink to="/users" activeclass="active" className='user-account-button'>Account</NavLink></li>
+                <li><button onClick={this.showAccount} activeclass="active" className='user-account-button'>Account</button></li>
+                <li><AccountDropDown user={this.props.auth}></AccountDropDown></li>
                 <li><NavLink to="/" activeclass="active" className = 'portfolio-button'>Portfolio</NavLink></li>
             </ul>
         </nav>
