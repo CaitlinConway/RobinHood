@@ -33,7 +33,7 @@ class SearchBar extends React.Component {
       this.state.label.forEach(ticker => {
         for (const key in ticker) {
           const checkStr = e.target.value;
-          if ((key === "name" || key === "ticker") && (ticker[key].startsWith(checkStr)) && !(name.includes(ticker)) ) {
+          if ((key === "name" || key === "ticker") && (ticker[key].toLowerCase().startsWith(checkStr.toLowerCase())) && !(name.includes(ticker)) ) {
             name.push(ticker);
           }
           // if (key === "ticker" && ticker[key].startsWith(checkStr)) {
@@ -55,10 +55,31 @@ class SearchBar extends React.Component {
 
   render() {
     const { search } = this.state;
-    const pagePath = {
-      pathname: "/test",
-      key: Math.random(),
-    }
+    // const pagePath = {
+    //   pathname: '',
+    //   key: Math.random(),
+    // }
+    const pagePath = () => {
+      let pageData = [];
+      name.map(array => {
+      if (!(window.location.href.includes("stocks"))) {
+        pageData.push(
+        <>
+        <span className="search-ul-1" key="stock"><Link to={`stocks/${array.ticker}`}>{array.ticker}</Link></span>
+        <span className="search-ul-2" key="stock"><Link to={`stocks/${array.ticker}`}>{array.name}</Link></span>
+        </>
+        );
+      } else {
+        pageData.push(
+        <>
+        <div className="search-ul-1" key="stock"><Link to={`${array.ticker}`}>{array.ticker}</Link></div>
+        <div className="search-ul-2" key="stock"><Link to={`${array.ticker}`}>{array.name}</Link></div>
+        </>
+        )
+      }
+    })
+      return pageData;
+    };
 
     return (
       <div className="search-bar-container">
@@ -73,10 +94,10 @@ class SearchBar extends React.Component {
             />
         </div>
         <div id="search-list" className="search-bar-list" hidden>
-          <section id="section-1">{name.map(array => (<ul className="search-ul" key="stock"><Link to={pagePath}>{array.ticker}</Link></ul>))}</section>
-          {/* <section id="section-1">{name.map(stock => (<ul key={stock}><a href={`stocks/${stock}`}>{stock}</a></ul>))}</section> */}
-          <section id="section-1">{name.map(array => (<ul className="search-ul" key="stock"><Link to={`stocks/${array.ticker}`}>{array.name}</Link></ul>))}</section>
-          {/* <section id="section-2">{labels.map(stock => (<ul key={stock}><a href={`stocks/${stock}`}>{stock}</a></ul>))}</section> */}
+          {/* <section id="section-1">{name.map(array => (<ul className="search-ul" key="stock"><Link to={`${pagePath()}/${array.ticker}`}>{array.ticker}</Link></ul>))}</section> */}
+          <section id="section-1">{pagePath()}</section>
+          {/* <section id="section-2">{pagePath()}</section> */}
+
         </div>
       </div>
     );

@@ -790,17 +790,31 @@ input::-webkit-inner-spin-button {
   border-bottom-color: rgba(240, 244, 246, 0.3);
 }
 
-#section-1::first-letter, #section-2::first-letter, .search-ul::first-letter {
+#section-1::first-letter, #section-2::first-letter, .search-ul-1::first-letter, .search-ul-2::first-letter {
   color: rgb(0, 200, 5);
+}
+
+#section-1 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-auto-rows: 20px;
+  width: 300px;
+  padding-top: 20px;
+  column-width: 30px;
+}
+
+.search-ul-1 {
+  grid-column: 1 / 2;
+  padding-left: 20px;
+}
+
+.search-ul-2 {
+  grid-column: 2 / 3;
 }
 
 a {
   color: inherit;
   text-decoration: none;
-}
-
-#section-2 {
-  padding-top: 20px;
 }
 
 .search-input {
@@ -816,10 +830,6 @@ a {
   outline: none;
 }
 
-#section-1 {
-  padding-top: 20px;
-}
-
 .search-input:focus {
   outline: none;
   background-color: rgba(30, 33, 36, 1);
@@ -833,6 +843,9 @@ a {
 .search-input::placeholder {
   color: rgba(240, 244, 246, 0.5);
 }
+
+/* Account Drop-Down CSS */
+
 #account-drop-down-li{
   background-color: #1E2124;
   position: fixed;
