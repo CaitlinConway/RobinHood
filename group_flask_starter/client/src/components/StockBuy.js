@@ -40,7 +40,7 @@ export default function StockBuy(props) {
                         <option> Sell {props.ticker} </option>
                     </select>
                     <div className="stock-input">
-                        <label for="type"> Invest In</label>
+                        <label htmlFor="type"> Invest In</label>
                         <select onChange={updateType} name="type" id="stock-type-dropdown" value={type}>
                             <option>Dollars</option>
                             <option>Shares</option>
