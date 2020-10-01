@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink, Redirect, useHistory } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import BlackLogo from "../robinhood-logomark-black.png"
 import greenLogo from "../robinhood-logomark-green.png"
 import batman from "../green batman.png"
@@ -45,7 +45,7 @@ function LandingPage(props) {
           <button onClick={signUp} className = 'landing-page-sign-up-button'>Sign Up</button>
           </div>
           <div className="batman">
-            <img id={'batman'} src={batman}/>
+            <img id={'batman'} src={batman} alt=""/>
           </div>
         </div>
         <div className='comission-fees'>

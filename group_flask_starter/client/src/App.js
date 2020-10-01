@@ -1,12 +1,9 @@
 import React from 'react';
-import { BrowserRouter, Switch, Route, NavLink, Redirect } from 'react-router-dom';
+import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import { Provider, connect } from 'react-redux';
 import configureStore from "./store/configureStore";
 import StockPage from "./components/StockPage";
 import UserList from './components/UsersList';
-import Logo from "./robinhood-logomark-white.png";
-import SearchBar from './components/SearchBar';
-import greenLogo from "./robinhood-logomark-green.png";
 import Login from './components/Login';
 import SignUp from './components/SignUp';
 import PortfolioPage from './components/PortfolioPage';

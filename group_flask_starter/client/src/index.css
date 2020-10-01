@@ -564,7 +564,7 @@ input::-webkit-inner-spin-button {
   font-size: 25px;
   display: flex;
   flex-wrap: wrap;
-  width: 40%;
+  width: fit-content;
   max-height: 200px
 }
 #invest{
