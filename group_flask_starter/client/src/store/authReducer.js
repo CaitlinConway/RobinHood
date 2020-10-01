@@ -9,6 +9,7 @@ export default function authReducer(state = {}, action) {
         case LOGIN:
           newState["id"] = action.id;
           newState["email"] = action.email;
+          newState["balance"] = action.balance;
             return newState;
         case LOGOUT:
             return {};
@@ -17,11 +18,12 @@ export default function authReducer(state = {}, action) {
     }
 }
 
-const setUser = (id, email) => {
+const setUser = (id, email, balance) => {
     return {
         type: LOGIN,
         id,
-        email
+        email,
+        balance
     }
 }
 
@@ -39,7 +41,7 @@ export const login = function(email, password) {
         })
         if(res.ok) {
             let currentUser = await res.json();
-            dispatch(setUser(currentUser.id, currentUser.email));
+            dispatch(setUser(currentUser.id, currentUser.email, currentUser.balance));
         }
     }
 }
@@ -72,7 +74,7 @@ export const signUp = function(firstName, lastName, email, password) {
             alert(error)
         }
         else if(res.ok && !res.data.error) {
-            dispatch(setUser(res.data.id, res.data.email))
+            dispatch(setUser(res.data.id, res.data.email, res.data.balance))
             alert("Signup successful! Returning to login page.")
         }
     }

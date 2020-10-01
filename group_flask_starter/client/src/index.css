@@ -120,7 +120,7 @@ body {
 
 .stock-chart {
   width: 80%;
-  margin-top: calc((100vh - 500px)/2)
+  margin-top: 100px;
 }
 
 .stock-chart-container {
@@ -214,7 +214,7 @@ body {
   width: 60%;
   justify-content: space-between;
   margin: 0 auto;
-  margin-top: calc((100vh - 500px)/2);
+  margin-top: 100px;
   border: 1px solid lightgray;
   border-radius: 4px;
   color: white;
@@ -225,6 +225,10 @@ body {
   display: flex;
   justify-content: space-between;
   margin-top: 25px;
+}
+
+.stock-input > label {
+  margin: auto 0;
 }
 
 .stock-buy-sell {
@@ -239,6 +243,10 @@ body {
 
 .stock-buy-sell:hover {
   cursor: pointer;
+}
+
+.stock-buy-sell:focus {
+  outline: none;
 }
 
 .market {
@@ -273,13 +281,18 @@ input::-webkit-inner-spin-button {
 }
 
 #stock-amount:focus {
-  border: 1px solid green;
+  outline: none;
+  border: 1.2px solid #03C805;
   background-color: transparent;
+}
+
+#stock-type-dropdown:focus {
+  outline: none;
 }
 
 #stock-amount:hover {
   background-color: transparent;
-  border: 1px solid #F5F8FA;
+
 }
 
 
@@ -287,6 +300,30 @@ input::-webkit-inner-spin-button {
 #stock-type-dropdown:hover {
   box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.25);
   cursor: pointer;
+}
+
+.stock-buy-button{
+  width: 100%;
+  background-color: #03C805;
+  border: none;
+  padding: 15px;
+  font-size: 14px;
+  font-weight: 550;
+  margin: 25px 0;
+  border-radius: 6px;
+}
+
+.balance {
+  margin: 10px 0;
+  padding-top: 20px;
+  border-top: 1px solid white;
+  text-align: center;
+  color: #03C805;
+}
+
+.stock-buy-button:hover {
+  cursor: pointer;
+  background-color: #19ca1c;
 }
 
 /*  */

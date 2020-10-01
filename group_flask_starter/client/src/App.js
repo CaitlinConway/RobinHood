@@ -30,21 +30,20 @@ function App() {
   return (
     <BrowserRouter>
         <Provider store={store}>
-        <Switch>
-        <ConnectedProtectedRoute
-              exact
-              path="/"
-              component={PortfolioPage}
-            ></ConnectedProtectedRoute>
+          <Switch>
+            <ConnectedProtectedRoute
+                  exact
+                  path="/"
+                  component={PortfolioPage}
+                ></ConnectedProtectedRoute>
             <Route exact path="/users">
-                <UserList />
+                  <UserList />
             </Route>
             <Route exact path="/stocks/:stockId" component={StockPage}/>
             <Route exact path="/login" component={Login} />
             <Route exact path="/signup" component={SignUp} />
-            <Route path="/landing" component={LandingPage}>
-              </Route>
-        </Switch>
+            <Route path="/landing" component={LandingPage}/>
+          </Switch>
         </Provider>
     </BrowserRouter>
   );

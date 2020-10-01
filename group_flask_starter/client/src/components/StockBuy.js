@@ -1,8 +1,11 @@
 import React, {useState} from "react";
+import { useSelector } from "react-redux";
 
 export default function StockBuy(props) {
-    let [type, setType] = useState("Dollars")
-    let [amount, setAmount] = useState(0)
+    let [type, setType] = useState("Dollars");
+    let [amount, setAmount] = useState(0);
+    let [buy, setBuy] = useState(true);
+    const balance = useSelector(state => state.auth?.balance || 0);
 
     const updateType = (e) => {
        setType(e.target.value)
@@ -12,10 +15,27 @@ export default function StockBuy(props) {
         setAmount(Number(e.target.value))
     }
 
+    const updateBuy = (e) => {
+        setBuy(e.target.value === "Buy")
+    }
+
+    const makeTrade = (e) => {
+        e.preventDefault();
+        const data = {
+            ticker: props.ticker,
+            price: props.price,
+            shares: (type === "Dollars" ? (amount/Number(props.price)) : amount),
+            buy: buy,
+            buyDate: Date.now()
+            // userId:
+        }
+
+    }
+
     return (
         <div className="buy-container">
-            <form method="POST" action="/stocks/trades" className="buy-form">
-                    <select className="stock-input stock-buy-sell">
+            <form method="POST" action="/stocks/trades" className="buy-form" autoComplete="off">
+                    <select className="stock-input stock-buy-sell" onChange={updateBuy}>
                         <option> Buy {props.ticker} </option>
                         <option> Sell {props.ticker} </option>
                     </select>
@@ -36,9 +56,13 @@ export default function StockBuy(props) {
                     </div>
                     <div className="stock-input">
                         <div style={{fontWeight: "bold"}}> {type === "Dollars" ? "Est. Quantity" : "Estimated Cost"}</div>
-                        <div>${type === "Dollars" ? ((amount/Number(props.price)) || 0).toFixed(2) : ((amount * Number(props.price))|| 0).toFixed(2)}</div>
+                        <div>{type === "Dollars" ? ((amount/Number(props.price)) || 0).toFixed(2) : "$" + ((amount * Number(props.price))|| 0).toFixed(2)}</div>
                     </div>
+                    <button type="submit" className="stock-buy-button" onClick={makeTrade}>Place Order</button>
             </form>
+            <div className="balance">
+                Your current balance is ${balance}
+            </div>
         </div>
         )
 }

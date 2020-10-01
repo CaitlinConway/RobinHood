@@ -1,6 +1,11 @@
 import React, {useEffect, useState} from "react";
+import { NavLink } from "react-router-dom";
 import StockChart from "./StockChart";
-import StockBuy from "./StockBuy"
+import StockBuy from "./StockBuy";
+import SearchBar from "./SearchBar";
+import Logo from "../robinhood-logomark-white.png";
+import greenLogo from "../robinhood-logomark-green.png";
+
 
 export default function StockPage(props) {
     let ticker = props.match.params.stockId;
@@ -30,6 +35,22 @@ export default function StockPage(props) {
     }, [ticker])
 
     return (
+        <>
+        <div className="nav-bar">
+            <nav>
+                <ul className="nav-list">
+                    <li className="home-logo-li">
+                        <NavLink to="/" activeclass="active">
+                        <img className="home-logo" src={Logo} alt=""/>
+                        <img className="green-home-logo" src={greenLogo} alt="" hidden/>
+                        </NavLink>
+                    </li>
+                    <li className="search"><SearchBar></SearchBar></li>
+                    <li><NavLink to="/users" activeclass="active" className='user-account-button'>Account</NavLink></li>
+                    <li><NavLink to="/" activeclass="active" className = 'portfolio-button'>Portfolio</NavLink></li>
+                </ul>
+            </nav>
+        </div>
         <div className="stock-page">
             <div className="stock-details">
                 <div className="stock-chart-container" >
@@ -57,5 +78,6 @@ export default function StockPage(props) {
                 <StockBuy ticker={ticker.toUpperCase()} price={stockPrice} />
             </div>
         </div>
+        </>
     )
 }

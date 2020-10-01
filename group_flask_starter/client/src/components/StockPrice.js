@@ -2,10 +2,6 @@ import React from "react";
 
 class StockPrice extends React.Component {
 
-    componentDidMount() {
-        console.log(this.props)
-    }
-
     render() {
         let percent = Math.round(((this.props.price - this.props.first)/this.props.first)*100)
         let value = this.props.price - this.props.first
