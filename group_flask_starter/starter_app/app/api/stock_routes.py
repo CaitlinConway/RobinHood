@@ -52,6 +52,7 @@ def watchListAdd():
   print(data);
   if data:
     watchList = WatchlistContent.query.filter(WatchlistContent.watchlistId == data["watchlistId"]).all()
+    print(len(watchList))
     if len(watchList) >= 10:
       return {"error": "You can't have more than 10 stocks in your watchlist"}
     stock = Stock.query.filter(Stock.ticker == data["ticker"]).first()

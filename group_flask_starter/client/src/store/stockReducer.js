@@ -76,7 +76,12 @@ export const addToWatchList = function(watchlistId, ticker) {
     })
     if(res.ok){
       let watchlist = await res.json();
-      dispatch(getWatchListThunk(watchlist));
+      if(watchlist.error) {
+        return watchlist
+      } else {
+        dispatch(getWatchListThunk(watchlist));
+        return true;
+      }
     }
   }
 }

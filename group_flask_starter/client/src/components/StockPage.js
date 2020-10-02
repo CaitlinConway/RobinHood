@@ -44,10 +44,11 @@ export default function StockPage(props) {
     }, [ticker])
 
 
-    const updateWatchlist = () => {
+    const updateWatchlist = async () => {
         if (!inWatchlist) {
-            dispatch(addToWatchList(watchlistId, ticker));
-            setInWatchlist(true);
+            let res = await dispatch(addToWatchList(watchlistId, ticker));
+            console.log(res);
+            if(!res.error) setInWatchlist(true);
 
         } else {
             dispatch(deleteFromStockWatchlist(watchlistId, ticker));
