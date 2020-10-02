@@ -2,7 +2,7 @@
 
 .nav-list{
   position: absolute;
-  top: 0px;
+  top: 0;
   display: grid;
   grid-template-columns: 10% 60% 10% 10% 10%;
   grid-template-rows: 100%;
@@ -12,7 +12,8 @@
   font-weight: bold;
   font-size: 13px;
   list-style-type:none;
-  align-items: center;
+  align-items: top;
+
 }
 
 body {
@@ -39,12 +40,6 @@ body {
 .home-logo-li:hover .home-logo{
   display: none;
 }
-/* .search{
-  height: 80%;
-}
-.search:hover{
-  box-shadow: 0px 4px 20px 0px rgba(255, 255, 255, 0.05);
-} */
 
 
 /* Login Page CSS */
@@ -769,17 +764,17 @@ input::-webkit-inner-spin-button {
 
 .search-bar {
   height: 30px;
-
+  width: 93.2%;
 }
 
 .search-bar-list {
-  position: absolute;
   color: white;
-  flex-direction: row;
-  height: 460px;
+  flex-direction: column;
+  padding-bottom: 20px;
+  height: 100%;
+  max-height: 430px;
   background-color: rgba(30, 33, 36, 1);
-  width: 99.9%;
-  margin-top: 32px;
+  width: 100%;
   z-index: 1;
   border: 0.8px solid;
   border-bottom-left-radius: 3px;
@@ -796,20 +791,96 @@ input::-webkit-inner-spin-button {
 
 #section-1 {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-auto-rows: 20px;
-  width: 500px;
-  padding-top: 20px;
+  grid-template-columns: 0.25fr 1fr;
+  grid-auto-rows: 30px;
+  width: 100%;
+  max-width: 500px;
+  padding-top: 10px;
   column-width: 30px;
+  font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+  font-size: 10pt;
+  font-weight: 500;
+}
+
+.search-ul {
+  grid-column: 1 / 3;
+  display: grid;
+  grid-template-columns: 0.25fr 1fr;
+  grid-auto-rows: 30px;
+  width: 95.6%;
+}
+
+.search-ul:hover {
+  background-color: rgba(228, 223, 237, 0.5);
 }
 
 .search-ul-1 {
   grid-column: 1 / 2;
   padding-left: 20px;
+  align-self: center;
 }
 
 .search-ul-2 {
   grid-column: 2 / 3;
+  align-self: center;
+}
+
+.search-list-type {
+  grid-column: 1 / 3;
+  align-self: center;
+  padding-left: 20px;
+  color: rgba(132, 145, 151, 1);
+  font-weight: 500;
+}
+
+.search-list-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+.search-list-buttons-header {
+  margin-top: 30px;
+  padding-left: 20px;
+  color: rgba(132, 145, 151, 1);
+  font-weight: 500;
+  grid-column: 1 / 2;
+  font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+.search-list-button {
+  color: white;
+  background-color:rgba(30, 33, 36, 1);
+  font-size: 10pt;
+  border: 1px solid;
+  border-radius: 25px;
+  max-width: 100%;
+  padding-left: 30px;
+  padding-right: 10px;
+  padding-bottom: 4px;
+  height: 30px;
+  justify-self: left;
+  background-image: url("./batman-icon-png-12037.png");
+  background-position: 5px 8px;
+  background-repeat: no-repeat;
+  background-size: 20px;
+  margin-top: 15px;
+  font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+  font-weight: 500;
+}
+
+.search-list-button:hover {
+  background-color: rgba(228, 223, 237, 0.5);
+  transition: 0.2s;
+}
+
+.search-list-button:active {
+ background-color: rgba(0, 160, 4, 1);
+}
+
+.search-list-button:focus {
+  outline: 0;
 }
 
 a {
@@ -818,22 +889,29 @@ a {
 }
 
 .search-input {
-  width: 99%;
+  width: 100%;
+  max-width: 464px;
   background-color: rgb(4, 15, 21);
   height: 100%;
   color: white;
-  /* box-shadow: 2px 2px;
-  border: 2px solid white;
-  border-radius: 10px; */
   border-radius: 3px;
   border: 0.8px solid rgba(240, 244, 246, 0.3);
   outline: none;
+  background-image: url('./Vector_search_icon.svg');
+  background-position: 5px 7px;
+  background-repeat: no-repeat;
+  background-size: 18px;
+  padding-left: 7%;
 }
 
 .search-input:focus {
   outline: none;
   background-color: rgba(30, 33, 36, 1);
   border-bottom-color: none;
+}
+
+.search-input:focus {
+  background-color: rgba(30, 33, 36, 1);
 }
 
 .search-input:hover {
