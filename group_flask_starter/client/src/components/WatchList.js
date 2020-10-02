@@ -1,15 +1,16 @@
 import React from "react";
 import WatchListStock from "./WatchlistStock";
 
-const WatchList = (watchlist, userId) => {
+const WatchList = (watchlist, userId, linkfunc) => {
+  console.log(watchlist)
   return (
     <>
       <div id="watchlist-div">
       <h1 className = 'watchlist-title'>Stocks</h1>
       <ul id="watchlist">
-        {Object.values(watchlist.watchlist).slice(0,9).map((stock) => (
+        {watchlist.watchlist.tickers.slice(0,9).map((stock) => (
           <li key={stock}>
-            <WatchListStock stock={stock} userID={userId}></WatchListStock>
+            <WatchListStock stock={stock} userID={userId} linkfunc={linkfunc}></WatchListStock>
           </li>
         ))}
       </ul>
@@ -17,5 +18,6 @@ const WatchList = (watchlist, userId) => {
     </>
   );
 };
+
 
 export default WatchList;

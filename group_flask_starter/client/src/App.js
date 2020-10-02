@@ -28,15 +28,19 @@ function App() {
     <BrowserRouter>
         <Provider store={store}>
           <Switch>
-          <Route exact path="/stocks/:stockId" render={(props) => <StockPage {...props}></StockPage>}/>
+          {/* <Route exact path="/stocks/:stockId" render={(props) => <StockPage {...props}></StockPage>}/> */}
             <ConnectedProtectedRoute
-                  exact
-                  path="/"
+                  exact path="/"
                   component={PortfolioPage}
                 ></ConnectedProtectedRoute>
             <Route exact path="/users">
                   <UserList />
             </Route>
+            <ConnectedProtectedRoute
+                  exact path="/stocks/:stockId"
+                  render={(props) => <StockPage {...props}></StockPage>}
+                  // component={StockPage}
+            ></ConnectedProtectedRoute>
 
             <Route exact path="/login" component={Login} />
             <Route exact path="/signup" component={SignUp} />

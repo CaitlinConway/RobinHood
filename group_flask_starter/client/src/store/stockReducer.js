@@ -1,6 +1,6 @@
 
 const GET_WATCHLIST = "watchlist";
-// const ADD_TO_WATCHLIST = "watchlist/add"
+const ADD_TO_WATCHLIST = "watchlist/add"
 const DELETE_STOCK_WATCHLIST = "watchlist/delete"
 const SEARCH = ""
 const GET_NEWS = 'news';
@@ -12,8 +12,12 @@ export default function stockReducer(state = {}, action) {
           newState["watchlist"] = action.watchlist;
           return newState;
         case DELETE_STOCK_WATCHLIST:
-          delete newState[action.stock.id];
+          console.log(action.stock)
+          console.log(newState.watchlist.tickers)
+          newState.watchlist.tickers = newState.watchlist.tickers.filter(el => el !== action.stock.ticker )
           return newState;
+        case ADD_TO_WATCHLIST:
+          return;
         case GET_NEWS:
           newState["news"] = action.news
           return newState;
@@ -28,7 +32,8 @@ const getWatchListThunk = (watchlist) => {
         watchlist
     }
 }
-const deleteWatchList = (stock) => {
+
+const deleteFromWatchList = (stock) => {
   return {
     type: DELETE_STOCK_WATCHLIST,
     stock
@@ -55,36 +60,42 @@ export const getWatchList = function(userId) {
 
         if(res.ok) {
             let watchlist = await res.json();
+            console.log(watchlist)
             dispatch(getWatchListThunk(watchlist));
         }
     }
 }
 
 
-export const addToWatchList = function(watchlist, ticker) {
+export const addToWatchList = function(watchlistId, ticker) {
   return async (dispatch) => {
-    let res = await fetch(`api/stocks/watchlist`, {
+    let res = await fetch(`/api/stocks/watchlist`, {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({ticker, watchlist})
+      body: JSON.stringify({ticker,watchlistId})
     })
     if(res.ok){
       let watchlist = await res.json();
-      dispatch(getWatchListThunk(watchlist));
+      if(watchlist.error) {
+        return watchlist
+      } else {
+        dispatch(getWatchListThunk(watchlist));
+        return true;
+      }
     }
   }
 }
 
-export const deleteStockWatchlist = function(watchlist, ticker) {
+export const deleteFromStockWatchlist = function(watchlistId, ticker) {
   return async (dispatch) => {
-    let res = await fetch(`api/stocks/watchlist`, {
+    let res = await fetch(`/api/stocks/watchlist/${watchlistId}/${ticker.toUpperCase()}`, {
       method: 'DELETE',
       headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({ticker, watchlist})
     })
+
     if (res.ok){
       let stock = await res.json();
-      dispatch(deleteWatchList(stock));
+      dispatch(deleteFromWatchList(stock));
     }
   }
 }

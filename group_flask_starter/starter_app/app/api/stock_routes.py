@@ -3,7 +3,7 @@ from flask import Blueprint, jsonify, session, request
 import requests
 import time
 import datetime
-from app.models import Watchlist, WatchlistContent, Stock, db
+from app.models import Watchlist, WatchlistContent, Stock, User, db
 
 stock_routes = Blueprint("stocks", __name__)
 api_key = os.environ.get("FINHUB_API_KEY")
@@ -24,7 +24,6 @@ def stock(stockId):
 def getCurrent(stockId):
     r = requests.get(f'https://finnhub.io/api/v1/quote?symbol={stockId.upper()}&token={api_key}')
     res = r.json()
-    print(res)
     return({"values": res})
 
 
@@ -33,59 +32,64 @@ def getProfile(stockId):
     print(stockId)
     r = requests.get(f'https://finnhub.io/api/v1/stock/profile2?symbol={stockId}&token={api_key}')
     res = r.json()
-    print(res)
     return ({"values": res})
 
 @stock_routes.route("/watchlist/<userId>")
 def watchList(userId):
-  watchListStocks = dict()
+  watchListStocks = []
   watchlist = WatchlistContent.query.filter(WatchlistContent.watchlistId == userId).all()
   if watchlist:
     for stock in watchlist:
       stockTicker = Stock.query.filter(Stock.id == stock.stockId).first()
-      watchListStocks[stock.stockId]= stockTicker.ticker
-    return watchListStocks
+      watchListStocks.append(stockTicker.ticker)
+    return {"tickers": watchListStocks}
   return "error no list"
 
 
 @stock_routes.route("/watchlist", methods=["POST"])
-def watchListPost():
+def watchListAdd():
   data = request.json
+  print(data);
   if data:
+    watchList = WatchlistContent.query.filter(WatchlistContent.watchlistId == data["watchlistId"]).all()
+    print(len(watchList))
+    if len(watchList) >= 10:
+      return {"error": "You can't have more than 10 stocks in your watchlist"}
     stock = Stock.query.filter(Stock.ticker == data["ticker"]).first()
-    print(stock)
     if not stock:
       newStock = Stock(ticker=data['ticker'])
       db.session.add(newStock)
       db.session.commit()
       stock = Stock.query.filter(Stock.ticker == data["ticker"]).first()
-    watchListItem = WatchlistContent(stockId=stock.id, watchlistId= data["watchlist"])
+    watchListItem = WatchlistContent(stockId=stock.id, watchlistId=data["watchlistId"])
     db.session.add(watchListItem)
     db.session.commit()
-    watchListStocks = dict()
-    watchlist = WatchlistContent.query.filter(WatchlistContent.watchlistId == data["watchlist"]).all()
+    watchListStocks = []
+    watchlist = WatchlistContent.query.filter(WatchlistContent.watchlistId == data["watchlistId"]).all()
     if watchlist:
       for oneStock in watchlist:
         stockTicker = Stock.query.filter(Stock.id == oneStock.stockId).first()
-        watchListStocks[oneStock.stockId]= stockTicker.ticker
-    return watchListStocks
+        watchListStocks.append(stockTicker.ticker)
+    return {"tickers": watchListStocks}
   return "error no list"
 
 
-@stock_routes.route("/watchlist/<stockId>", methods=["DELETE"])
-def watchListDelete():
-  data = request.json
-  if data:
-    watchlistStock = WatchlistContent.query.filter(WatchlistContent.stockId == data["stockId"]).filter(WatchlistContent.watchlistId == data["watchlist"]).first()
-    db.session.delete(watchlistStock)
+@stock_routes.route("/watchlist/<watchlistId>/<ticker>", methods=["DELETE"])
+def watchListDelete(watchlistId, ticker):
+    print(ticker)
+    stockId = Stock.query.filter(Stock.ticker == ticker).first().id
+    print(stockId)
+    watchListStock = WatchlistContent.query.filter(WatchlistContent.stockId == stockId).filter(WatchlistContent.watchlistId == watchlistId).first()
+    print(watchListStock)
+    if not watchListStock:
+        return "error no stock"
+    db.session.delete(watchListStock)
     db.session.commit()
-    return data["stockId"]
-  return "error no stock"
+    return {"ticker": ticker}
 
 
 @stock_routes.route("/news")
 def getNews():
     r = requests.get(f'https://finnhub.io/api/v1/news?category=general&token={api_key_2}')
     res = r.json()
-    print(res)
     return({"values": res})

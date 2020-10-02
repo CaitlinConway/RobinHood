@@ -12,6 +12,7 @@ export default function authReducer(state = {}, action) {
           newState["balance"] = action.balance;
           newState["firstName"] = action.firstName;
           newState["lastName"] = action.lastName;
+          newState["watchlistId"] = action.watchlistId;
             return newState;
         case LOGOUT:
             return {};
@@ -20,14 +21,15 @@ export default function authReducer(state = {}, action) {
     }
 }
 
-const setUser = (id, email, balance, lastName, firstName) => {
+const setUser = (id, email, balance, lastName, firstName, watchlistId) => {
     return {
         type: LOGIN,
         id,
         email,
         balance,
         lastName,
-        firstName
+        firstName,
+        watchlistId
     }
 }
 
@@ -47,8 +49,7 @@ export const login = function(email, password) {
         })
         if(res.ok) {
             let currentUser = await res.json();
-            dispatch(setUser(currentUser.id, currentUser.email, currentUser.balance, currentUser.lastName,
-            currentUser.firstName));
+            dispatch(setUser(currentUser.id, currentUser.email, currentUser.balance, currentUser.lastName, currentUser.firstName, currentUser.watchlistId));
         }
     }
 }

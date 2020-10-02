@@ -22,6 +22,7 @@ export default function WatchListStock({stock}) {
         getStock()
         getCurrentPrice()
     }, [stock])
+
     return (
     <>
     <div className = 'individual-watchlist-div'>

@@ -6,7 +6,8 @@ export default function StockChartHomePage(props) {
     let ticker = props.ticker;
     const [stockData, setStockData] = useState("");
     const [stockPrice, setStockPrice] = useState("0");
-    const [companyData, setCompanyData] = useState({})
+    const [companyData, setCompanyData] = useState({});
+
     useEffect(()=> {
         async function getStock() {
             const res = await fetch(`/api/stocks/${ticker}`);
