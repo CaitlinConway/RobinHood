@@ -3,13 +3,15 @@ from flask import Blueprint, jsonify, request, session, redirect, url_for
 from app.models import User, db, Watchlist
 from passlib.hash import sha256_crypt
 
+
 user_routes = Blueprint('users', __name__)
 
 
-@user_routes.route('/')
-def index():
-    response = User.query.all()
-    return {"users": [user.to_dict() for user in response]}
+# @user_routes.route('/')
+# def index():
+#   if 'user' in session:
+#     response = User.query.all()
+#     return {"users": [user.to_dict() for user in response]}
 
 
 @user_routes.route("/login", methods=["POST"])
@@ -17,12 +19,13 @@ def login():
     data = request.json
     user = User.query.filter(User.email == data["email"] and
                              sha256_crypt.verify(data.password, User.password)).one()
+    user_data = user.to_dict()
     if user:
         session["userId"] = user.id
         print(f"success, {user.id, user.email}")
-        return {"id": user.id, "email": user.email, "balance": str(user.balance),
-                "firstName": user.firstName, "lastName": user.lastName, "watchlistId": user.watchlistId}
-
+        return {"id": str(user.id), "email": str(user.email), "balance": str(user.balance),
+                "firstName": str(user.firstName), "lastName": str(user.lastName), "watchlistId": str(user.watchlistId)}
+        # return{'user': session['user']}, 200
     return "error, user not found"
 
 
@@ -30,7 +33,7 @@ def login():
 def logout():
     if "userId" in session:
         session.pop('userId', None)
-        return redirect(url_for("react_root"))
+        return redirect(url_for("index"))
     return "error, already logged out"
 
 
@@ -57,3 +60,11 @@ def signup():
         db.session.commit()
         created = User.query.filter(User.email == data["email"]).first()
         return {"id": created.id, "email": created.email, "balance": str(created.balance)}
+
+@user_routes.route('/current', methods=['GET'])
+def load_user():
+  if 'userId' in session:
+    userId = session['userId']
+    return {"userId": userId}, 200
+  else:
+    return {"msg": "user not loaded"}

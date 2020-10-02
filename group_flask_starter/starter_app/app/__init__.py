@@ -15,7 +15,7 @@ app.register_blueprint(user_routes, url_prefix='/api/users')
 app.register_blueprint(stock_routes, url_prefix='/api/stocks')
 db.init_app(app)
 migrate = Migrate(app, db)
-
+# app.secret_key = os.environ.get('SECRET_KEY')
 
 ## Application Security
 CORS(app)

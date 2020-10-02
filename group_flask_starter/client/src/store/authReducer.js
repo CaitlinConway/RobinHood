@@ -21,7 +21,7 @@ export default function authReducer(state = {}, action) {
     }
 }
 
-const setUser = (id, email, balance, lastName, firstName, watchlistId) => {
+export const setUser = (id, email, balance, lastName, firstName, watchlistId) => {
     return {
         type: LOGIN,
         id,
@@ -47,6 +47,7 @@ export const login = function(email, password) {
             headers: {'Content-Type': "application/json"},
             body: JSON.stringify({email, password})
         })
+        debugger;
         if(res.ok) {
             let currentUser = await res.json();
             dispatch(setUser(currentUser.id, currentUser.email, currentUser.balance, currentUser.lastName, currentUser.firstName, currentUser.watchlistId));
