@@ -7,11 +7,11 @@ from passlib.hash import sha256_crypt
 user_routes = Blueprint('users', __name__)
 
 
-# @user_routes.route('/')
-# def index():
-#   if 'user' in session:
-#     response = User.query.all()
-#     return {"users": [user.to_dict() for user in response]}
+@user_routes.route('/')
+def index():
+  if 'userId' in session:
+    response = User.query.all()
+    return {"users": [user.to_dict() for user in response]}
 
 
 @user_routes.route("/login", methods=["POST"])
@@ -19,9 +19,14 @@ def login():
     data = request.json
     user = User.query.filter(User.email == data["email"] and
                              sha256_crypt.verify(data.password, User.password)).one()
-    user_data = user.to_dict()
+    # user_data = user.to_dict()
     if user:
         session["userId"] = user.id
+        session["userEmail"] = user.email
+        session["userBalance"] = str(user.balance)
+        session['userFirstName'] = user.firstName
+        session['userLastName'] = user.lastName
+        session['userWatchlistId'] = user.watchlistId
         print(f"success, {user.id, user.email}")
         return {"id": str(user.id), "email": str(user.email), "balance": str(user.balance),
                 "firstName": str(user.firstName), "lastName": str(user.lastName), "watchlistId": str(user.watchlistId)}
@@ -33,7 +38,7 @@ def login():
 def logout():
     if "userId" in session:
         session.pop('userId', None)
-        return redirect(url_for("index"))
+        return redirect(url_for("react_root"))
     return "error, already logged out"
 
 
@@ -63,8 +68,8 @@ def signup():
 
 @user_routes.route('/current', methods=['GET'])
 def load_user():
+  print(session["userId"])
   if 'userId' in session:
-    userId = session['userId']
-    return {"userId": userId}, 200
+    return {"userId": session['userId'], 'userEmail': session['userEmail'],  "userFirstName": session['userFirstName'], "userLastName": session['userLastName'], "userWatchlistId": session['userWatchlistId'],"userBalance": session['userBalance'],}, 200
   else:
     return {"msg": "user not loaded"}

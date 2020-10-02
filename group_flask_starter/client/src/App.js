@@ -28,10 +28,11 @@ function App() {
     useEffect(() => {
       const loadUser = async () => {
         // enter your back end route to get the current user
-        const res = await fetch("/api/session/current");
+        const res = await fetch("/api/users/current");
         if (res.ok) {
           res.data = await res.json(); // current user info - obj with key of user
-          dispatch(setUser(res.data.user.id, res.data.user.email, res.data.user.balance, res.data.user.lastName, res.data.user.firstName, res.data.user.watchlistId));
+          debugger;
+          dispatch(setUser(res.data.userId, res.data.userEmail, res.data.userBalance, res.data.userLastName, res.data.userFirstName, res.data.userWatchlistId));
         }
         setLoading(false);
       }
