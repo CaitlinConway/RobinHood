@@ -32,7 +32,7 @@ class PortfolioPage extends React.Component{
   }
   render(){
     if (this.props.watchlist && this.props.news){
-      console.log(this.props.watchlist)
+      console.log(this.props.watchlist.tickers)
       let random = Math.floor(Math.random() * Math.floor((this.props.watchlist.tickers).length)) +1
 
   return (
@@ -63,7 +63,7 @@ class PortfolioPage extends React.Component{
         </div>
         <div onClick={this.hideAccount}>
         <div id={'stock-chart-homepage-div'}>
-          <StockChartHomePage className='stock-chart-homepage' ticker={this.props.watchlist[random]}></StockChartHomePage>
+          <StockChartHomePage className='stock-chart-homepage' ticker={this.props.watchlist.tickers[random]}></StockChartHomePage>
         </div>
         <div id={'news-feed-div-homepage'}>
           <NewsFeed news={this.props.news}></NewsFeed>
