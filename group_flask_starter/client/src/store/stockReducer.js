@@ -1,10 +1,9 @@
 
 const GET_WATCHLIST = "watchlist";
-const ADD_TO_WATCHLIST = "watchlist/add"
 const DELETE_STOCK_WATCHLIST = "watchlist/delete"
-const SEARCH = ""
 const GET_NEWS = 'news';
 const GET_STOCKLIST ="stocklist"
+const UPDATE_STOCKS_OWNED = "stocks/owned"
 
 export default function stockReducer(state = {}, action) {
   let newState = Object.assign({}, state);
@@ -13,21 +12,28 @@ export default function stockReducer(state = {}, action) {
           newState["watchlist"] = action.watchlist;
           return newState;
         case DELETE_STOCK_WATCHLIST:
-          console.log(action.stock)
-          console.log(newState.watchlist.tickers)
           newState.watchlist.tickers = newState.watchlist.tickers.filter(el => el !== action.stock.ticker )
           return newState;
-        case ADD_TO_WATCHLIST:
-          return;
         case GET_NEWS:
           newState["news"] = action.news
           return newState;
         case GET_STOCKLIST:
           newState["stocklist"] = action.stocklist
+        case UPDATE_STOCKS_OWNED:
+          console.log(action.stocks)
+          newState["owned"] = action.stocks
           return newState;
         default:
             return state;
     }
+}
+
+
+const updateStocks = (stocks) => {
+  return {
+    type: UPDATE_STOCKS_OWNED,
+    stocks
+  }
 }
 
 const getWatchListThunk = (watchlist) => {
@@ -44,12 +50,7 @@ const deleteFromWatchList = (stock) => {
   }
 }
 
-// const searchThunk = (stock) => {
-//   return {
-//     type: SEARCH,
-//     stock
-//   }
-// }
+
 
 const getNewsThunk = (news) => {
   return {
@@ -132,7 +133,6 @@ export const getNews = function() {
   }
 }
 
-
 export const getStocklist = function(userId) {
   return async(dispatch) => {
       let res = await fetch(`/api/stocks/stocklist/${userId}`)
@@ -141,5 +141,18 @@ export const getStocklist = function(userId) {
           console.log(stocklist)
           dispatch(getStocklistThunk(stocklist));
       }
+
+export function updateStocksThunk({ticker, price, shares, buy, userId}) {
+  return async(dispatch) => {
+    let res = await fetch(`/api/stocks/trades/${userId}`, {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({ticker, price, shares, buy})
+    })
+    if (res.ok) {
+      let stocks = await res.json();
+      console.log(stocks);
+      dispatch(updateStocks(stocks.stocks))
+    }
   }
 }
