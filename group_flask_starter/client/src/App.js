@@ -31,7 +31,6 @@ function App() {
         const res = await fetch("/api/users/current");
         if (res.ok) {
           res.data = await res.json(); // current user info - obj with key of user
-          debugger;
           dispatch(setUser(res.data.userId, res.data.userEmail, res.data.userBalance, res.data.userLastName, res.data.userFirstName, res.data.userWatchlistId));
         }
         setLoading(false);
