@@ -3,7 +3,8 @@ from flask import Blueprint, jsonify, session, request
 import requests
 import time
 import datetime
-from app.models import Watchlist, WatchlistContent, Stock, User, Trade, Stocklist, db
+from app.models import Watchlist, WatchlistContent, Stock, User, Trade, db, Stocklist
+
 
 stock_routes = Blueprint("stocks", __name__)
 api_key = os.environ.get("FINHUB_API_KEY")
@@ -94,6 +95,19 @@ def getNews():
     res = r.json()
     return({"values": res})
 
+
+
+@stock_routes.route('/stocklist/<userId>')
+def stockList(userId):
+  stockListStocks = []
+  stockList = Stocklist.query.filter(Stocklist.userId == userId).all()
+  print(stockList)
+  if stockList:
+    for stock in stockList:
+      stockTicker = Stock.query.filter(Stock.id == stock.stockId).first()
+      stockListStocks.append(stockTicker.ticker)
+    return {"tickers": stockListStocks}
+  return "error no list"
 
 @stock_routes.route("/trades/<userId>", methods=["POST"])
 def makeTrade(userId):

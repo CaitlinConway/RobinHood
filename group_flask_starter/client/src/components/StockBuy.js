@@ -49,6 +49,7 @@ export default function StockBuy(props) {
             buy: buy,
             userId: userId
         }
+        // setBalance()
         dispatch(updateStocksThunk(data))
     }
 
@@ -67,7 +68,7 @@ export default function StockBuy(props) {
                         </select>
                     </div>
                     <div className="stock-input">
-                        <label for="amount"> {type === "Dollars" ? "Amount" : "Shares"}</label>
+                        <label htmlFor="amount"> {type === "Dollars" ? "Amount" : "Shares"}</label>
                         <input type="number" name="amount" onChange={updateAmount} id="stock-amount"/>
                     </div>
                     <div className="stock-input market">
