@@ -38,7 +38,7 @@ def login():
 def logout():
     if "userId" in session:
         session.pop('userId', None)
-        return redirect(url_for("react_root"))
+        return {'msg': 'successfully logged out'}
     return "error, already logged out"
 
 
