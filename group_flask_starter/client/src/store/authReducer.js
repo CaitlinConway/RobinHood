@@ -47,7 +47,6 @@ export const login = function(email, password) {
             headers: {'Content-Type': "application/json"},
             body: JSON.stringify({email, password})
         })
-        debugger;
         if(res.ok) {
             let currentUser = await res.json();
             dispatch(setUser(currentUser.id, currentUser.email, currentUser.balance, currentUser.lastName, currentUser.firstName, currentUser.watchlistId));
@@ -59,7 +58,7 @@ export const logOut = () => {
     return async function(dispatch) {
         let res = await fetch("/api/users/logout", {
             method: "DELETE",
-            headers: {'Content-Type': "application/json"}
+            // headers: {'Content-Type': "application/json"}
         });
         if(res.ok) {
             dispatch(logoutUser());
