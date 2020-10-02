@@ -4,12 +4,18 @@ import {logOut} from '../store/authReducer'
 import { getStocklist } from '../store/stockReducer';
 
 class UserPage extends React.Component{
+  constructor (props){
+    super(props);
+    this.state = {
+      user: this.props.auth,
+      stocklist: this.props.stocklist
+    }
+  }
   logoutButtonHandle = (e) =>{
     e.preventDefault();
     this.props.logOut();
   }
   componentDidMount() {
-    debugger;
     this.props.getStocklist(this.props.auth.id);
   }
   render(){

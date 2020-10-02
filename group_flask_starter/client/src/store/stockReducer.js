@@ -7,6 +7,7 @@ const GET_NEWS = 'news';
 const GET_STOCKLIST ="stocklist"
 
 export default function stockReducer(state = {}, action) {
+  debugger;
   let newState = Object.assign({}, state);
     switch(action.type) {
         case GET_WATCHLIST:
@@ -24,6 +25,7 @@ export default function stockReducer(state = {}, action) {
           return newState;
         case GET_STOCKLIST:
           newState["stocklist"] = action.stocklist
+          return newState;
         default:
             return state;
     }
@@ -135,7 +137,6 @@ export const getNews = function() {
 export const getStocklist = function(userId) {
   return async(dispatch) => {
       let res = await fetch(`/api/stocks/stocklist/${userId}`)
-      debugger;
       if(res.ok) {
           let stocklist = await res.json();
           console.log(stocklist)

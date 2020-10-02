@@ -57,7 +57,8 @@ function App() {
             <Route exact path="/login" component={Login} />
             <Route exact path="/signup" component={SignUp} />
             <Route exact path="/landing" component={LandingPage}/>
-            <ConnectedProtectedRoute exact path='/user/:userId' render={(props) => <UserPage {...props}></UserPage>}> </ConnectedProtectedRoute>
+            {/* <ConnectedProtectedRoute path='/user/:userId' render={(props) => <UserPage userId={this.match.params.userId} {...props}></UserPage>}> </ConnectedProtectedRoute> */}
+            <Route exact path='/user/:userId' component={UserPage}></Route>
           </Switch>
         {/* </Provider> */}
     </BrowserRouter>
