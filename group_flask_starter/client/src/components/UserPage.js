@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux'
 import {logOut} from '../store/authReducer'
 import { getStocklist } from '../store/stockReducer';
+import { Redirect } from 'react-router-dom';
 
 class UserPage extends React.Component{
   constructor (props){
@@ -14,6 +15,8 @@ class UserPage extends React.Component{
   logoutButtonHandle = (e) =>{
     e.preventDefault();
     this.props.logOut();
+    return <Redirect to="/landing" />
+
   }
   componentDidMount() {
     this.props.getStocklist(this.props.auth.id);

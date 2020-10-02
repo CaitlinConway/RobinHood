@@ -7,7 +7,6 @@ const GET_NEWS = 'news';
 const GET_STOCKLIST ="stocklist"
 
 export default function stockReducer(state = {}, action) {
-  debugger;
   let newState = Object.assign({}, state);
     switch(action.type) {
         case GET_WATCHLIST:
