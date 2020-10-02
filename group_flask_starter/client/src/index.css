@@ -322,7 +322,7 @@ input::-webkit-inner-spin-button {
 .add-to-watchlist {
   display: flex;
   justify-self: center;
-  margin: 25px auto;
+  margin: 20px auto;
   background-color: transparent;
   width: 60%;
   padding: 15px;
@@ -331,6 +331,16 @@ input::-webkit-inner-spin-button {
   border-radius: 6px;
   justify-content: center;
   outline: none;
+}
+
+.watchlist-errors {
+  /* display: flex;
+  justify-self: center; */
+  margin: auto;
+  font-size: 14px;
+  text-align: center;
+  color: #FF5103;
+  margin-top: 5px;
 }
 
 .add-to-watchlist:hover {
