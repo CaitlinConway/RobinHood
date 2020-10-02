@@ -3,7 +3,7 @@ from flask import Blueprint, jsonify, session, request
 import requests
 import time
 import datetime
-from app.models import Watchlist, WatchlistContent, Stock, User, db
+from app.models import Watchlist, WatchlistContent, Stock, User, Trade, Stocklist, db
 
 stock_routes = Blueprint("stocks", __name__)
 api_key = os.environ.get("FINHUB_API_KEY")
@@ -93,3 +93,64 @@ def getNews():
     r = requests.get(f'https://finnhub.io/api/v1/news?category=general&token={api_key_2}')
     res = r.json()
     return({"values": res})
+
+
+@stock_routes.route("/trades/<userId>", methods=["POST"])
+def makeTrade(userId):
+    data = request.json
+    timestamp = datetime.datetime.utcnow()
+    print(data, userId)
+    newTrade = Trade(
+      ticker=data["ticker"],
+      price=data["price"],
+      shares=round(int(data["shares"]), 2),
+      buy=data["buy"],
+      buyDate=timestamp,
+      userId=userId
+    )
+    currentStock = Stock.query.filter(Stock.ticker == data["ticker"]).first()
+    if not currentStock:
+        newStock = Stock(ticker=data['ticker'])
+        db.session.add(newStock)
+        db.session.commit()
+        currentStock = Stock.query.filter(Stock.ticker == data["ticker"]).first()
+    stockId = currentStock.id
+    currentlyOwned = Stocklist.query.filter(Stocklist.stockId == stockId).filter(Stocklist.userId == userId).first()
+    currentShares = 0 if not currentlyOwned else float(currentlyOwned.shares)
+    newShares = float(data["shares"]) * (1 if data["buy"] else -1)
+    updatedShares = round((currentShares + newShares), 2)
+    currentUser = User.query.filter(User.id == userId).first()
+    currentBalance = float(currentUser.balance)
+    cost = round((float(data["shares"]) * float(data["price"])) * (1 if data["buy"] else -1), 2)
+    updatedBalance = round((currentBalance - cost), 2)
+    print(currentBalance, updatedBalance)
+    print(currentShares, updatedShares)
+    if updatedShares < 0:
+        return {"error": "You can't have negative shares"}
+    if updatedBalance < 0:
+        return {"error": "You can't have a negative balance"}
+    if currentlyOwned:
+        currentlyOwned.shares = updatedShares
+        print(currentlyOwned.shares)
+    else:
+        currentlyOwned = Stocklist(
+          stockId=stockId,
+          userId=userId,
+          shares=updatedShares
+        )
+        print(currentlyOwned.shares)
+    currentUser.balance = updatedBalance
+    print(currentUser.balance)
+
+    db.session.add(newTrade)
+    db.session.add(currentlyOwned)
+    db.session.add(currentUser)
+    db.session.commit()
+    all_stocks = Stocklist.query.filter(Stocklist.userId == userId).all()
+    print(all_stocks)
+
+    # return in format {ticker: shares}
+    return {"stocks": list(
+            {Stock.query.filter(Stock.id == stock.stockId).first().ticker: str(stock.shares)}
+            for stock in all_stocks)
+           }
