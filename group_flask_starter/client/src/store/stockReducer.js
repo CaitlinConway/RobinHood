@@ -141,6 +141,8 @@ export const getStocklist = function(userId) {
           console.log(stocklist)
           dispatch(getStocklistThunk(stocklist));
       }
+    }
+  }
 
 export function updateStocksThunk({ticker, price, shares, buy, userId}) {
   return async(dispatch) => {
