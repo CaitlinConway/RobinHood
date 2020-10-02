@@ -2,13 +2,13 @@ import React from 'react'
 import { connect } from "react-redux";
 import { getSearch } from "../store/stockReducer";
 import { Link } from 'react-router-dom';
+import { stockArray } from '../stockarray'
 
 class SearchBar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       search: "",
-      label: [{ticker: "AMZN", name: "Amazon"}, {ticker: "AAPL", name: "Apple"}, {ticker: "FB", name: "Facebook"}]
     }
   };
 
@@ -16,29 +16,18 @@ class SearchBar extends React.Component {
   updateSearch = (e) => {
     this.setState({ search: e.target.value });
     const searchList = document.getElementById("search-list");
+    console.log(stockArray)
     if (e.target.value) {
-    searchList.removeAttribute("hidden");
-    searchList.style.display = "flex";
+      searchList.removeAttribute("hidden");
+      searchList.style.display = "flex";
       name = []
-      labels = []
-      // tickers.forEach(ticker => {
-      //   for (const key in ticker) {
-      //     const checkStr = e.target.value;
-      //     if (key === "name" && ticker[key].startsWith(checkStr)) {
-      //     name.push(ticker[key])
-      //     }
-      //     if (key === "ticker" && ticker[key].startsWith(checkStr)) {
-      //       labels.push(ticker[key])
-      //     }
-      this.state.label.forEach(ticker => {
+
+      stockArray.forEach(ticker => {
         for (const key in ticker) {
           const checkStr = e.target.value;
-          if ((key === "name" || key === "ticker") && (ticker[key].toLowerCase().startsWith(checkStr.toLowerCase())) && !(name.includes(ticker)) ) {
+          if ((key === "Name" || key === "Symbol") && (ticker[key].toLowerCase().startsWith(checkStr.toLowerCase())) && !(name.includes(ticker)) ) {
             name.push(ticker);
           }
-          // if (key === "ticker" && ticker[key].startsWith(checkStr)) {
-          //   labels.push(ticker[key])
-          // }
       }
       });
     } else {
@@ -55,29 +44,29 @@ class SearchBar extends React.Component {
 
   render() {
     const { search } = this.state;
-    // const pagePath = {
-    //   pathname: '',
-    //   key: Math.random(),
-    // }
     const pagePath = () => {
       let pageData = [];
-      name.map(array => {
-      if (!(window.location.href.includes("stocks"))) {
+      let i = 0;
+        name.map(array => {
+      if (!(window.location.href.includes("stocks")) && i < 6) {
         pageData.push(
         <>
-        <span className="search-ul-1" key="stock"><Link to={`stocks/${array.ticker}`}>{array.ticker}</Link></span>
-        <span className="search-ul-2" key="stock"><Link to={`stocks/${array.ticker}`}>{array.name}</Link></span>
+        <span className="search-ul-1"><Link to={`stocks/${array.Symbol}`}>{array.Symbol}</Link></span>
+        <span className="search-ul-2"><Link to={`stocks/${array.Symbol}`}>{array.Name}</Link></span>
         </>
         );
-      } else {
+        i++;
+      } else if (window.location.href.includes("stocks") && i < 6) {
         pageData.push(
         <>
-        <div className="search-ul-1" key="stock"><Link to={`${array.ticker}`}>{array.ticker}</Link></div>
-        <div className="search-ul-2" key="stock"><Link to={`${array.ticker}`}>{array.name}</Link></div>
+        <span className="search-ul-1"><Link to={`${array.Symbol}`}>{array.Symbol}</Link></span>
+        <span className="search-ul-2"><Link to={`${array.Symbol}`}>{array.Name}</Link></span>
         </>
-        )
+        );
+        i++;
       }
-    })
+      return null;
+      });
       return pageData;
     };
 
@@ -106,9 +95,6 @@ class SearchBar extends React.Component {
 
 
 let name = []
-let labels = []
-
-const tickers = [{ticker: "AMZN", name: "Amazon"}, {ticker: "AAPL", name: "Apple"}, {ticker: "FB", name: "Facebook"}, {ticker: "F", name: "Ford"}, {ticker: "GOOG", name: "Google"}]
 
 const mapStateToProps = (state) => ({
   search: state.search,

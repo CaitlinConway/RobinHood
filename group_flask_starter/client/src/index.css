@@ -798,7 +798,7 @@ input::-webkit-inner-spin-button {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-auto-rows: 20px;
-  width: 300px;
+  width: 500px;
   padding-top: 20px;
   column-width: 30px;
 }
