@@ -7,6 +7,7 @@ import AccountDropDown from './AccountDropDown'
 import {connect} from 'react-redux'
 import {logOut} from '../store/authReducer'
 import { getStocklist } from '../store/stockReducer';
+import { Redirect } from 'react-router-dom';
 
 class UserPage extends React.Component{
   constructor (props){
@@ -16,7 +17,16 @@ class UserPage extends React.Component{
       stocklist: this.props.stocklist
     }
   }
+<<<<<<< HEAD
 
+=======
+  logoutButtonHandle = (e) =>{
+    e.preventDefault();
+    this.props.logOut();
+    return <Redirect to="/landing" />
+
+  }
+>>>>>>> master
   componentDidMount() {
     this.props.getStocklist(this.props.auth.id);
   }

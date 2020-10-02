@@ -1,11 +1,32 @@
-import React, {useState} from "react";
-import { useSelector } from "react-redux";
+import React, {useState, useEffect} from "react";
+import { useSelector, useDispatch} from "react-redux";
+import { updateStocksThunk } from '../store/stockReducer'
 
 export default function StockBuy(props) {
     let [type, setType] = useState("Dollars");
     let [amount, setAmount] = useState(0);
     let [buy, setBuy] = useState(true);
+    let [sharesOwned, setSharesOwned] = useState(0)
     const balance = useSelector(state => state.auth?.balance || 0);
+    const userId = useSelector(state => state.auth?.id);
+    const dispatch = useDispatch();
+
+    useEffect(()=> {
+        function getShares() {
+            let shares = 0;
+            for(let i=0; i<props.allShares.length; i++) {
+                let current = props.allShares[i];
+                console.log(current)
+                if(current[props.ticker] !== undefined) {
+                    shares = current[props.ticker];
+                    break;
+                }
+            }
+            console.log(shares);
+            setSharesOwned(shares)
+        }
+        getShares();
+    }, [props.ticker, props.allShares])
 
     const updateType = (e) => {
        setType(e.target.value)
@@ -26,10 +47,10 @@ export default function StockBuy(props) {
             price: props.price,
             shares: (type === "Dollars" ? (amount/Number(props.price)) : amount),
             buy: buy,
-            buyDate: Date.now()
-            // userId:
+            userId: userId
         }
-
+        // setBalance()
+        dispatch(updateStocksThunk(data))
     }
 
     return (
@@ -47,7 +68,7 @@ export default function StockBuy(props) {
                         </select>
                     </div>
                     <div className="stock-input">
-                        <label for="amount"> {type === "Dollars" ? "Amount" : "Shares"}</label>
+                        <label htmlFor="amount"> {type === "Dollars" ? "Amount" : "Shares"}</label>
                         <input type="number" name="amount" onChange={updateAmount} id="stock-amount"/>
                     </div>
                     <div className="stock-input market">
@@ -60,6 +81,9 @@ export default function StockBuy(props) {
                     </div>
                     <button type="submit" className="stock-buy-button" onClick={makeTrade}>Place Order</button>
             </form>
+            <div className="shares">
+                You own {sharesOwned} shares of {props.ticker}
+            </div>
             <div className="balance">
                 Your current balance is ${balance}
             </div>

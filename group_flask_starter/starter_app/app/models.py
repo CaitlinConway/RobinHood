@@ -5,19 +5,19 @@ db = SQLAlchemy()
 class Watchlist(db.Model):
   __tablename__ = "watchlists"
 
-  id = db.Column(db.Integer, primary_key = True)
+  id = db.Column(db.Integer, primary_key=True)
   name = db.Column(db.String(50))
 
 
 class Stock(db.Model):
   __tablename__ = "stocks"
 
-  id = db.Column(db.Integer, primary_key = True)
-  ticker = db.Column(db.String(10), nullable = False)
+  id = db.Column(db.Integer, primary_key=True)
+  ticker = db.Column(db.String(10), nullable=False)
 
 class WatchlistContent(db.Model):
   __tablename__ = "watchlistContent"
-  id = db.Column(db.Integer, primary_key = True)
+  id = db.Column(db.Integer, primary_key=True)
   watchlistId = db.Column(db.Integer, db.ForeignKey("watchlists.id"))
   watchlist = db.relationship("Watchlist")
   stockId = db.Column(db.Integer, db.ForeignKey("stocks.id"))
@@ -29,10 +29,10 @@ class WatchlistContent(db.Model):
 class User(db.Model):
   __tablename__ = 'users'
 
-  id = db.Column(db.Integer, primary_key = True)
-  email = db.Column(db.String(255), nullable = False, unique = True)
-  firstName = db.Column(db.String(255), nullable = False)
-  lastName = db.Column(db.String(255), nullable = False)
+  id = db.Column(db.Integer, primary_key=True)
+  email = db.Column(db.String(255), nullable=False, unique=True)
+  firstName = db.Column(db.String(255), nullable=False)
+  lastName = db.Column(db.String(255), nullable=False)
   password = db.Column(db.String(100), nullable=False)
   balance = db.Column(db.Numeric, nullable=False)
   watchlistId = db.Column(db.Integer, db.ForeignKey("watchlists.id"))
@@ -51,10 +51,10 @@ class User(db.Model):
 class Trade(db.Model):
   __tablename__ = "trades"
 
-  id = db.Column(db.Integer, primary_key = True)
-  ticker = db.Column(db.String(10), nullable= False, unique = True)
-  price = db.Column(db.Integer)
-  shares = db.Column(db.Integer, nullable=False)
+  id = db.Column(db.Integer, primary_key=True)
+  ticker = db.Column(db.String(10), nullable=False)
+  price = db.Column(db.Numeric)
+  shares = db.Column(db.Numeric, nullable=False)
   buy = db.Column(db.Boolean)
   buyDate = db.Column(db.DateTime, nullable=False)
   userId = db.Column(db.Integer, db.ForeignKey("users.id"))
@@ -63,9 +63,9 @@ class Trade(db.Model):
 class Stocklist(db.Model):
   __tablename__ = "stocklists"
 
-  id = db.Column(db.Integer, primary_key = True)
+  id = db.Column(db.Integer, primary_key=True)
   stockId = db.Column(db.Integer, db.ForeignKey("stocks.id"))
   userId = db.Column(db.Integer, db.ForeignKey("users.id"))
-  shares = db.Column(db.Integer)
+  shares = db.Column(db.Numeric)
   user = db.relationship("User")
   stock = db.relationship("Stock")
