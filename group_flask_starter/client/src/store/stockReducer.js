@@ -1,6 +1,6 @@
 
 const GET_WATCHLIST = "watchlist";
-const ADD_TO_WATCHLIST = "watchlist/add"
+// const ADD_TO_WATCHLIST = "watchlist/add"
 const DELETE_STOCK_WATCHLIST = "watchlist/delete"
 const SEARCH = ""
 const GET_NEWS = 'news';

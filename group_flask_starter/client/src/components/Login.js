@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { Redirect } from "react-router-dom";
 import { login } from '../store/authReducer'
 import { connect } from 'react-redux';

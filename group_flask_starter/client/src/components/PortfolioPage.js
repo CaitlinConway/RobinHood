@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Switch, Route, NavLink, Redirect, Link } from 'react-router-dom';
+import { BrowserRouter,  NavLink, Redirect } from 'react-router-dom';
 import Logo from "../robinhood-logomark-white.png"
 import SearchBar from './SearchBar'
 import greenLogo from "../robinhood-logomark-green.png"

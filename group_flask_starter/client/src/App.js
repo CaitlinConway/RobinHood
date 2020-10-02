@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Switch, Route, NavLink, Redirect } from 'react-router-dom';
+import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import { Provider, connect } from 'react-redux';
 import configureStore from "./store/configureStore";
 import StockPage from "./components/StockPage";

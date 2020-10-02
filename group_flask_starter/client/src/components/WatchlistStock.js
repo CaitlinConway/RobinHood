@@ -1,13 +1,10 @@
 import React, {useEffect, useState} from "react";
-import {  NavLink } from "react-router-dom";
+import { NavLink} from "react-router-dom";
 import {LineChart, XAxis, YAxis, ResponsiveContainer, Line} from "recharts";
-import StockPage from "./StockPage";
-import StockPrice from "./StockPrice";
 
 export default function WatchListStock({stock}) {
-  const [stockData, setStockData] = useState("");
+  const [stockData, setStockData] = useState([]);
   const [stockPrice, setStockPrice] = useState("0");
-  const stockLink = `/stocks/${stock.toLowerCase()}`
     useEffect(()=> {
         async function getStock() {
             const res = await fetch(`/api/stocks/${stock}`);
