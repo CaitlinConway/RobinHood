@@ -29,7 +29,7 @@ export default function StockBuy(props) {
             buyDate: Date.now()
             // userId:
         }
-
+        // setBalance()
     }
 
     return (
@@ -47,7 +47,7 @@ export default function StockBuy(props) {
                         </select>
                     </div>
                     <div className="stock-input">
-                        <label for="amount"> {type === "Dollars" ? "Amount" : "Shares"}</label>
+                        <label htmlFor="amount"> {type === "Dollars" ? "Amount" : "Shares"}</label>
                         <input type="number" name="amount" onChange={updateAmount} id="stock-amount"/>
                     </div>
                     <div className="stock-input market">
