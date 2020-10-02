@@ -1,8 +1,11 @@
 import React from "react";
 
 export default function NewsItem({newsItem}) {
-    return (
-    <div id={'news-item'}>
+  const redirect = (e) =>{
+    window.location.href= newsItem.url;
+  }
+  return (
+    <div id={'news-item'} onClick= {redirect}>
       <div id={'news-source'}>{newsItem.source}</div>
       <div id={'news-headline'}>{newsItem.headline}</div>
       <div id={'news-summary'}>{newsItem.summary}</div>
