@@ -4,6 +4,7 @@ const ADD_TO_WATCHLIST = "watchlist/add"
 const DELETE_STOCK_WATCHLIST = "watchlist/delete"
 const SEARCH = ""
 const GET_NEWS = 'news';
+const GET_STOCKLIST ="stocklist"
 
 export default function stockReducer(state = {}, action) {
   let newState = Object.assign({}, state);
@@ -21,6 +22,8 @@ export default function stockReducer(state = {}, action) {
         case GET_NEWS:
           newState["news"] = action.news
           return newState;
+        case GET_STOCKLIST:
+          newState["stocklist"] = action.stocklist
         default:
             return state;
     }
@@ -51,6 +54,13 @@ const getNewsThunk = (news) => {
   return {
     type: GET_NEWS,
     news
+  }
+}
+
+const getStocklistThunk = (stocklist) =>{
+  return {
+    type: GET_STOCKLIST,
+    stocklist
   }
 }
 
@@ -117,6 +127,19 @@ export const getNews = function() {
           let news = await res.json();
           let newsArray =news.values;
           dispatch(getNewsThunk(newsArray));
+      }
+  }
+}
+
+
+export const getStocklist = function(userId) {
+  return async(dispatch) => {
+      let res = await fetch(`/api/stocks/stocklist/${userId}`)
+      debugger;
+      if(res.ok) {
+          let stocklist = await res.json();
+          console.log(stocklist)
+          dispatch(getStocklistThunk(stocklist));
       }
   }
 }

@@ -9,6 +9,7 @@ import SignUp from './components/SignUp';
 import PortfolioPage from './components/PortfolioPage';
 import LandingPage from './components/LandingPage';
 import {setUser} from './store/authReducer'
+import UserPage from './components/UserPage';
 
 // const store = configureStore()
 
@@ -47,9 +48,6 @@ function App() {
                   exact path="/"
                   component={PortfolioPage}
                 ></ConnectedProtectedRoute>
-            <Route exact path="/users">
-                  <UserList />
-            </Route>
             <ConnectedProtectedRoute
                   exact path="/stocks/:stockId"
                   render={(props) => <StockPage {...props}></StockPage>}
@@ -59,6 +57,7 @@ function App() {
             <Route exact path="/login" component={Login} />
             <Route exact path="/signup" component={SignUp} />
             <Route exact path="/landing" component={LandingPage}/>
+            <ConnectedProtectedRoute exact path='/user/:userId' render={(props) => <UserPage {...props}></UserPage>}> </ConnectedProtectedRoute>
           </Switch>
         {/* </Provider> */}
     </BrowserRouter>
