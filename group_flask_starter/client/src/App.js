@@ -1,6 +1,6 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
-import { Provider, connect } from 'react-redux';
+import { Provider, connect, useDispatch } from 'react-redux';
 import configureStore from "./store/configureStore";
 import StockPage from "./components/StockPage";
 import UserList from './components/UsersList';
@@ -8,9 +8,9 @@ import Login from './components/Login';
 import SignUp from './components/SignUp';
 import PortfolioPage from './components/PortfolioPage';
 import LandingPage from './components/LandingPage';
+import {setUser} from './store/authReducer'
 
-
-const store = configureStore()
+// const store = configureStore()
 
 const protectedRoute = ({ component: Component, loggedIn, ...rest }) => {
   if (loggedIn) return <Route {...rest} component={Component} />;
@@ -23,10 +23,24 @@ const mapStateToProps = (state) => {
 const ConnectedProtectedRoute = connect(mapStateToProps, null)(protectedRoute);
 
 function App() {
-
+    const [loading, setLoading] = useState(true);
+    const dispatch = useDispatch();
+    useEffect(() => {
+      const loadUser = async () => {
+        // enter your back end route to get the current user
+        const res = await fetch("/api/users/current");
+        if (res.ok) {
+          res.data = await res.json(); // current user info - obj with key of user
+          dispatch(setUser(res.data.userId, res.data.userEmail, res.data.userBalance, res.data.userLastName, res.data.userFirstName, res.data.userWatchlistId));
+        }
+        setLoading(false);
+      }
+      loadUser();
+    }, [dispatch]);
+    if(loading) return null;
   return (
     <BrowserRouter>
-        <Provider store={store}>
+        {/* <Provider store={store}> */}
           <Switch>
           {/* <Route exact path="/stocks/:stockId" render={(props) => <StockPage {...props}></StockPage>}/> */}
             <ConnectedProtectedRoute
@@ -44,9 +58,9 @@ function App() {
 
             <Route exact path="/login" component={Login} />
             <Route exact path="/signup" component={SignUp} />
-            <Route path="/landing" component={LandingPage}/>
+            <Route exact path="/landing" component={LandingPage}/>
           </Switch>
-        </Provider>
+        {/* </Provider> */}
     </BrowserRouter>
   );
 }

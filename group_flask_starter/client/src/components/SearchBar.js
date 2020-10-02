@@ -50,18 +50,18 @@ class SearchBar extends React.Component {
         name.map(array => {
       if (!(window.location.href.includes("stocks")) && i < 6) {
         pageData.push(
-        <>
-        <span className="search-ul-1"><Link to={`stocks/${array.Symbol}`}>{array.Symbol}</Link></span>
-        <span className="search-ul-2"><Link to={`stocks/${array.Symbol}`}>{array.Name}</Link></span>
-        </>
+        <div className="search-ul">
+         <div className="search-ul-1"><Link to={`stocks/${array.Symbol}`}>{array.Symbol}</Link></div>
+         <div className="search-ul-2"><Link to={`stocks/${array.Symbol}`}>{array.Name}</Link></div>
+        </div>
         );
         i++;
       } else if (window.location.href.includes("stocks") && i < 6) {
         pageData.push(
-        <>
-        <span className="search-ul-1"><Link to={`${array.Symbol}`}>{array.Symbol}</Link></span>
-        <span className="search-ul-2"><Link to={`${array.Symbol}`}>{array.Name}</Link></span>
-        </>
+        <div className="search-ul">
+         <div className="search-ul-1"><Link to={`${array.Symbol}`}>{array.Symbol}</Link></div>
+         <div className="search-ul-2"><Link to={`${array.Symbol}`}>{array.Name}</Link></div>
+        </div>
         );
         i++;
       }
@@ -83,17 +83,29 @@ class SearchBar extends React.Component {
             />
         </div>
         <div id="search-list" className="search-bar-list" hidden>
-          {/* <section id="section-1">{name.map(array => (<ul className="search-ul" key="stock"><Link to={`${pagePath()}/${array.ticker}`}>{array.ticker}</Link></ul>))}</section> */}
-          <section id="section-1">{pagePath()}</section>
-          {/* <section id="section-2">{pagePath()}</section> */}
-
+          <div id="section-1">
+            <div className="search-list-type">Stocks</div>
+            {pagePath()}
+          </div>
+          <div className="search-list-buttons-header">Lists</div>
+          <div className="search-list-buttons">
+            <button className="search-list-button">Gotham City</button>
+            <button className="search-list-button">The Batcave</button>
+            <button className="search-list-button">Arkham Asylum</button>
+            <button className="search-list-button">Wayne Manor</button>
+            <button className="search-list-button">Crime Alley</button>
+            <button className="search-list-button">Ace Chemicals</button>
+            <button className="search-list-button">Wayne Tower</button>
+            <button className="search-list-button">Iceberg Lounge</button>
+            <button className="search-list-button">Hall of Justice</button>
+          </div>
         </div>
       </div>
     );
   }
 }
 
-
+// Custom array to hold links.
 let name = []
 
 const mapStateToProps = (state) => ({

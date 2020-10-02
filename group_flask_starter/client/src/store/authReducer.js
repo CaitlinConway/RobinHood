@@ -21,7 +21,7 @@ export default function authReducer(state = {}, action) {
     }
 }
 
-const setUser = (id, email, balance, lastName, firstName, watchlistId) => {
+export const setUser = (id, email, balance, lastName, firstName, watchlistId) => {
     return {
         type: LOGIN,
         id,
@@ -58,7 +58,7 @@ export const logOut = () => {
     return async function(dispatch) {
         let res = await fetch("/api/users/logout", {
             method: "DELETE",
-            headers: {'Content-Type': "application/json"}
+            // headers: {'Content-Type': "application/json"}
         });
         if(res.ok) {
             dispatch(logoutUser());
