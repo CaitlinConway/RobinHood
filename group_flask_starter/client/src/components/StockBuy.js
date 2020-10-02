@@ -1,11 +1,14 @@
 import React, {useState} from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { updateStocksThunk } from '../store/stockReducer'
 
 export default function StockBuy(props) {
     let [type, setType] = useState("Dollars");
     let [amount, setAmount] = useState(0);
     let [buy, setBuy] = useState(true);
     const balance = useSelector(state => state.auth?.balance || 0);
+    const userId = useSelector(state => state.auth?.id);
+    const dispatch = useDispatch();
 
     const updateType = (e) => {
        setType(e.target.value)
@@ -26,10 +29,9 @@ export default function StockBuy(props) {
             price: props.price,
             shares: (type === "Dollars" ? (amount/Number(props.price)) : amount),
             buy: buy,
-            buyDate: Date.now()
-            // userId:
+            userId: userId
         }
-
+        dispatch(updateStocksThunk(data))
     }
 
     return (
