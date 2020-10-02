@@ -142,14 +142,15 @@ def makeTrade(userId):
     currentUser.balance = updatedBalance
     print(currentUser.balance)
 
-    try:
-        db.session.add(newTrade)
-        db.session.add(currentlyOwned)
-        db.session.add(currentUser)
-        db.session.commit()
-    except:
-        pass
+    db.session.add(newTrade)
+    db.session.add(currentlyOwned)
+    db.session.add(currentUser)
+    db.session.commit()
     all_stocks = Stocklist.query.filter(Stocklist.userId == userId).all()
     print(all_stocks)
-    # I want the ticker and {ticker: shares}
-    return {"stocks": all_stocks}
+
+    # return in format {ticker: shares}
+    return {"stocks": list(
+            {Stock.query.filter(Stock.id == stock.stockId).first().ticker: str(stock.shares)}
+            for stock in all_stocks)
+           }

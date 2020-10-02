@@ -7,7 +7,6 @@ import Logo from "../robinhood-logomark-white.png";
 import greenLogo from "../robinhood-logomark-green.png";
 import {useSelector, useDispatch} from "react-redux"
 import { addToWatchList, deleteFromStockWatchlist } from "../store/stockReducer";
-import AccountDropDrown from './AccountDropDown'
 
 
 export default function StockPage(props) {
@@ -19,8 +18,9 @@ export default function StockPage(props) {
     const [companyData, setCompanyData] = useState({})
     const [stockPrice, setStockPrice] = useState("0");
     const [inWatchlist, setInWatchlist] = useState(watchlist.includes(ticker.toUpperCase()));
-    const [errors, setErrors] = useState("")
-
+    const [errors, setErrors] = useState("");
+    const allShares = useSelector(state => state.stock?.owned || []);
+    console.log(allShares)
 
     useEffect(()=> {
         async function getProfile() {
@@ -103,7 +103,7 @@ export default function StockPage(props) {
                 </div>
             </div>
             <div className="stock-buy">
-                <StockBuy ticker={ticker.toUpperCase()} price={stockPrice} />
+                <StockBuy ticker={ticker.toUpperCase()} price={stockPrice} allShares={allShares}/>
                 <div className="watchlist-errors">{errors}</div>
                 <button className="add-to-watchlist" onClick={updateWatchlist}
                     type="button"style={!inWatchlist ? {color: "#03C805", border: "1px solid #03C805"} : {color: "#FF5103", border: "1px solid #FF5103"}}>

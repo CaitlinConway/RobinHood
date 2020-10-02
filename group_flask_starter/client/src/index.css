@@ -314,6 +314,14 @@ input::-webkit-inner-spin-button {
   color: #03C805;
 }
 
+.shares {
+  margin: 10px 0;
+  padding-top: 15px;
+  border-top: 1px solid white;
+  text-align: center;
+  color: white;
+}
+
 .stock-buy-button:hover {
   cursor: pointer;
   background-color: #19ca1c;

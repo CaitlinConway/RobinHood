@@ -17,7 +17,9 @@ export default function stockReducer(state = {}, action) {
           newState["news"] = action.news
           return newState;
         case UPDATE_STOCKS_OWNED:
+          console.log(action.stocks)
           newState["owned"] = action.stocks
+          return newState;
         default:
             return state;
     }
@@ -129,8 +131,9 @@ export function updateStocksThunk({ticker, price, shares, buy, userId}) {
       body: JSON.stringify({ticker, price, shares, buy})
     })
     if (res.ok) {
-      let stocks = await res.json()
-      dispatch(updateStocks(stocks))
+      let stocks = await res.json();
+      console.log(stocks);
+      dispatch(updateStocks(stocks.stocks))
     }
   }
 }
