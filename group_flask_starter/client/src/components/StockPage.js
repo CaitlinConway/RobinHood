@@ -12,7 +12,7 @@ import { addToWatchList, deleteFromStockWatchlist } from "../store/stockReducer"
 export default function StockPage(props) {
     const ticker = props.match.params.stockId;
     const dispatch = useDispatch()
-    const watchlist = useSelector(state => state?.stock?.watchlist?.tickers);
+    const watchlist = useSelector(state => state?.stock?.watchlist?.tickers || []);
     console.log(watchlist)
     const watchlistId = useSelector(state => state?.auth?.watchlistId);
     const [companyData, setCompanyData] = useState({})

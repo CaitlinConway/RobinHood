@@ -2,6 +2,7 @@
 const GET_WATCHLIST = "watchlist";
 const DELETE_STOCK_WATCHLIST = "watchlist/delete"
 const GET_NEWS = 'news';
+const GET_STOCKLIST ="stocklist"
 const UPDATE_STOCKS_OWNED = "stocks/owned"
 
 export default function stockReducer(state = {}, action) {
@@ -16,6 +17,8 @@ export default function stockReducer(state = {}, action) {
         case GET_NEWS:
           newState["news"] = action.news
           return newState;
+        case GET_STOCKLIST:
+          newState["stocklist"] = action.stocklist
         case UPDATE_STOCKS_OWNED:
           console.log(action.stocks)
           newState["owned"] = action.stocks
@@ -53,6 +56,13 @@ const getNewsThunk = (news) => {
   return {
     type: GET_NEWS,
     news
+  }
+}
+
+const getStocklistThunk = (stocklist) =>{
+  return {
+    type: GET_STOCKLIST,
+    stocklist
   }
 }
 
@@ -122,6 +132,15 @@ export const getNews = function() {
       }
   }
 }
+
+export const getStocklist = function(userId) {
+  return async(dispatch) => {
+      let res = await fetch(`/api/stocks/stocklist/${userId}`)
+      if(res.ok) {
+          let stocklist = await res.json();
+          console.log(stocklist)
+          dispatch(getStocklistThunk(stocklist));
+      }
 
 export function updateStocksThunk({ticker, price, shares, buy, userId}) {
   return async(dispatch) => {
