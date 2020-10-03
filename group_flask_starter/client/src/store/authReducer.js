@@ -1,6 +1,7 @@
 
 const LOGIN = "auth/login";
 const LOGOUT = "auth/logout";
+const UPDATEBALANCE = "user/balance/update"
 
 
 export default function authReducer(state = {}, action) {
@@ -16,6 +17,9 @@ export default function authReducer(state = {}, action) {
             return newState;
         case LOGOUT:
             return {};
+        case UPDATEBALANCE:
+            newState["balance"] = action.balance;
+            return newState;
         default:
             return state;
     }
@@ -37,6 +41,13 @@ const logoutUser = () => {
   return {
     type: LOGOUT
   }
+}
+
+const updateUserBalance = (balance) => {
+    return {
+        type: UPDATEBALANCE,
+        balance
+    }
 }
 
 
@@ -85,6 +96,19 @@ export const signUp = function(firstName, lastName, email, password) {
         else if(res.ok && !res.data.error) {
             dispatch(setUser(res.data.id, res.data.email, res.data.balance, res.firstName, res.lastName))
             alert("Signup successful! Returning to login page.")
+        }
+    }
+}
+
+
+export function updateBalance(userId) {
+    return async(dispatch) => {
+        let res = await fetch(`/api/users/${userId}/balance`)
+        if(res.ok) {
+            let data = await res.json();
+            console.log(data);
+            let balance = data.userBalance
+            dispatch(updateUserBalance(balance))
         }
     }
 }

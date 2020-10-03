@@ -122,6 +122,10 @@ export const getSearch = function(stockId) {
     }
   }
 
+export const getShares = function() {
+  return;
+}
+
 export const getNews = function() {
   return async (dispatch) => {
       let res = await fetch(`/api/stocks/news`)
@@ -141,6 +145,8 @@ export const getStocklist = function(userId) {
           console.log(stocklist)
           dispatch(getStocklistThunk(stocklist));
       }
+    }
+}
 
 export function updateStocksThunk({ticker, price, shares, buy, userId}) {
   return async(dispatch) => {
@@ -152,6 +158,21 @@ export function updateStocksThunk({ticker, price, shares, buy, userId}) {
     if (res.ok) {
       let stocks = await res.json();
       console.log(stocks);
+      if(stocks.error) {
+        return stocks
+      }
+
+      dispatch(updateStocks(stocks.stocks))
+      return "success"
+    }
+  }
+}
+
+export function getStocks(userId) {
+  return async(dispatch) => {
+    let res = await fetch(`/api/stocks/owned/${userId}`)
+    if (res.ok) {
+      let stocks = await res.json();
       dispatch(updateStocks(stocks.stocks))
     }
   }

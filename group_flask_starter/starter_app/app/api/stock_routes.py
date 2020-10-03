@@ -168,3 +168,13 @@ def makeTrade(userId):
             {Stock.query.filter(Stock.id == stock.stockId).first().ticker: str(stock.shares)}
             for stock in all_stocks)
            }
+
+
+@stock_routes.route("/owned/<userId>")
+def getStocks(userId):
+    ownedStocks = Stocklist.query.filter(Stocklist.userId == userId).all()
+    # return in format {ticker: shares}
+    return {"stocks": list(
+            {Stock.query.filter(Stock.id == stock.stockId).first().ticker: str(stock.shares)}
+            for stock in ownedStocks)
+           }
