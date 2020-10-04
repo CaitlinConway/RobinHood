@@ -623,9 +623,9 @@ input::-webkit-inner-spin-button {
   padding: 0;
 }
 .portfolio-button, .user-account-button {
-  height: 80px;
-  width: 120px;
-  padding: 10px;
+  /* height: 80px;
+  width: 120px; */
+  /* padding: 10px; */
   border-radius: 3px;
   border-style: none;
   color: white;
