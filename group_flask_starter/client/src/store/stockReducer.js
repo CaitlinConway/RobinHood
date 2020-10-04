@@ -1,4 +1,4 @@
-
+import LOGOUT from './authReducer'
 const GET_WATCHLIST = "watchlist";
 const DELETE_STOCK_WATCHLIST = "watchlist/delete"
 const GET_NEWS = 'news';
@@ -23,6 +23,8 @@ export default function stockReducer(state = {}, action) {
           console.log(action.stocks)
           newState["owned"] = action.stocks
           return newState;
+        case LOGOUT:
+          return {};
         default:
             return state;
     }
