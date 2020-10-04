@@ -730,15 +730,20 @@ input::-webkit-inner-spin-button {
   font-family: "Capsule Sans Text", -apple-system, BlinkMacSystemFont, sans-serif;
   font-style: bold;
 }
-.stock-name-homepage {
+.stock-name-homepage, #stock-price-homepage {
   font-size: 30px;
   color: white;
-  position: absolute;
-  margin-left: 75px;
-  margin-top: 100px;
   font-family: "Capsule Sans Text", -apple-system, BlinkMacSystemFont, sans-serif;
   font-style: bold;
 }
+
+.stock-price-container-homepage {
+  position: absolute;
+  margin-left: 75px;
+  margin-top: 130px;
+}
+
+
 #news-feed-div {
   position: absolute;
   margin-top: 700px;

@@ -5,7 +5,7 @@ import SearchBar from './SearchBar'
 import greenLogo from "../robinhood-logomark-green.png"
 import WatchList from "./WatchList"
 import {connect} from 'react-redux'
-import {getWatchList, getNews} from '../store/stockReducer'
+import {getWatchList, getNews, getStocks} from '../store/stockReducer'
 import StockChartHomePage from './StockChartHomePage'
 import NewsFeed from './NewsFeed'
 import AccountDropDown from './AccountDropDown'
@@ -14,6 +14,7 @@ class PortfolioPage extends React.Component{
   componentDidMount(){
     this.props.getWatchList(this.props.auth);
     this.props.getNews();
+    this.props.getStocks(this.props.auth);
   }
 
   linkToPage = (link) => {
@@ -33,7 +34,8 @@ class PortfolioPage extends React.Component{
   render(){
     if (this.props.watchlist && this.props.news){
       console.log(this.props.watchlist.tickers)
-      let random = Math.floor(Math.random() * Math.floor((this.props.watchlist.tickers).length)) +1
+      let random = Math.floor(Math.random() * Math.floor((this.props.watchlist.tickers).length))
+      console.log(random)
 
   return (
     <div className="portfolio-page" style= {{backgroundColor: '#040F15'}}>
@@ -118,7 +120,8 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => {
   return {
     getWatchList: (userId) => dispatch(getWatchList(userId)),
-    getNews: () => dispatch(getNews())
+    getNews: () => dispatch(getNews()),
+    getStocks: (userId) => dispatch(getStocks(userId))
   };
 };
 

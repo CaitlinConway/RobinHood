@@ -37,15 +37,15 @@ export default function StockChartHomePage(props) {
 
     }, [ticker])
 
-    // const hidePrice = e => {
-    //     let price = document.getElementById("current-price");
-    //     price.classList.add("hidden")
-    // }
+    const hidePrice = e => {
+        let price = document.getElementById("stock-price-homepage");
+        price.classList.add("hidden")
+    }
 
-    // const showPrice = e => {
-    //     let price = document.getElementById("current-price");
-    //     price.classList.remove("hidden")
-    // }
+    const showPrice = e => {
+        let price = document.getElementById("stock-price-homepage");
+        price.classList.remove("hidden")
+    }
 
     const showTooltipData = (data) => {
         if ( data?.payload && typeof data?.payload[0] != 'undefined') {
@@ -56,11 +56,13 @@ export default function StockChartHomePage(props) {
     return (
         !stockData ? null :
             <div className="stock-chart-info-homepage">
-                <div className="stock-name-homepage">{props.ticker}
+                <div className="stock-price-container-homepage">
+                    <div className="stock-name-homepage">{companyData.name}</div>
+                    <div id="stock-price-homepage">${stockPrice.toFixed(2)}</div>
                 </div>
                 <div id={'stock-chart-homepage'}>
                     <ResponsiveContainer width="100%" height={500} >
-                        <LineChart data={stockData}>
+                        <LineChart data={stockData} onMouseOver={hidePrice} onMouseOut={showPrice}>
                             <XAxis dataKey="time" stroke="#dfdfdf"/>
                             <YAxis dataKey="closing" domain={["datamin", "auto"]} hide={true}/>
                             <Tooltip content={showTooltipData} position={{"x": 25, "y": 0}} animationDuration={2500}/>
@@ -68,7 +70,7 @@ export default function StockChartHomePage(props) {
                                   strokeWidth={1.8} yAxisId={0} dot={false} type="monotone" dataKey="closing" />
                         </LineChart>
                     </ResponsiveContainer>
-                    </div>
                 </div>
+            </div>
     )
 }

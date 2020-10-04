@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 import { useSelector, useDispatch} from "react-redux";
-import { updateStocksThunk } from '../store/stockReducer'
+import { updateStocksThunk } from '../store/stockReducer';
+import { updateBalance } from "../store/authReducer";
 
 export default function StockBuy(props) {
     let [type, setType] = useState("Dollars");
@@ -22,7 +23,6 @@ export default function StockBuy(props) {
                     break;
                 }
             }
-            console.log(shares);
             setSharesOwned(shares)
         }
         getShares();
@@ -40,7 +40,7 @@ export default function StockBuy(props) {
         setBuy(e.target.value === "Buy")
     }
 
-    const makeTrade = (e) => {
+    const makeTrade = async (e) => {
         e.preventDefault();
         const data = {
             ticker: props.ticker,
@@ -50,7 +50,10 @@ export default function StockBuy(props) {
             userId: userId
         }
         // setBalance()
-        dispatch(updateStocksThunk(data))
+        let trade = await dispatch(updateStocksThunk(data));
+        console.log(trade);
+        if(trade.error) props.setErrors(trade.error)
+        if (trade === "success") dispatch(updateBalance(userId))
     }
 
     return (
