@@ -3,17 +3,22 @@ from flask import Blueprint, jsonify, session, request
 import requests
 import time
 import datetime
+import random
 from app.models import Watchlist, WatchlistContent, Stock, User, Trade, db, Stocklist
 
 
+
 stock_routes = Blueprint("stocks", __name__)
-api_key = os.environ.get("FINHUB_API_KEY")
+api_key_1 = os.environ.get("FINHUB_API_KEY")
 api_key_2 = os.environ.get("FINHUB_API_KEY_2")
+api_keys = [api_key_1, api_key_2]
 
 
 @stock_routes.route("/<stockId>")
 def stock(stockId):
     timestamp = int(time.time())
+    randomInt = random.randrange(2)
+    api_key = api_keys[randomInt]
     r = requests.get(f'https://finnhub.io/api/v1/stock/candle?symbol={stockId.upper()}&resolution=D&from=1577836800&to={timestamp}&token={api_key}')
     json = r.json()
     return {"values": [{"closing": round(a, 2),
@@ -23,6 +28,8 @@ def stock(stockId):
 
 @stock_routes.route("/current/<stockId>")
 def getCurrent(stockId):
+    randomInt = random.randrange(2)
+    api_key = api_keys[randomInt]
     r = requests.get(f'https://finnhub.io/api/v1/quote?symbol={stockId.upper()}&token={api_key}')
     res = r.json()
     return({"values": res})
@@ -30,7 +37,8 @@ def getCurrent(stockId):
 
 @stock_routes.route("/profile/<stockId>")
 def getProfile(stockId):
-    print(stockId)
+    randomInt = random.randrange(2)
+    api_key = api_keys[randomInt]
     r = requests.get(f'https://finnhub.io/api/v1/stock/profile2?symbol={stockId}&token={api_key}')
     res = r.json()
     return ({"values": res})
