@@ -15,7 +15,7 @@ with app.app_context():
   stock3 = Stock(ticker= "BABA")
   stock4 = Stock(ticker= "TSLA")
   stock5 = Stock(ticker= "MSFT")
-  stock6 = Stock(ticker= "GOOG")
+  stock6 = Stock(ticker= "FB")
   stock7 = Stock(ticker= "DIS")
   stock8 = Stock(ticker= "NFLX")
   stock9 = Stock(ticker= "F")

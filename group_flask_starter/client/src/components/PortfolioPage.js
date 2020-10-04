@@ -34,7 +34,8 @@ class PortfolioPage extends React.Component{
   render(){
     if (this.props.watchlist && this.props.news){
       console.log(this.props.watchlist.tickers)
-      let random = Math.floor(Math.random() * Math.floor((this.props.watchlist.tickers).length)) +1
+      let random = Math.floor(Math.random() * Math.floor((this.props.watchlist.tickers).length))
+      console.log(random)
 
   return (
     <div className="portfolio-page" style= {{backgroundColor: '#040F15'}}>
