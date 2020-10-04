@@ -5,6 +5,7 @@ import StockPrice from "./StockPrice";
 export default function StockChart(props) {
     let ticker = props.ticker;
     const [stockData, setStockData] = useState("");
+    console.log(props.stockPrice)
     useEffect(()=> {
         async function getStock() {
             const res = await fetch(`/api/stocks/${ticker}`);
@@ -38,7 +39,7 @@ export default function StockChart(props) {
             <div className="stock-chart">
                 <div className="stock-price-container">
                     <div className="stock-name">{props.name}</div>
-                    <div className="stock-price" id="current-price">{"$" + props.stockPrice.toFixed(2)}</div>
+                    <div className="stock-price" id="current-price">{"$" + (props.stockPrice.toFixed(2) || "0") }</div>
                 </div>
                     <ResponsiveContainer width="100%" height={500} >
                         <LineChart data={stockData} onMouseOver={hidePrice} onMouseOut={showPrice}>

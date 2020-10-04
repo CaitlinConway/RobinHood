@@ -621,11 +621,13 @@ input::-webkit-inner-spin-button {
 }
 #comission-fee-p{
   font-size:20px;
+  text-align: center;
 }
 #batman {
   height: 620px;
   width: 600px;
   margin-right: 100px;
+  background-image: url("./images/batman.png") ;
 }
 .landing-signup-box{
   padding: 10px;

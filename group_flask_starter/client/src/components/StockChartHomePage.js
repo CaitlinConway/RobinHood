@@ -5,7 +5,7 @@ import StockPrice from "./StockPrice";
 export default function StockChartHomePage(props) {
     let ticker = props.ticker;
     const [stockData, setStockData] = useState("");
-    const [stockPrice, setStockPrice] = useState("0");
+    const [stockPrice, setStockPrice] = useState(0);
     const [companyData, setCompanyData] = useState({});
 
     useEffect(()=> {
@@ -58,7 +58,7 @@ export default function StockChartHomePage(props) {
             <div className="stock-chart-info-homepage">
                 <div className="stock-price-container-homepage">
                     <div className="stock-name-homepage">{companyData.name}</div>
-                    <div id="stock-price-homepage">${stockPrice.toFixed(2)}</div>
+                    <div id="stock-price-homepage">${(stockPrice.toFixed(2)) || 0}</div>
                 </div>
                 <div id={'stock-chart-homepage'}>
                     <ResponsiveContainer width="100%" height={500} >

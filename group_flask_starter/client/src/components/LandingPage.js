@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
 import BlackLogo from "../robinhood-logomark-black.png"
 import greenLogo from "../robinhood-logomark-green.png"
-import batman from "../green batman.png"
+import batman from "../images/batman.png"
 
 function LandingPage(props) {
   const history = useHistory();
@@ -45,7 +45,7 @@ function LandingPage(props) {
           <button onClick={signUp} className = 'landing-page-sign-up-button'>Sign Up</button>
           </div>
           <div className="batman">
-            <img id={'batman'} src={batman} alt=""/>
+            <div id={'batman'} alt=""/>
           </div>
         </div>
         <div className='comission-fees'>

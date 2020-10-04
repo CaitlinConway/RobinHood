@@ -16,7 +16,7 @@ export default function StockPage(props) {
     console.log(watchlist)
     const watchlistId = useSelector(state => state?.auth?.watchlistId);
     const [companyData, setCompanyData] = useState({})
-    const [stockPrice, setStockPrice] = useState("0");
+    const [stockPrice, setStockPrice] = useState(0);
     const [inWatchlist, setInWatchlist] = useState(watchlist.includes(ticker.toUpperCase()));
     const [errors, setErrors] = useState("");
     const allShares = useSelector(state => state.stock?.owned || []);
