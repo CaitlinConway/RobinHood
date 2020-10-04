@@ -34,7 +34,6 @@ class PortfolioPage extends React.Component{
   render(){
     if (this.props.watchlist && this.props.news && this.props.user){
       let random = Math.floor(Math.random() * Math.floor((this.props.watchlist.tickers).length))
-
   return (
     <div className="portfolio-page" style= {{backgroundColor: '#040F15'}}>
         <div className="nav-bar">
@@ -109,6 +108,9 @@ class PortfolioPage extends React.Component{
     <div>
     <div className = 'watch-list-div'>
     </div>
+    <div id={'news-feed-div-homepage'}>
+          <NewsFeed news={this.props.news}></NewsFeed>
+        </div>
     </div>
     </div>
 </div>)
