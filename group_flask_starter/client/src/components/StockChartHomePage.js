@@ -54,7 +54,7 @@ export default function StockChartHomePage(props) {
     }
 
     return (
-        !stockData ? null :
+        !stockData || !stockPrice ? null :
             <div className="stock-chart-info-homepage">
                 <div className="stock-price-container-homepage">
                     <div className="stock-name-homepage">{companyData.name}</div>
