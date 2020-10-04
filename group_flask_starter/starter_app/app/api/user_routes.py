@@ -73,3 +73,10 @@ def load_user():
     return {"userId": session['userId'], 'userEmail': session['userEmail'],  "userFirstName": session['userFirstName'], "userLastName": session['userLastName'], "userWatchlistId": session['userWatchlistId'],"userBalance": session['userBalance'],}, 200
   else:
     return {"msg": "user not loaded"}
+
+
+@user_routes.route("/<userId>/balance")
+def get_balance(userId):
+    print("_____________________")
+    userBalance = User.query.filter(User.id == userId).first().balance
+    return {"userBalance": str(userBalance)}

@@ -103,7 +103,7 @@ export default function StockPage(props) {
                 </div>
             </div>
             <div className="stock-buy">
-                <StockBuy ticker={ticker.toUpperCase()} price={stockPrice} allShares={allShares}/>
+                <StockBuy ticker={ticker.toUpperCase()} price={stockPrice} allShares={allShares} setErrors={setErrors}/>
                 <div className="watchlist-errors">{errors}</div>
                 <button className="add-to-watchlist" onClick={updateWatchlist}
                     type="button"style={!inWatchlist ? {color: "#03C805", border: "1px solid #03C805"} : {color: "#FF5103", border: "1px solid #FF5103"}}>
