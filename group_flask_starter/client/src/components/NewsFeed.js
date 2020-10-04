@@ -2,7 +2,6 @@ import NewsItem from './NewsItem'
 import React from "react";
 
 const NewsFeed = (news) => {
-  debugger;
   if (news['news'] != undefined){
   return (
     <>
