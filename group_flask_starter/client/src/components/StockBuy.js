@@ -4,7 +4,7 @@ import { updateStocksThunk } from '../store/stockReducer';
 import { updateBalance } from "../store/authReducer";
 
 export default function StockBuy(props) {
-    let [type, setType] = useState("Dollars");
+    let [type, setType] = useState("Shares");
     let [amount, setAmount] = useState(0);
     let [buy, setBuy] = useState(true);
     let [sharesOwned, setSharesOwned] = useState(0)
@@ -66,8 +66,8 @@ export default function StockBuy(props) {
                     <div className="stock-input">
                         <label htmlFor="type"> Invest In</label>
                         <select onChange={updateType} name="type" id="stock-type-dropdown" value={type}>
-                            <option>Dollars</option>
                             <option>Shares</option>
+                            <option>Dollars</option>
                         </select>
                     </div>
                     <div className="stock-input">

@@ -21,7 +21,7 @@ with app.app_context():
   stock9 = Stock(ticker= "F")
   stock10 = Stock(ticker= "NVDA")
   watchlistContent = WatchlistContent(watchlistId = 1, stockId = 1)
-  guest = User(email = 'guest@guest.com', firstName = 'Bob', lastName = 'Smith', password=sha256_crypt.hash('password'), balance = 100000, watchlistId = 1)
+  guest = User(email = 'guest@guest.com', firstName = 'Bob', lastName = 'Smith', password=sha256_crypt.hash('password'), balance = 25000, watchlistId = 1)
   stocklist = Stocklist(shares = 3, stockId = 1, userId = 1)
   watchlistContent2 = WatchlistContent(watchlistId = 1, stockId = 2)
   watchlistContent3 = WatchlistContent(watchlistId = 1, stockId = 3)

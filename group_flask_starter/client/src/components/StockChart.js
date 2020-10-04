@@ -34,11 +34,11 @@ export default function StockChart(props) {
     }
 
     return (
-        !stockData ? (<div className="spaceholder"/>) :
+        (!stockData || !props.stockPrice) ? (<div className="spaceholder"/>) :
             <div className="stock-chart">
                 <div className="stock-price-container">
                     <div className="stock-name">{props.name}</div>
-                    <div className="stock-price" id="current-price">{"$" + props.stockPrice?.toFixed(2)}</div>
+                    <div className="stock-price" id="current-price">{"$" + props.stockPrice.toFixed(2)}</div>
                 </div>
                     <ResponsiveContainer width="100%" height={500} >
                         <LineChart data={stockData} onMouseOver={hidePrice} onMouseOut={showPrice}>
