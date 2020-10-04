@@ -1008,6 +1008,7 @@ a {
   background-color: #040f15;
   height: 920px;
   color: white;
+  font-family: "Capsule Sans Text", Helvetica, "Segoe UI", Arial, sans-serif;
 }
 
 #profile-user-name {
@@ -1015,11 +1016,14 @@ a {
   font-family: "Capsule Sans Text", Helvetica, "Segoe UI", Arial, sans-serif;
   margin-top: 100px;
   margin-left: 23%;
+  margin-bottom: 20px;
 }
 
 #profile-portfolio-value {
   margin-top: 20px;
   margin-left: 23%;
+  /* border-top: 1px solid red; */
+  padding-top: 30px;
 }
 
 .profile-portfolio-header {
@@ -1028,20 +1032,88 @@ a {
 
 #profile-user-balance {
   margin-top: 20px;
+  margin-bottom: 10px;
   font-size: 25pt;
   font-family: "Capsule Sans Display", system-ui, Helvetica, "Segoe UI", Arial, sans-serif;
 }
 
 #profile-cash-balance-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
   margin-top: 20px;
   margin-left: 23%;
   width: 100%;
   height: 100%;
   max-height: 70px;
   max-width: 750px;
+  border-top: 1px solid rgb(48,54,58);
+  border-bottom: 1px solid rgb(48,54,58);
+  font-family: "Capsule Sans Text", Helvetica, "Segoe UI", Arial, sans-serif;
+  font-size: 13px;
 }
 
 #profile-cash-balance-container:hover {
-  outline-style: solid;
-  outline-width: 1px;
+  border-radius: 10px;
+  background-color: rgb(48,54,58);
+}
+
+#profile-cash-balance-header {
+  padding-left: 2%;
+  font-family: inherit;
+  font-weight: 700;
+}
+
+#profile-cash-balance {
+  padding-right: 10%;
+  font-family: inherit;
+}
+
+#profile-add-balance-container {
+  margin-left: 23%;
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  max-width: 750px;
+}
+
+#profile-add-balance{
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  align-items: center;
+  height: 100px;
+}
+
+#profile-add-button-container {
+  display: flex;
+  flex-direction: row;
+  margin-top: 20px;
+}
+
+#profile-add-balance-header {
+  max-width: 200px;
+  width: 100%;
+}
+
+#profile-add-amount {
+  border: none;
+  outline: none;
+}
+
+#profile-add-amount:focus {
+  border: none;
+}
+
+#profile-add-balance-button {
+  margin-left: 100px;
+  width: 100%;
+  height: 100%;
+  max-width: 100px;
+  max-height: 30px;
+}
+
+#profile-user-stocks {
+  margin-left: 20px;
 }
