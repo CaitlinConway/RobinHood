@@ -2,6 +2,7 @@ import NewsItem from './NewsItem'
 import React from "react";
 
 const NewsFeed = (news) => {
+  if (news['news'] != undefined){
   return (
     <>
       <div id="news-feed-div">
@@ -16,6 +17,11 @@ const NewsFeed = (news) => {
       </div>
     </>
   );
+        }
+    else {
+      return (<>
+      </>)
+    }
 };
 
 export default NewsFeed;
