@@ -92,7 +92,7 @@ export const signUp = function(firstName, lastName, email, password) {
             alert(error)
         }
         else if(res.ok && !res.data.error) {
-            dispatch(setUser(res.data.id, res.data.email, res.data.balance, res.firstName, res.lastName))
+            dispatch(setUser(res.data.id, res.data.email, res.data.balance, res.firstName, res.lastName, res.watchlistId))
             // alert("Signup successful! Returning to login page.")
         }
     }

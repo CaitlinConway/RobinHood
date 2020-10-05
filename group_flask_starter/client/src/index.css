@@ -628,6 +628,7 @@ input::-webkit-inner-spin-button {
 }
 #comission-fee-p{
   font-size:20px;
+  text-align: center;
 }
 #batman {
   height: 620px;

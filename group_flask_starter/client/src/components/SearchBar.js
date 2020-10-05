@@ -37,7 +37,6 @@ class SearchBar extends React.Component {
 
   onSearch = (e) => {
     if (e.key === 'Enter') {
-    console.log(this.state.search)
     }
   }
 

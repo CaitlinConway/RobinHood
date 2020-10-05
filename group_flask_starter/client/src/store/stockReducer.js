@@ -143,7 +143,6 @@ export const getStocklist = function(userId) {
       let res = await fetch(`/api/stocks/stocklist/${userId}`)
       if(res.ok) {
           let stocklist = await res.json();
-          console.log(stocklist)
           dispatch(getStocklistThunk(stocklist));
       }
     }
