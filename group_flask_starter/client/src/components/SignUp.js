@@ -1,4 +1,5 @@
 import React from "react";
+import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { signUp, login } from "../store/authReducer";
 
@@ -47,6 +48,7 @@ class SignUp extends React.Component {
     };
 
     render() {
+        if (this.props.isLoggedIn) return <Redirect to="/"></Redirect>;
         const { firstName, lastName, email, password, errors } = this.state;
         return (
           <div className="signup-page">
@@ -87,9 +89,6 @@ class SignUp extends React.Component {
                         placeholder="Password (min. 10 characters)"
                         ></input>
                         <div className="break"></div>
-                        {/* <div className="signup-error-container">
-                        <ul id="errors" className="errors">{errors}</ul>
-                        </div> */}
                         <button type="submit" className="signup-button">
                             Continue
                         </button>
@@ -142,11 +141,11 @@ class SignUp extends React.Component {
       }
     }
 
-const mapStateToProps = (state) => {
+  const mapStateToProps = (state) => {
     return {
-      loggedIn: !!state.auth.id,
+        isLoggedIn: !!state.auth.id,
+     };
     };
-  };
 
   const mapDispatchToProps = (dispatch) => {
     return {

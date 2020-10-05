@@ -13,14 +13,12 @@ export default function StockPage(props) {
     const ticker = props.match.params.stockId;
     const dispatch = useDispatch()
     const watchlist = useSelector(state => state?.stock?.watchlist?.tickers || []);
-    console.log(watchlist)
     const watchlistId = useSelector(state => state?.auth?.watchlistId);
     const [companyData, setCompanyData] = useState({})
     const [stockPrice, setStockPrice] = useState(0);
     const [inWatchlist, setInWatchlist] = useState(watchlist.includes(ticker.toUpperCase()));
     const [errors, setErrors] = useState("");
     const allShares = useSelector(state => state.stock?.owned || []);
-    console.log(allShares)
 
     useEffect(()=> {
         async function getProfile() {
@@ -48,7 +46,6 @@ export default function StockPage(props) {
     const updateWatchlist = async () => {
         if (!inWatchlist) {
             let res = await dispatch(addToWatchList(watchlistId, ticker));
-            console.log(res);
             if(!res.error) {
                 setInWatchlist(true);
                 setErrors("")
@@ -75,7 +72,7 @@ export default function StockPage(props) {
                     </li>
                     <li className="search"><SearchBar></SearchBar></li>
                     <li><NavLink to="/" activeclass="active" className='user-account-button'>Account</NavLink></li>
-                    <li><NavLink to="/" activeclass="active" className = 'portfolio-button'>Portfolio</NavLink></li>
+                    <li><NavLink to={`/user/${watchlistId}`} activeclass="active" className = 'portfolio-button'>Portfolio</NavLink></li>
                 </ul>
             </nav>
         </div>

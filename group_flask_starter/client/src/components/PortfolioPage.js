@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter,  NavLink, Redirect } from 'react-router-dom';
+import { NavLink, Redirect } from 'react-router-dom';
 import Logo from "../robinhood-logomark-white.png"
 import SearchBar from './SearchBar'
 import greenLogo from "../robinhood-logomark-green.png"
@@ -56,7 +56,7 @@ class PortfolioPage extends React.Component{
                 <li className="search"><SearchBar></SearchBar></li>
                 <li><button onClick={this.showAccount} activeclass="active" className='user-account-button'>Account</button></li>
                 <li id={'account-drop-down-li'} hidden><AccountDropDown user={this.props.user}></AccountDropDown></li>
-                <li><NavLink to="/" activeclass="active" className = 'portfolio-button'>Portfolio</NavLink></li>
+                <li><NavLink to={`/user/${this.props.auth}`} activeclass="active" className = 'portfolio-button'>Portfolio</NavLink></li>
             </ul>
         </nav>
         </div>

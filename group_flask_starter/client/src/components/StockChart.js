@@ -5,7 +5,6 @@ import StockPrice from "./StockPrice";
 export default function StockChart(props) {
     let ticker = props.ticker;
     const [stockData, setStockData] = useState("");
-    console.log(props.stockPrice)
     useEffect(()=> {
         async function getStock() {
             const res = await fetch(`/api/stocks/${ticker}`);

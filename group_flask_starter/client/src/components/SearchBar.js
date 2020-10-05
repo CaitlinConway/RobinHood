@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from "react-redux";
-import { getSearch } from "../store/stockReducer";
+// import { getSearch } from "../store/stockReducer";
 import { Link } from 'react-router-dom';
 import { stockArray } from '../stockarray'
 
@@ -16,7 +16,6 @@ class SearchBar extends React.Component {
   updateSearch = (e) => {
     this.setState({ search: e.target.value });
     const searchList = document.getElementById("search-list");
-    console.log(stockArray)
     if (e.target.value) {
       searchList.removeAttribute("hidden");
       searchList.style.display = "flex";
@@ -38,7 +37,6 @@ class SearchBar extends React.Component {
 
   onSearch = (e) => {
     if (e.key === 'Enter') {
-    console.log(this.state.search)
     }
   }
 
@@ -51,8 +49,16 @@ class SearchBar extends React.Component {
       if (!(window.location.href.includes("stocks")) && i < 6) {
         pageData.push(
         <div className="search-ul">
-         <div className="search-ul-1"><Link to={`stocks/${array.Symbol}`}>{array.Symbol}</Link></div>
-         <div className="search-ul-2"><Link to={`stocks/${array.Symbol}`}>{array.Name}</Link></div>
+         <div className="search-ul-1"><Link to={`/stocks/${array.Symbol}`}>{array.Symbol}</Link></div>
+         <div className="search-ul-2"><Link to={`/stocks/${array.Symbol}`}>{array.Name}</Link></div>
+        </div>
+        );
+        i++;
+      } else if (window.location.href.includes("user") && i < 6) {
+        pageData.push(
+        <div className="search-ul">
+         <div className="search-ul-1"><Link to={`${array.Symbol}`}>{array.Symbol}</Link></div>
+         <div className="search-ul-2"><Link to={`${array.Symbol}`}>{array.Name}</Link></div>
         </div>
         );
         i++;
@@ -114,7 +120,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    search: (search) => dispatch(getSearch(search)),
+    // search: (search) => dispatch(getSearch(search)),
   };
 };
 

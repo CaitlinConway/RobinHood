@@ -117,6 +117,7 @@ def stockList(userId):
     return {"tickers": stockListStocks}
   return "error no list"
 
+
 @stock_routes.route("/trades/<userId>", methods=["POST"])
 def makeTrade(userId):
     data = request.json

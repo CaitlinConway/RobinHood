@@ -2,7 +2,7 @@ import NewsItem from './NewsItem'
 import React from "react";
 
 const NewsFeed = (news) => {
-  if (news['news'] != undefined){
+  if (news['news'] !== undefined){
   return (
     <>
       <div id="news-feed-div">

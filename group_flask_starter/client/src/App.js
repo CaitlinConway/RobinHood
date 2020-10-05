@@ -1,9 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
-import { Provider, connect, useDispatch } from 'react-redux';
-import configureStore from "./store/configureStore";
+import { connect, useDispatch } from 'react-redux';
+// import configureStore from "./store/configureStore";
 import StockPage from "./components/StockPage";
-import UserList from './components/UsersList';
 import Login from './components/Login';
 import SignUp from './components/SignUp';
 import PortfolioPage from './components/PortfolioPage';
@@ -58,7 +57,7 @@ function App() {
             <Route exact path="/signup" component={SignUp} />
             <Route exact path="/landing" component={LandingPage}/>
             {/* <ConnectedProtectedRoute path='/user/:userId' render={(props) => <UserPage userId={this.match.params.userId} {...props}></UserPage>}> </ConnectedProtectedRoute> */}
-            <Route exact path='/user/:userId' component={UserPage}></Route>
+            <ConnectedProtectedRoute exact path='/user/:userId' component={UserPage}></ConnectedProtectedRoute>
           </Switch>
         {/* </Provider> */}
     </BrowserRouter>

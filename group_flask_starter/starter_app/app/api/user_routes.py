@@ -80,3 +80,15 @@ def get_balance(userId):
     print("_____________________")
     userBalance = User.query.filter(User.id == userId).first().balance
     return {"userBalance": str(userBalance)}
+
+@user_routes.route("/new-balance/<userId>", methods=["POST"])
+def addBalance(userId):
+    data = request.json
+    currentUser = User.query.filter(User.id == userId).first()
+    currentBalance = currentUser.balance
+    addedAmount = int(data)
+    updatedBalance = currentBalance + addedAmount
+    currentUser.balance = updatedBalance
+
+    db.session.commit()
+    return {"newBalance": str(currentUser.balance)}
