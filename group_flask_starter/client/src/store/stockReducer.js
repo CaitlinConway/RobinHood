@@ -19,8 +19,8 @@ export default function stockReducer(state = {}, action) {
           return newState;
         case GET_STOCKLIST:
           newState["stocklist"] = action.stocklist
+          return newState;
         case UPDATE_STOCKS_OWNED:
-          console.log(action.stocks)
           newState["owned"] = action.stocks
           return newState;
         case LOGOUT:
@@ -74,7 +74,6 @@ export const getWatchList = function(userId) {
 
         if(res.ok) {
             let watchlist = await res.json();
-            console.log(watchlist)
             dispatch(getWatchListThunk(watchlist));
         }
     }
@@ -114,15 +113,15 @@ export const deleteFromStockWatchlist = function(watchlistId, ticker) {
   }
 }
 
-export const getSearch = function(stockId) {
-  return async(dispatch) => {
-      let res = await fetch(`/api/stocks/${stockId}`)
-      if(res.ok) {
-          let stock = await res.json();
-          // dispatch(searchThunk(stock));
-      }
-    }
-  }
+// export const getSearch = function(stockId) {
+//   return async(dispatch) => {
+//       let res = await fetch(`/api/stocks/${stockId}`)
+//       if(res.ok) {
+//           let stock = await res.json();
+//           // dispatch(searchThunk(stock));
+//       }
+//     }
+//   }
 
 export const getShares = function() {
   return;
@@ -159,12 +158,28 @@ export function updateStocksThunk({ticker, price, shares, buy, userId}) {
     })
     if (res.ok) {
       let stocks = await res.json();
-      console.log(stocks);
       if(stocks.error) {
         return stocks
       }
 
       dispatch(updateStocks(stocks.stocks))
+      return "success"
+    }
+  }
+}
+
+export function addBalanceThunk({amount, userId}) {
+  return async(dispatch) => {
+    let res = await fetch(`/api/account/${userId}`, {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(amount)
+    })
+    if (res.ok) {
+      let newAmount = await res.json();
+      if (newAmount.error) {
+        return newAmount
+      }
       return "success"
     }
   }

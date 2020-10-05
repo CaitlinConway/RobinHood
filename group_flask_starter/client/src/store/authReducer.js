@@ -50,7 +50,6 @@ const updateUserBalance = (balance) => {
     }
 }
 
-
 export const login = function(email, password) {
     return async(dispatch) => {
         let res = await fetch("/api/users/login", {
@@ -69,7 +68,6 @@ export const logOut = () => {
     return async function(dispatch) {
         let res = await fetch("/api/users/logout", {
             method: "DELETE",
-            // headers: {'Content-Type': "application/json"}
         });
         if(res.ok) {
             dispatch(logoutUser());
@@ -95,7 +93,7 @@ export const signUp = function(firstName, lastName, email, password) {
         }
         else if(res.ok && !res.data.error) {
             dispatch(setUser(res.data.id, res.data.email, res.data.balance, res.firstName, res.lastName))
-            alert("Signup successful! Returning to login page.")
+            // alert("Signup successful! Returning to login page.")
         }
     }
 }
@@ -106,8 +104,22 @@ export function updateBalance(userId) {
         let res = await fetch(`/api/users/${userId}/balance`)
         if(res.ok) {
             let data = await res.json();
-            console.log(data);
             let balance = data.userBalance
+            dispatch(updateUserBalance(balance))
+        }
+    }
+}
+
+export function addToBalance(amount, userId) {
+    return async(dispatch) => {
+        let res = await fetch(`/api/users/new-balance/${userId}`, {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(amount)
+        })
+        if (res.ok) {
+            let data = await res.json();
+            let balance = data.newBalance
             dispatch(updateUserBalance(balance))
         }
     }

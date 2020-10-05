@@ -17,7 +17,6 @@ export default function StockBuy(props) {
             let shares = 0;
             for(let i=0; i<props.allShares.length; i++) {
                 let current = props.allShares[i];
-                console.log(current)
                 if(current[props.ticker] !== undefined) {
                     shares = current[props.ticker];
                     break;
@@ -51,7 +50,6 @@ export default function StockBuy(props) {
         }
         // setBalance()
         let trade = await dispatch(updateStocksThunk(data));
-        console.log(trade);
         if(trade.error) props.setErrors(trade.error)
         if (trade === "success") dispatch(updateBalance(userId))
     }

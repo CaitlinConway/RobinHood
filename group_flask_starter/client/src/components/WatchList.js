@@ -2,7 +2,6 @@ import React from "react";
 import WatchListStock from "./WatchlistStock";
 
 const WatchList = (watchlist, userId, linkfunc) => {
-  console.log(watchlist)
   return (
     <>
       <div id="watchlist-div">

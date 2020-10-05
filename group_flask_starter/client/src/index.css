@@ -81,8 +81,22 @@ body {
     border-style: none;
 }
 
+.login-input-email:focus, .login-input-password:focus {
+  outline-color: rgb(0, 200, 5);
+  background-color: white;
+}
+
+.login-input-email:hover, .login-input-password:hover {
+  background-color: white;
+  box-shadow: 0 0 3px rgba(195, 195, 195, 1);
+}
+
 .login-sign-in-button {
     padding-top: 40px;
+}
+
+.login-button:hover, .demo-user-login-button:hover {
+  background-color: rgb(0, 180, 5);
 }
 
 .login-button, .demo-user-login-button {
@@ -283,8 +297,6 @@ input::-webkit-inner-spin-button {
 
 }
 
-
-
 #stock-type-dropdown:hover {
   box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.25);
   cursor: pointer;
@@ -337,8 +349,6 @@ input::-webkit-inner-spin-button {
 }
 
 .watchlist-errors {
-  /* display: flex;
-  justify-self: center; */
   margin: auto;
   font-size: 14px;
   text-align: center;
@@ -349,17 +359,6 @@ input::-webkit-inner-spin-button {
 .add-to-watchlist:hover {
   cursor: pointer;
 }
-
-
-
-/*  */
-
-
-
-
-
-
-
 
 /* Sign-up Page CSS */
 
@@ -372,8 +371,6 @@ input::-webkit-inner-spin-button {
 .signup-form-div {
     display: flex;
     flex-direction: column;
-    /* flex-flow: row wrap; */
-    /* max-width: 630px; */
     width: 840px;
 }
 
@@ -556,6 +553,11 @@ input::-webkit-inner-spin-button {
   font-family: "Capsule Sans Text", -apple-system, BlinkMacSystemFont, sans-serif;
   text-decoration: none;
 }
+
+.landing-page-nav-login-button:hover {
+  color: rgb(0, 200, 5);
+}
+
 .landing-page-nav-sign-up-button {
   height: 40px;
   width: 80px;
@@ -569,15 +571,20 @@ input::-webkit-inner-spin-button {
 .landing-page-sign-up-button {
   margin-top: 20px;
   background-color: black;
-  height: 60px;
+  height: 50px;
   width: 120px;
-  border-radius: 10px;
+  border-radius: 50px;
   border-style: none;
-  color: white;
+  color:white;
   font-size: 20px;
   font-family: "Capsule Sans Text", -apple-system, BlinkMacSystemFont, sans-serif;
   margin-left: 20px;
 }
+
+.landing-page-sign-up-button:hover {
+  background-color:rgb(42, 49, 55);
+}
+
 .landing-page-login-link{
   font-size: 20px;
 }
@@ -629,10 +636,16 @@ input::-webkit-inner-spin-button {
 }
 .landing-signup-box{
   padding: 10px;
-  background-color: rgba(0, 180, 5, 1);
-  width: 80px;
-  border-radius: 3px;
+  background-color: rgb(0, 200, 5);
+  width: 100px;
+  border-radius: 50px;
+  text-align: center;
 }
+
+.landing-signup-box:hover {
+  background-color: rgb(0, 180, 5);
+}
+
 .portfolio-page{
   background-color: #040F15;
   width: 100vw;
@@ -641,9 +654,6 @@ input::-webkit-inner-spin-button {
   padding: 0;
 }
 .portfolio-button, .user-account-button {
-  /* height: 80px;
-  width: 120px; */
-  /* padding: 10px; */
   border-radius: 3px;
   border-style: none;
   color: white;
@@ -709,15 +719,6 @@ input::-webkit-inner-spin-button {
 .test {
   color: white;
 }
-/* #stock-chart-homepage-div{
-  display: flex;
-  position: absolute;
-  width: 680px;
-  height: 350px;
-  margin-left: 50px;
-  justify-content: center;
-  margin-top: 200px;
-} */
 
 #stock-chart-homepage {
   display: flex;
@@ -743,7 +744,6 @@ input::-webkit-inner-spin-button {
   margin-top: 130px;
 }
 
-
 #news-feed-div {
   position: absolute;
   margin-top: 700px;
@@ -751,6 +751,7 @@ input::-webkit-inner-spin-button {
   color: white;
   font-family: "Capsule Sans Text", -apple-system, BlinkMacSystemFont, sans-serif;
 }
+
 #news-item{
   display: grid;
   grid-template-columns: 50% 50%;
@@ -760,25 +761,30 @@ input::-webkit-inner-spin-button {
   max-height: 270px;
   padding-top: 10px;
 }
+
 #news-feed{
   list-style-type: none;
   padding: 0;
 }
+
 #news-source{
   font-size: 15px;
   grid-area:1/1/1/1;
   padding-bottom: 15px;;
 }
+
 #news-headline{
   font-size: 20px;
   grid-area: 2/1/2/1;
   padding-bottom: 15px;
 }
+
 #news-summary{
   font-size: 13px;
   grid-area: 3/1/3/1;
   overflow: hidden;
 }
+
 #news-image{
   height: 150px;
   width: 280px;
@@ -1003,4 +1009,147 @@ a {
 }
 #drop-down-username, #drop-down-balance, #logout-button {
   padding: 15px;
+}
+
+/* User Profile Page CSS */
+
+#profile-master-container {
+  display: flex;
+  flex-direction: column;
+  background-color: #040f15;
+  height: 920px;
+  color: white;
+  font-family: "Capsule Sans Text", Helvetica, "Segoe UI", Arial, sans-serif;
+}
+
+#profile-user-name {
+  font-size: 26pt;
+  font-family: "Capsule Sans Text", Helvetica, "Segoe UI", Arial, sans-serif;
+  margin-top: 100px;
+  margin-left: 23%;
+  margin-bottom: 20px;
+}
+
+#profile-portfolio-value {
+  margin-top: 20px;
+  margin-left: 23%;
+  padding-top: 30px;
+}
+
+.profile-portfolio-header {
+  font-size: 11pt;
+}
+
+#profile-user-balance {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-size: 25pt;
+  font-family: "Capsule Sans Display", system-ui, Helvetica, "Segoe UI", Arial, sans-serif;
+}
+
+#profile-cash-balance-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  margin-left: 23%;
+  width: 100%;
+  height: 100%;
+  max-height: 70px;
+  max-width: 750px;
+  border-top: 1px solid rgb(48,54,58);
+  border-bottom: 1px solid rgb(48,54,58);
+  font-family: "Capsule Sans Text", Helvetica, "Segoe UI", Arial, sans-serif;
+  font-size: 13px;
+}
+
+#profile-cash-balance-container:hover {
+  border-radius: 10px;
+  background-color: rgb(48,54,58);
+}
+
+#profile-cash-balance-header {
+  padding-left: 2%;
+  font-family: inherit;
+  font-weight: 700;
+}
+
+#profile-cash-balance {
+  padding-right: 10%;
+  font-family: inherit;
+  color: rgba(0, 200, 5, 1);
+}
+
+#profile-add-balance-container {
+  margin-left: 23%;
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  max-width: 750px;
+}
+
+#profile-add-balance{
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  align-items: center;
+  height: 100px;
+}
+
+#profile-add-button-container {
+  display: flex;
+  flex-direction: row;
+  margin-top: 20px;
+}
+
+#profile-add-balance-header {
+  max-width: 210px;
+  width: 100%;
+}
+
+#profile-add-amount {
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  border-color: grey;
+  outline: none;
+  margin-left: 25px;
+  height: 100%;
+  width: 100%;
+  max-width: 120px;
+  max-height: 25px;
+  background: transparent;
+  color: white;
+  text-align: center;
+}
+
+#profile-add-amount::placeholder {
+  color: grey;
+  font: center;
+  text-align: center;
+}
+
+#profile-add-amount:focus {
+  border-color: rgba(0, 200, 5, 1);
+}
+
+#profile-add-balance-button {
+  margin-left: 50px;
+  width: 100%;
+  height: 100%;
+  max-width: 100px;
+  max-height: 30px;
+  border-radius: 4px;
+  border-color: rgba(0, 200, 5, 1);
+  color: rgba(0, 200, 5, 1);
+  background: transparent;
+}
+
+#profile-add-balance-button:hover {
+  background-color: rgba(0, 200, 5, 1);
+  color: white;
+  border-color: rgba(0, 200, 5, 1);
+  /* outline-color: rgba(0, 200, 5, 1); */
+  outline: none;
 }
