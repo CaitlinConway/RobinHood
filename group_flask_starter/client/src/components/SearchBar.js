@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from "react-redux";
-import { getSearch } from "../store/stockReducer";
-import { Link, NavLink, Redirect } from 'react-router-dom';
+// import { getSearch } from "../store/stockReducer";
+import { Link } from 'react-router-dom';
 import { stockArray } from '../stockarray'
 
 class SearchBar extends React.Component {
@@ -50,24 +50,24 @@ class SearchBar extends React.Component {
       if (!(window.location.href.includes("stocks")) && i < 6) {
         pageData.push(
         <div className="search-ul">
-         <div className="search-ul-1"><NavLink to={`stocks/${array.Symbol}`}>{array.Symbol}</NavLink></div>
-         <div className="search-ul-2"><NavLink to={`stocks/${array.Symbol}`}>{array.Name}</NavLink></div>
+         <div className="search-ul-1"><Link to={`/stocks/${array.Symbol}`}>{array.Symbol}</Link></div>
+         <div className="search-ul-2"><Link to={`/stocks/${array.Symbol}`}>{array.Name}</Link></div>
         </div>
         );
         i++;
       } else if (window.location.href.includes("user") && i < 6) {
         pageData.push(
         <div className="search-ul">
-         <div className="search-ul-1"><NavLink to={`${array.Symbol}`}>{array.Symbol}</NavLink></div>
-         <div className="search-ul-2"><NavLink to={`${array.Symbol}`}>{array.Name}</NavLink></div>
+         <div className="search-ul-1"><Link to={`${array.Symbol}`}>{array.Symbol}</Link></div>
+         <div className="search-ul-2"><Link to={`${array.Symbol}`}>{array.Name}</Link></div>
         </div>
         );
         i++;
       } else if (window.location.href.includes("stocks") && i < 6) {
         pageData.push(
         <div className="search-ul">
-         <div className="search-ul-1"><NavLink to={`${array.Symbol}`}>{array.Symbol}</NavLink></div>
-         <div className="search-ul-2"><NavLink to={`${array.Symbol}`}>{array.Name}</NavLink></div>
+         <div className="search-ul-1"><Link to={`${array.Symbol}`}>{array.Symbol}</Link></div>
+         <div className="search-ul-2"><Link to={`${array.Symbol}`}>{array.Name}</Link></div>
         </div>
         );
         i++;
@@ -121,7 +121,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    search: (search) => dispatch(getSearch(search)),
+    // search: (search) => dispatch(getSearch(search)),
   };
 };
 

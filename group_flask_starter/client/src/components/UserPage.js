@@ -1,11 +1,11 @@
 import React from 'react';
-import { BrowserRouter,  NavLink, Redirect } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import Logo from "../robinhood-logomark-white.png"
 import greenLogo from "../robinhood-logomark-green.png"
 import SearchBar from './SearchBar'
 import AccountDropDown from './AccountDropDown'
 import {connect} from 'react-redux'
-import {logOut} from '../store/authReducer'
+import {addToBalance, logOut, updateBalance } from '../store/authReducer'
 import { getStocklist } from '../store/stockReducer';
 
 class UserPage extends React.Component{
@@ -18,15 +18,15 @@ class UserPage extends React.Component{
     }
   }
 
+  componentDidMount(){
+
+  }
+
   logoutButtonHandle = (e) =>{
     e.preventDefault();
     this.props.logOut();
-    return <Redirect to="/landing" />
+  }
 
-  }
-  componentDidMount() {
-    this.props.getStocklist(this.props.auth.id);
-  }
 
   hideAccount = (e) => {
     e.preventDefault();
@@ -40,21 +40,27 @@ class UserPage extends React.Component{
     accountLi.style.display = "flex";
   }
 
-  setToDecimal = (e) => {
-    e.preventDefault()
-    const inputValue = document.getElementById("profile-add-amount")
-    inputValue.value = parseFloat(e.target.value).toFixed(2);
-    // this.value = e.target.value;
-  }
-
-  addToBalance = (e) => {
+  showBalance = (e) => {
     e.preventDefault();
-    const inputValue = document.getElementById("profile-add-amount")
-    alert(inputValue.value)
+    const userId = this.props.auth.id;
+    this.props.updateBalance(userId)
+  }
+
+  add = (e) => {
+    e.preventDefault();
+    this.value = e.target.value;
 
   }
 
-  render(){
+  balanceTotal = async (e) => {
+    e.preventDefault();
+    const userId = this.props.auth.id
+    const inputValue = document.getElementById("profile-add-amount")
+    const amount = inputValue.value;
+    this.props.addToBalance(amount, userId)
+}
+
+  render() {
     return(
       <div id="user-profile-page">
         <div className="nav-bar">
@@ -83,32 +89,23 @@ class UserPage extends React.Component{
           </div>
           <div id="profile-master-container">
             <div id="profile-user-name">{this.state.user.firstName} {this.state.user.lastName}</div>
-            <div id="profile-portfolio-value" className="profile-portfolio-header">Total Portfolio Value
-              <div id="profile-user-balance">$0.00</div>
-            </div>
             <div id="profile-cash-balance-container">
               <div id="profile-cash-balance-header">Cash</div>
-              <div id="profile-cash-balance">${this.state.user.balance}</div>
+              <div id="profile-cash-balance">${this.props.auth.balance}</div>
             </div>
             <div id="profile-add-balance-container">
               <div id="profile-add-balance">
-                <div id="profile-add-balance-header">Add to Your Vigilante Funds</div>
-                <form id="profile-add-amount-form>">
+                <div id="profile-add-balance-header">Add to Your Vigilante Funds:</div>
                   <input id="profile-add-amount"
                   type="number"
                   min="0"
-                  max="10"
+                  max="100000000"
                   step="0.01"
-                  onChange={this.setToDecimal}
-                  // value="0.00"
+                  onChange={this.add}
                   placeholder="Amount to Add">
                   </input>
-                  <button id="profile-add-balance-button" type="submit" onClick={this.addToBalance}>Add</button>
-                </form>
+                  <button id="profile-add-balance-button" onClick={this.balanceTotal}>Add</button>
               </div>
-            <div id="profile-add-button-container">
-                  <div id="profile-user-stocks">Stocks</div>
-                </div>
             </div>
         </div>
       </div>
@@ -117,13 +114,17 @@ class UserPage extends React.Component{
 }
 const mapStateToProps = (state) => ({
   auth: state.auth,
-  stocklist: state.stocklist
+  stocklist: state.stocklist,
+  user: state.auth,
+  balance: state.auth.user
 });
 
 const mapDispatchToProps = (dispatch) => {
   return {
     logOut: () => dispatch(logOut()),
-    getStocklist: (userId) => dispatch(getStocklist(userId))
+    getStocklist: (userId) => dispatch(getStocklist(userId)),
+    addToBalance: (amount, userId) => dispatch(addToBalance(amount, userId)),
+    updateBalance: (userId) => dispatch(updateBalance(userId))
   }
 };
 
