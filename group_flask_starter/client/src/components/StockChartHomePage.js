@@ -63,8 +63,8 @@ export default function StockChartHomePage(props) {
                 <div id={'stock-chart-homepage'}>
                     <ResponsiveContainer width="100%" height={500} >
                         <LineChart data={stockData} onMouseOver={hidePrice} onMouseOut={showPrice}>
-                            <XAxis dataKey="time" stroke="#dfdfdf"/>
-                            <YAxis dataKey="closing" domain={["datamin", "auto"]} hide={true}/>
+                            <XAxis dataKey="time" stroke="#dfdfdf" padding={{ left: 25, right: 50}} minTickGap={20}/>
+                            <YAxis dataKey="closing" domain={["datamin", "auto"]} hide={true} />
                             <Tooltip content={showTooltipData} position={{"x": 25, "y": 0}} animationDuration={2500}/>
                             <Line stroke={stockPrice > stockData[0].closing ? "#03C805" : "#FF5103"}
                                   strokeWidth={1.8} yAxisId={0} dot={false} type="monotone" dataKey="closing" />
