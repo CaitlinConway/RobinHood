@@ -36,7 +36,7 @@ export default function StockBuy(props) {
     }
 
     const updateBuy = (e) => {
-        setBuy(e.target.value === "Buy")
+        setBuy(!buy)
     }
 
     const makeTrade = async (e) => {
@@ -54,6 +54,7 @@ export default function StockBuy(props) {
         if (trade === "success") dispatch(updateBalance(userId))
     }
 
+    console.log(buy);
     return (
         <div className="buy-container">
             <form method="POST" action="/stocks/trades" className="buy-form" autoComplete="off">
