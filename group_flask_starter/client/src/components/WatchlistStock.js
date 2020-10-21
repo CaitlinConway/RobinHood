@@ -37,7 +37,7 @@ export default function WatchListStock({stock}) {
                         </LineChart>
                     </ResponsiveContainer>
         </div>
-      <p id={'watchlist-stock-price'}>{stockPrice}</p>
+      <p id={'watchlist-stock-price'}>{Number(stockPrice).toFixed(2)}</p>
       </div>
     </>
     )
