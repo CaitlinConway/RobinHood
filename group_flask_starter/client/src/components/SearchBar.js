@@ -12,6 +12,13 @@ class SearchBar extends React.Component {
     }
   };
 
+  hideList = () => {
+    const searchList = document.getElementById("search-list");
+    this.setState({ search: "" });
+    searchList.setAttribute("hidden", "true")
+    searchList.style.display = "none";
+  }
+
 
   updateSearch = (e) => {
     this.setState({ search: e.target.value });
@@ -88,7 +95,7 @@ class SearchBar extends React.Component {
             value={search}
             />
         </div>
-        <div id="search-list" className="search-bar-list" hidden>
+        <div id="search-list" className="search-bar-list" hidden onClick={this.hideList}>
           <div id="section-1">
             <div className="search-list-type">Stocks</div>
             {pagePath()}

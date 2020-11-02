@@ -251,6 +251,10 @@ body {
   outline: none;
 }
 
+.stock-buy-sell:active {
+  color: black;
+}
+
 .market {
   border-bottom: 1px solid lightgray;
 }
