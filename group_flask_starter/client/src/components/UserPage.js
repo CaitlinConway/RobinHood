@@ -68,14 +68,33 @@ class UserPage extends React.Component{
     this.props.getStocks(userId)
   }
 
-  stockLoader = async () => {
-    const owned = this.props.stock.owned
-    // console.log(owned)
-  }
+  // stockLoader = async () => {
+  //   const owned = this.props.owned;
+  //   let ownedArray = [];
+  //   for (const stock in owned) {
+  //    ownedArray.push(<li key={this.props.owned.indexOf(this.props.owned)}>
+  //       <div>{stock}</div>
+  //     </li>)
+  //   }
+  //   return ownedArray;
+  // }
 
 
   render() {
-    console.log(this.props.owned)
+    const stockLoader = () => {
+      const owned = this.props.owned;
+      const values = Object.values(owned)
+      const valuesArray = [];
+      values.forEach(value => {
+        const share = Object.values(value)
+        const ticker = Object.keys(value)
+        valuesArray.push(
+            <li key={values.indexOf(value)}>Stock: {ticker} - Number of Shares: {share[0]}</li>)
+         })
+      return valuesArray;
+    }
+
+    if (this.props.owned) {
     return(
       <div id="user-profile-page">
         <div className="nav-bar">
@@ -132,12 +151,14 @@ class UserPage extends React.Component{
                       <div>{stock}</div>
                     </li>
                   ))} */}
+                  {stockLoader()}
                 </ul>
             </div>
         </div>
         </div>
       </div>
     )
+    } else { return null}
   }
 }
 const mapStateToProps = (state) => ({
