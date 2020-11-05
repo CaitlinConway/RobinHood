@@ -9,14 +9,6 @@ import {addToBalance, logOut, updateBalance } from '../store/authReducer'
 import { getWatchList, getNews, getStocks } from '../store/stockReducer';
 
 class UserPage extends React.Component{
-  constructor (props){
-    super(props);
-    this.state = {
-      // user: this.props.auth,
-      // stocklist: this.props.stocklist,
-      balance: this.props.auth.balance,
-    }
-  }
 
   componentDidMount(){
     this.props.getWatchList(this.props.auth);
@@ -29,7 +21,6 @@ class UserPage extends React.Component{
     e.preventDefault();
     this.props.logOut();
   }
-
 
   hideAccount = (e) => {
     e.preventDefault();
@@ -63,23 +54,6 @@ class UserPage extends React.Component{
     inputValue.value = "";
 }
 
-  updateStocks = async () => {
-    const userId = this.props.auth.id
-    this.props.getStocks(userId)
-  }
-
-  // stockLoader = async () => {
-  //   const owned = this.props.owned;
-  //   let ownedArray = [];
-  //   for (const stock in owned) {
-  //    ownedArray.push(<li key={this.props.owned.indexOf(this.props.owned)}>
-  //       <div>{stock}</div>
-  //     </li>)
-  //   }
-  //   return ownedArray;
-  // }
-
-
   render() {
     const stockLoader = () => {
       const owned = this.props.owned;
@@ -89,7 +63,14 @@ class UserPage extends React.Component{
         const share = Object.values(value)
         const ticker = Object.keys(value)
         valuesArray.push(
-            <li key={values.indexOf(value)}>Stock: {ticker} - Number of Shares: {share[0]}</li>)
+            <div key={values.indexOf(value)} className="stock-portfolio-list">
+              <div className="stock-ticker-container">
+                <span className="stock-label">Stock:</span> <span className="stock-ticker-list">{ticker}</span>
+              </div>
+              <div className="stock-number-container">
+                <span className="stock-number-shares">Number of Shares:</span> <span className="stock-share-list">{share[0]}</span>
+              </div>
+            </div>)
          })
       return valuesArray;
     }
@@ -117,7 +98,6 @@ class UserPage extends React.Component{
                 <li className="search"><SearchBar></SearchBar></li>
                 <li><button onClick={this.showAccount} activeclass="active" className='user-account-button'>Account</button></li>
                 <li id={'account-drop-down-li'} hidden><AccountDropDown user={this.props.user}></AccountDropDown></li>
-                {/* <li id={'account-drop-down-li'} hidden><AccountDropDown user={this.props.user}></AccountDropDown></li> */}
                 <li><NavLink to="/" activeclass="active" className = 'portfolio-button'>Portfolio</NavLink></li>
             </ul>
           </nav>
@@ -142,15 +122,10 @@ class UserPage extends React.Component{
                   <button id="profile-add-balance-button" onClick={this.balanceTotal}>Add</button>
               </div>
             </div>
+            <div id="owned-stocks-header">My Portfolio</div>
             <div id="portfolio-master-container">
               <div id="owned-stocks-container">
-                <h1 id="owned-stocks-header">My Portfolio</h1>
                 <ul id="owned-stocks-list">
-                  {/* {(this.props.owned).map((stock) => (
-                    <li key={this.props.owned.indexOf(this.props.owned)}>
-                      <div>{stock}</div>
-                    </li>
-                  ))} */}
                   {stockLoader()}
                 </ul>
             </div>

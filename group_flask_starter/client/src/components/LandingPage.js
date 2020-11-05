@@ -1,6 +1,5 @@
 import React from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
-import batman from "../images/batman.png";
 import BlackLogo from "../robinhood-logomark-black.png"
 import greenLogo from "../robinhood-logomark-green.png"
 

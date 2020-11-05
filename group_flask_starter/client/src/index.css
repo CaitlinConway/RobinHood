@@ -1154,3 +1154,55 @@ a {
   /* outline-color: rgba(0, 200, 5, 1); */
   outline: none;
 }
+
+#portfolio-master-container {
+  display: flex;
+  flex-direction: row;
+  margin-top: 2%;
+  margin-left: 23%;
+  width: 100%;
+  max-width: 750px;
+  border-top: 1px solid rgb(48,54,58);
+  border-bottom: 1px solid rgb(48,54,58);
+  font-family: "Capsule Sans Text", Helvetica, "Segoe UI", Arial, sans-serif;
+  font-size: 15px;
+}
+
+
+#owned-stocks-header {
+  font-size: 26pt;
+  font-family: "Capsule Sans Text", Helvetica, "Segoe UI", Arial, sans-serif;
+  margin-top: 100px;
+  margin-left: 23%;
+  margin-bottom: 20px;
+}
+
+#owned-stocks-list {
+  padding: 0 0 0 20px;
+}
+
+.stock-portfolio-list {
+  width: 700px;
+  display: flex;
+  flex-direction: row;
+  font-size: 1em;
+}
+
+.stock-ticker-container {
+  width: 100%;
+  max-width: 100px;
+  margin: 2px 0 2px 0;
+  font-weight: 700;
+}
+
+.stock-number-container {
+  width: 100%;
+  max-width: 200px;
+  margin: 2px 0 2px 0;
+  font-weight: 700;
+}
+
+.stock-ticker-list, .stock-share-list {
+  color: rgba(0, 200, 5, 1);
+  font-weight: 400;
+}
