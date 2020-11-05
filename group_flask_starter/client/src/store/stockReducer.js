@@ -193,3 +193,13 @@ export function getStocks(userId) {
     }
   }
 }
+
+// export function getUsersStocks(userId) {
+//   return async(dispatch) => {
+//     let res = await fetch(`/api/stocks/owned_list/${userId}`)
+//     if (res.ok) {
+//       let stocks = await res.json();
+//       dispatch(updateStocks(stocks.stocks))
+//     }
+//   }
+// }

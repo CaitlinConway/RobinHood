@@ -107,76 +107,69 @@ def getNews():
 
 @stock_routes.route('/stocklist/<userId>')
 def stockList(userId):
-  stockListStocks = []
-  stockList = Stocklist.query.filter(Stocklist.userId == userId).all()
-  print(stockList)
-  if stockList:
-    for stock in stockList:
-      stockTicker = Stock.query.filter(Stock.id == stock.stockId).first()
-      stockListStocks.append(stockTicker.ticker)
-    return {"tickers": stockListStocks}
-  return "error no list"
+    stockListStocks = []
+    stockList = Stocklist.query.filter(Stocklist.userId == userId).all()
+    print(stockList)
+    if stockList:
+        for stock in stockList:
+            stockTicker = Stock.query.filter(Stock.id == stock.stockId).first()
+            stockListStocks.append(stockTicker.ticker)
+            return {"tickers": stockListStocks}
+    return "error no list"
 
 
 @stock_routes.route("/trades/<userId>", methods=["POST"])
 def makeTrade(userId):
-    data = request.json
-    timestamp = datetime.datetime.utcnow()
-    print(data, userId)
-    newTrade = Trade(
-      ticker=data["ticker"],
-      price=data["price"],
-      shares=round(int(data["shares"]), 2),
-      buy=data["buy"],
-      buyDate=timestamp,
-      userId=userId
-    )
-    currentStock = Stock.query.filter(Stock.ticker == data["ticker"]).first()
-    if not currentStock:
-        newStock = Stock(ticker=data['ticker'])
-        db.session.add(newStock)
-        db.session.commit()
-        currentStock = Stock.query.filter(Stock.ticker == data["ticker"]).first()
-    stockId = currentStock.id
-    currentlyOwned = Stocklist.query.filter(Stocklist.stockId == stockId).filter(Stocklist.userId == userId).first()
-    currentShares = 0 if not currentlyOwned else float(currentlyOwned.shares)
-    newShares = float(data["shares"]) * (1 if data["buy"] else -1)
-    updatedShares = round((currentShares + newShares), 2)
-    currentUser = User.query.filter(User.id == userId).first()
-    currentBalance = float(currentUser.balance)
-    cost = round((float(data["shares"]) * float(data["price"])) * (1 if data["buy"] else -1), 2)
-    updatedBalance = round((currentBalance - cost), 2)
-    print(currentBalance, updatedBalance)
-    print(currentShares, updatedShares)
-    if updatedShares < 0:
-        return {"error": "You can't have negative shares"}
-    if updatedBalance < 0:
-        return {"error": "You can't have a negative balance"}
-    if currentlyOwned:
-        currentlyOwned.shares = updatedShares
-        print(currentlyOwned.shares)
-    else:
-        currentlyOwned = Stocklist(
-          stockId=stockId,
-          userId=userId,
-          shares=updatedShares
+    if method == "POST":
+        data = request.json
+        timestamp = datetime.datetime.utcnow()
+        newTrade = Trade(
+          ticker=data["ticker"],
+          price=data["price"],
+          shares=round(int(data["shares"]), 2),
+          buy=data["buy"],
+          buyDate=timestamp,
+          userId=userId
         )
-        print(currentlyOwned.shares)
-    currentUser.balance = updatedBalance
-    print(currentUser.balance)
+        currentStock = Stock.query.filter(Stock.ticker == data["ticker"]).first()
+        if not currentStock:
+            newStock = Stock(ticker=data['ticker'])
+            db.session.add(newStock)
+            db.session.commit()
+            currentStock = Stock.query.filter(Stock.ticker == data["ticker"]).first()
+        stockId = currentStock.id
+        currentlyOwned = Stocklist.query.filter(Stocklist.stockId == stockId).filter(Stocklist.userId == userId).first()
+        currentShares = 0 if not currentlyOwned else float(currentlyOwned.shares)
+        newShares = float(data["shares"]) * (1 if data["buy"] else -1)
+        updatedShares = round((currentShares + newShares), 2)
+        currentUser = User.query.filter(User.id == userId).first()
+        currentBalance = float(currentUser.balance)
+        cost = round((float(data["shares"]) * float(data["price"])) * (1 if data["buy"] else -1), 2)
+        updatedBalance = round((currentBalance - cost), 2)
+        if updatedShares < 0:
+            return {"error": "You can't have negative shares"}
+        if updatedBalance < 0:
+            return {"error": "You can't have a negative balance"}
+        if currentlyOwned:
+            currentlyOwned.shares = updatedShares
+        else:
+            currentlyOwned = Stocklist(
+              stockId=stockId,
+              userId=userId,
+              shares=updatedShares
+            )
+        currentUser.balance = updatedBalance
 
-    db.session.add(newTrade)
-    db.session.add(currentlyOwned)
-    db.session.add(currentUser)
-    db.session.commit()
-    all_stocks = Stocklist.query.filter(Stocklist.userId == userId).all()
-    print(all_stocks)
-
-    # return in format {ticker: shares}
-    return {"stocks": list(
+        db.session.add(newTrade)
+        db.session.add(currentlyOwned)
+        db.session.add(currentUser)
+        db.session.commit()
+        all_stocks = Stocklist.query.filter(Stocklist.userId == userId).all()
+        # return in format {ticker: shares}
+        return {"stocks": list(
             {Stock.query.filter(Stock.id == stock.stockId).first().ticker: str(stock.shares)}
             for stock in all_stocks)
-           }
+        }
 
 
 @stock_routes.route("/owned/<userId>")
@@ -187,3 +180,12 @@ def getStocks(userId):
             {Stock.query.filter(Stock.id == stock.stockId).first().ticker: str(stock.shares)}
             for stock in ownedStocks)
            }
+
+
+# @stock_routes.route("/owned_list/<userId>")
+# def getOwnedStocks(userId):
+#     ownedStocks = ownedStocks = Stocklist.query.filter(Stocklist.userId == userId).all()
+#     stocks_dict = {}
+#     for stock in ownedStocks:
+#       stocks_dict[stock.id] = stock.to_dict()
+#     return {"stocks": stocks_}
