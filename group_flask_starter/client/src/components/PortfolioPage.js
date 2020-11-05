@@ -54,9 +54,9 @@ class PortfolioPage extends React.Component{
                   />
                   </NavLink></li>
                 <li className="search"><SearchBar></SearchBar></li>
-                <li><button onClick={this.showAccount} activeclass="active" className='user-account-button'>Account</button></li>
+                <li className="account"><button onClick={this.showAccount} activeclass="active" className='user-account-button'>Account</button></li>
                 <li id={'account-drop-down-li'} hidden><AccountDropDown user={this.props.user}></AccountDropDown></li>
-                <li><NavLink to={`/user/${this.props.auth}`} activeclass="active" className = 'portfolio-button'>Portfolio</NavLink></li>
+                <li className="portfolio"><NavLink to={`/user/${this.props.auth}`} activeclass="active" className = 'portfolio-button'>Portfolio</NavLink></li>
             </ul>
         </nav>
         </div>
@@ -95,9 +95,9 @@ class PortfolioPage extends React.Component{
               />
               </NavLink></li>
             <li className="search"><SearchBar></SearchBar></li>
-            <li><button onClick={this.showAccount} activeclass="active" className='user-account-button'>Account</button></li>
+            <li className="account" ><button onClick={this.showAccount} activeclass="active" className='user-account-button'>Account</button></li>
             <li id={'account-drop-down-li'} hidden><AccountDropDown user={this.props.user}></AccountDropDown></li>
-            <li><NavLink to="/" activeclass="active" className = 'portfolio-button'>Portfolio</NavLink></li>
+            <li className="portfolio"><NavLink to="/" activeclass="active" className = 'portfolio-button'>Portfolio</NavLink></li>
         </ul>
     </nav>
     </div>

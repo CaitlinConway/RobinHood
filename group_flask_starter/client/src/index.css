@@ -16,6 +16,18 @@
 
 }
 
+.account {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.portfolio {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
 body {
   margin: 0px;
 }
@@ -249,6 +261,10 @@ body {
 
 .stock-buy-sell:focus {
   outline: none;
+}
+
+.stock-buy-sell:active {
+  color: black;
 }
 
 .market {

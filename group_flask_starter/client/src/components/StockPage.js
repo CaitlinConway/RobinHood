@@ -71,8 +71,8 @@ export default function StockPage(props) {
                         </NavLink>
                     </li>
                     <li className="search"><SearchBar></SearchBar></li>
-                    <li><NavLink to="/" activeclass="active" className='user-account-button'>Account</NavLink></li>
-                    <li><NavLink to={`/user/${watchlistId}`} activeclass="active" className = 'portfolio-button'>Portfolio</NavLink></li>
+                    <li className="account"><NavLink to="/" activeclass="active" className='user-account-button'>Account</NavLink></li>
+                    <li className="portfolio"><NavLink to={`/user/${watchlistId}`} activeclass="active" className = 'portfolio-button'>Portfolio</NavLink></li>
                 </ul>
             </nav>
         </div>
