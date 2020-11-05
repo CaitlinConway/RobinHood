@@ -42,7 +42,7 @@ export default function StockChart(props) {
                 </div>
                     <ResponsiveContainer width="100%" height={500} >
                         <LineChart data={stockData} onMouseOver={hidePrice} onMouseOut={showPrice}>
-                            <XAxis dataKey="time" stroke="#dfdfdf"/>
+                            <XAxis dataKey="time" stroke="#dfdfdf" minTickGap={20}/>
                             <YAxis dataKey="closing" domain={["datamin", "auto"]} hide={true}/>
                             <Tooltip content={showTooltipData} position={{"x": 25, "y": 0}} animationDuration={2500}/>
                             <Line stroke={props.stockPrice > stockData[0].closing ? "#03C805" : "#FF5103"}
